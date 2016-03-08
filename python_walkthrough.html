@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Style guide for MicroPython with IoT &mdash; mpiot 0.0.6 documentation</title>
+  <title>1. Python Walkthrough &mdash; mpiot 0.0.6 documentation</title>
   
 
   
@@ -30,8 +30,8 @@
   
 
   
-    <link rel="top" title="mpiot 0.0.6 documentation" href="#"/>
-        <link rel="next" title="Introduction" href="introduction.html"/> 
+    <link rel="top" title="mpiot 0.0.6 documentation" href="index.html"/>
+        <link rel="prev" title="Welcome to mpiot’s documentation!" href="index.html"/> 
 
   
   <script src="_static/js/modernizr.min.js"></script>
@@ -49,7 +49,7 @@
           
 
           
-            <a href="#" class="icon icon-home"> mpiot
+            <a href="index.html" class="icon icon-home"> mpiot
           
 
           
@@ -80,9 +80,8 @@
           
             
             
-                <ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="rtl8195a.html">Realtek RTL8195A</a></li>
+                <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="">1. Python Walkthrough</a></li>
 </ul>
 
             
@@ -96,7 +95,7 @@
       
       <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
         <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="#">mpiot</a>
+        <a href="index.html">mpiot</a>
       </nav>
 
 
@@ -111,13 +110,13 @@
 
 <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    <li><a href="#">Docs</a> &raquo;</li>
+    <li><a href="index.html">Docs</a> &raquo;</li>
       
-    <li>Style guide for MicroPython with IoT</li>
+    <li>1. Python Walkthrough</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="_sources/index.txt" rel="nofollow"> View page source</a>
+            <a href="_sources/python_walkthrough.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -127,29 +126,23 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="style-guide-for-micropython-with-iot">
-<h1>Style guide for MicroPython with IoT<a class="headerlink" href="#style-guide-for-micropython-with-iot" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#micropython">MicroPython 是什麼?</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#id1">MicroPython 有什麼好處？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#id2">MicroPython 怎麼控制周邊硬體 ？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#micropython-iot">MicroPython 跟 IoT 有什麼關係？</a></li>
-<li class="toctree-l2"><a class="reference internal" href="introduction.html#id3">如何開始？</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="rtl8195a.html">Realtek RTL8195A</a></li>
-</ul>
-</div>
-</div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>索引</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>模組索引</span></a></li>
-<li><a class="reference internal" href="search.html"><span>搜尋頁面</span></a></li>
-</ul>
+  <div class="section" id="python-walkthrough">
+<h1>1. Python Walkthrough<a class="headerlink" href="#python-walkthrough" title="Permalink to this headline">¶</a></h1>
+<p>Why use Python ?</p>
+<blockquote>
+<div><p>一般來說, 要使用開發版進行應用開發, 需要透過以下幾個步驟</p>
+<ol class="arabic simple">
+<li>撰寫程式</li>
+<li>編譯</li>
+<li>程式燒錄</li>
+<li>監看運行狀況</li>
+</ol>
+<p>但是進行開發過程中, 往往會出現相當多無法預期的狀況, 例如程式碼邏輯不清楚, 程式流程設計錯誤, 甚至是變數宣告錯誤, 而造成程式運行出問題, 為了修改一個小地方, 而必須要重新進行以上4個步驟.
+往往沒有經驗的人, 對於要設計一個稍微複雜的物聯網應用, 會需要反反覆覆的進行除臭蟲, 程式編譯, 程式燒錄, 監看運行結果.
+這種開發方式往往是相當沒有效率的</p>
+<p>一般來說, 現在較常使用開發版皆載有Linux 作業系統, 例如Raspbian, Ubuntu, 甚至是輕量級系統BusyBox, 開發者也可以得利於Linux 龐大的社群生態圈, 開放原始碼
+相較於一般非Linux為作業系統的開發版, 例如Arduino 是使用C++進行開發, 而開發過程必須要先經過以下步驟</p>
+</div></blockquote>
 </div>
 
 
@@ -159,8 +152,8 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="introduction.html" class="btn btn-neutral float-right" title="Introduction" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
+        <a href="index.html" class="btn btn-neutral" title="Welcome to mpiot’s documentation!" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
