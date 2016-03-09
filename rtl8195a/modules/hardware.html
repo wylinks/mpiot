@@ -153,7 +153,7 @@
 <h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="hardware.Pin">
-<em class="property">class </em><code class="descclassname">hardware.</code><code class="descname">Pin</code><span class="sig-paren">(</span><em>name</em>, <em>...</em><span class="sig-paren">)</span><a class="headerlink" href="#hardware.Pin" title="Permalink to this definition">¶</a></dt>
+<em class="property">class </em><code class="descclassname">hardware.</code><code class="descname">Pin</code><span class="sig-paren">(</span><em>id</em>, <em>...</em><span class="sig-paren">)</span><a class="headerlink" href="#hardware.Pin" title="Permalink to this definition">¶</a></dt>
 <dd><p>Constructor to create a <cite>Pin</cite> object</p>
 </dd></dl>
 
@@ -161,9 +161,21 @@
 <div class="section" id="method">
 <h2>Method<a class="headerlink" href="#method" title="Permalink to this headline">¶</a></h2>
 <dl class="method">
+<dt id="pin.id">
+<code class="descclassname">pin.</code><code class="descname">id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pin.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get pin&#8217;id</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="pin.dir">
+<code class="descclassname">pin.</code><code class="descname">dir</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pin.dir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Get pin&#8217;s I/O direction</p>
+</dd></dl>
+
+<dl class="method">
 <dt id="pin.value">
 <code class="descclassname">pin.</code><code class="descname">value</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#pin.value" title="Permalink to this definition">¶</a></dt>
-<dd><p>Set pin&#8217;s value</p>
+<dd><p>Get or set pin&#8217;s value</p>
 <div class="admonition note">
 <p class="first admonition-title">註解</p>
 <p class="last">Pin&#8217;s voltage can only be 0 ~ 3.3V</p>
@@ -175,6 +187,39 @@
 <code class="descclassname">pin.</code><code class="descname">toggle</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#pin.toggle" title="Permalink to this definition">¶</a></dt>
 <dd><p>Toggle pin&#8217;s value</p>
 </dd></dl>
+
+</div>
+<div class="section" id="constant">
+<h2>Constant<a class="headerlink" href="#constant" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="Pin.IN">
+<code class="descclassname">Pin.</code><code class="descname">IN</code><a class="headerlink" href="#Pin.IN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="Pin.OUT">
+<code class="descclassname">Pin.</code><code class="descname">OUT</code><a class="headerlink" href="#Pin.OUT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="Pin.PULL_NONE">
+<code class="descclassname">Pin.</code><code class="descname">PULL_NONE</code><a class="headerlink" href="#Pin.PULL_NONE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="Pin.PULL_UP">
+<code class="descclassname">Pin.</code><code class="descname">PULL_UP</code><a class="headerlink" href="#Pin.PULL_UP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="Pin.PULL_DOWN">
+<code class="descclassname">Pin.</code><code class="descname">PULL_DOWN</code><a class="headerlink" href="#Pin.PULL_DOWN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="Pin.PULL_DRAIN">
+<code class="descclassname">Pin.</code><code class="descname">PULL_DRAIN</code><a class="headerlink" href="#Pin.PULL_DRAIN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 </div>
 </div>
