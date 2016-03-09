@@ -7,11 +7,13 @@ Style guide for MicroPython with IoT
 ====================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    :glob:
    
    introduction
-   rtl8195a
+   start
+   hardware
+
    
 Indices and tables
 ==================
