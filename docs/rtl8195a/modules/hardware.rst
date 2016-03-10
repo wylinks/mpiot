@@ -7,8 +7,8 @@ Constructor
 
     Constructor to create a `Pin` object
     
-Method
-******
+Methods
+*******
 .. method:: pin.id()
     
    Get pin'id 
@@ -28,8 +28,8 @@ Method
     
    Toggle pin's value
 
-Constant
-********
+Constants
+*********
 
 .. data:: Pin.IN
 .. data:: Pin.OUT
