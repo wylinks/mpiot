@@ -148,6 +148,126 @@
             
   <div class="section" id="wireless-module-to-access-wireless-functions">
 <h1><code class="xref py py-mod docutils literal"><span class="pre">wireless</span></code> &#8211; module to access wireless functions<a class="headerlink" href="#wireless-module-to-access-wireless-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="wireless.WIFI">
+<em class="property">class </em><code class="descclassname">wireless.</code><code class="descname">WIFI</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wireless.WIFI" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor to create a <cite>WIFI</cite> object</p>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="wifi.scan">
+<code class="descclassname">wifi.</code><code class="descname">scan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>To scan all available networks</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wifi.connect">
+<code class="descclassname">wifi.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>ssid</em>, <em>auth=(`securoty type`</em>, <em>psk)</em><span class="sig-paren">)</span><a class="headerlink" href="#wifi.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>To connect to a WiFi AP</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wifi.disconnect">
+<code class="descclassname">wifi.</code><code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>To disconnect from the WiFi AP</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wifi.mac">
+<code class="descclassname">wifi.</code><code class="descname">mac</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get mac adddress of WiFi SoC</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="wifi.rssi">
+<code class="descclassname">wifi.</code><code class="descname">rssi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.rssi" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get current RSSI value</p>
+</dd></dl>
+
+</div>
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="data">
+<dt id="WIFI.MODE_STA">
+<code class="descclassname">WIFI.</code><code class="descname">MODE_STA</code><a class="headerlink" href="#WIFI.MODE_STA" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.MODE_AP">
+<code class="descclassname">WIFI.</code><code class="descname">MODE_AP</code><a class="headerlink" href="#WIFI.MODE_AP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.MODE_STA_AP">
+<code class="descclassname">WIFI.</code><code class="descname">MODE_STA_AP</code><a class="headerlink" href="#WIFI.MODE_STA_AP" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.MODE_PROMISC">
+<code class="descclassname">WIFI.</code><code class="descname">MODE_PROMISC</code><a class="headerlink" href="#WIFI.MODE_PROMISC" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_OPEN">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_OPEN</code><a class="headerlink" href="#WIFI.SECURITY_OPEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WEP_PSK">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WEP_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WEP_PSK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WEP_SHARED">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WEP_SHARED</code><a class="headerlink" href="#WIFI.SECURITY_WEP_SHARED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPA_TKIP_PSK">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_TKIP_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA_TKIP_PSK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPA_AES_PSK">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_AES_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA_AES_PSK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPA2_TKIP_PSK">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA2_TKIP_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA2_TKIP_PSK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPA2_AES_PSK">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA2_AES_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA2_AES_PSK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPA_MIXED_PSK">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_MIXED_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA_MIXED_PSK" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPA_WPA2_MIXED">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_WPA2_MIXED</code><a class="headerlink" href="#WIFI.SECURITY_WPA_WPA2_MIXED" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPS_OPEN">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPS_OPEN</code><a class="headerlink" href="#WIFI.SECURITY_WPS_OPEN" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="data">
+<dt id="WIFI.SECURITY_WPS_SECURE">
+<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPS_SECURE</code><a class="headerlink" href="#WIFI.SECURITY_WPS_SECURE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
 </div>
 
 
