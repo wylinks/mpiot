@@ -2,8 +2,8 @@ Realtek RTL8195A
 ================
 
 .. toctree::
-   :maxdepth: 3
+   :maxdepth: 2
    
    intro
-   library
+   hardware
 

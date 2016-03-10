@@ -1,7 +1,7 @@
 Hardware guides
 """"""""""""""""""
 
-以下是目前有支援的開發板教學
+Supported hardware are list below.
 
 .. toctree::
    :maxdepth: 1
