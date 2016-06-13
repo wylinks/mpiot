@@ -151,9 +151,9 @@
 <div class="section" id="constructor">
 <h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
-<dt id="wireless.WIFI">
-<em class="property">class </em><code class="descclassname">wireless.</code><code class="descname">WIFI</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wireless.WIFI" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor to create a <cite>WIFI</cite> object</p>
+<dt id="wireless.WLAN">
+<em class="property">class </em><code class="descclassname">wireless.</code><code class="descname">WLAN</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wireless.WLAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor to create a <cite>WLAN</cite> object</p>
 </dd></dl>
 
 </div>
@@ -163,12 +163,29 @@
 <dt id="wifi.scan">
 <code class="descclassname">wifi.</code><code class="descname">scan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.scan" title="Permalink to this definition">¶</a></dt>
 <dd><p>To scan all available networks</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">ap_list</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">ap</span> <span class="ow">in</span> <span class="n">ap_list</span><span class="p">:</span>
+<span class="gp">... </span>          <span class="k">print</span><span class="p">(</span><span class="s2">&quot;ssid = </span><span class="si">%s</span><span class="s2">, bssid = </span><span class="si">%s</span><span class="s2">, rssi = </span><span class="si">%d</span><span class="s2">, channel = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ap</span><span class="o">.</span><span class="n">ssid</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">bssid</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">rssi</span><span class="p">,</span> <span class="n">ap</span><span class="o">.</span><span class="n">channel</span><span class="p">))</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="wifi.connect">
-<code class="descclassname">wifi.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>ssid</em>, <em>auth=(`securoty type`</em>, <em>psk)</em><span class="sig-paren">)</span><a class="headerlink" href="#wifi.connect" title="Permalink to this definition">¶</a></dt>
-<dd><p>To connect to a WiFi AP</p>
+<code class="descclassname">wifi.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>ssid</em>, <em>auth=(security_type</em>, <em>password)</em><span class="sig-paren">)</span><a class="headerlink" href="#wifi.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>To connect to a WiFi AP. When connection success, return <cite>None</cite>. If connection failed, raise an ecception: OSError</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;YOUR_SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;YOUR_PASSWORD&quot;</span><span class="p">))</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;access point auth failed&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
@@ -180,39 +197,60 @@
 <dl class="method">
 <dt id="wifi.mac">
 <code class="descclassname">wifi.</code><code class="descname">mac</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.mac" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get mac adddress of WiFi SoC</p>
+<dd><p>To get mac adddress from WiFi SoC, return a string</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">mac</span><span class="p">()</span>
+<span class="go">&#39;28:c2:dd:dd:42:7d&#39;</span>
+</pre></div>
+</div>
 </dd></dl>
 
 <dl class="method">
 <dt id="wifi.rssi">
 <code class="descclassname">wifi.</code><code class="descname">rssi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.rssi" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get current RSSI value</p>
+<dd><p>To get current RSSI value, return an int</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;YOUR_SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;YOUR_PASSWORD&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">rssi</span><span class="p">()</span>
+<span class="go">-48</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
 <div class="section" id="constants">
 <h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
-<dl class="data">
+<div class="section" id="wifi-mode">
+<h3>wifi mode<a class="headerlink" href="#wifi-mode" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="data">
 <dt id="WIFI.MODE_STA">
 <code class="descclassname">WIFI.</code><code class="descname">MODE_STA</code><a class="headerlink" href="#WIFI.MODE_STA" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="data">
 <dt id="WIFI.MODE_AP">
-<code class="descclassname">WIFI.</code><code class="descname">MODE_AP</code><a class="headerlink" href="#WIFI.MODE_AP" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">WIFI.</code><code class="descname">MODE_AP</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WIFI.MODE_AP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="data">
 <dt id="WIFI.MODE_STA_AP">
-<code class="descclassname">WIFI.</code><code class="descname">MODE_STA_AP</code><a class="headerlink" href="#WIFI.MODE_STA_AP" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">WIFI.</code><code class="descname">MODE_STA_AP</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WIFI.MODE_STA_AP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 <dl class="data">
 <dt id="WIFI.MODE_PROMISC">
-<code class="descclassname">WIFI.</code><code class="descname">MODE_PROMISC</code><a class="headerlink" href="#WIFI.MODE_PROMISC" title="Permalink to this definition">¶</a></dt>
+<code class="descclassname">WIFI.</code><code class="descname">MODE_PROMISC</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WIFI.MODE_PROMISC" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
+</div></blockquote>
+</div>
+<div class="section" id="security-type">
+<h3>security type<a class="headerlink" href="#security-type" title="Permalink to this headline">¶</a></h3>
+<blockquote>
+<div><dl class="data">
 <dt id="WIFI.SECURITY_OPEN">
 <code class="descclassname">WIFI.</code><code class="descname">SECURITY_OPEN</code><a class="headerlink" href="#WIFI.SECURITY_OPEN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
@@ -267,6 +305,8 @@
 <code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPS_SECURE</code><a class="headerlink" href="#WIFI.SECURITY_WPS_SECURE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
+</div></blockquote>
+</div>
 </div>
 </div>
 
