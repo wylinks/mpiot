@@ -1,4 +1,4 @@
-:mod:`wireless` -- module to access wireless functions
+:mod:`wireless.WLAN` -- module to access wireless WLAN
 """""""""
 
 Constructor
