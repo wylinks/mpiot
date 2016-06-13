@@ -6,6 +6,11 @@ Constructor
 .. class:: hardware.I2C (id, type, baudrate)
 
     Constructor to create a `I2C` object, MASTER mode only
+
+    * id = 0 => SDA (PD_4) SCL (PD_5)
+    * id = 1 => SDA (PD_7) SCL (PD_6) 
+    * id = 2 => SDA (PC_4) SCL (PC_5)
+    * id = 3 => SDA (PB_3) SCL (PB_2)
     
    .. code-block:: python
 
