@@ -22,9 +22,9 @@ How to install MicroPython
 
 而包裝直譯器的韌體檔案位在我的repository內，可直接點選以下連結下載。
 
-https://github.com/cwyark/micropython/releases/download/v1.4.6-rtl8195a/ram_all.tar
+https://github.com/cwyark/micropython/releases/download/v1.8alpha/ram_all.bin
 
-下載的檔案名稱為ram_all.tar，將此壓縮檔解壓縮後，便可看到ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython for RTL8195A。各作業系統燒錄方式可參考如下。
+下載的檔案名稱為ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython for RTL8195A。各作業系統燒錄方式可參考如下。
 
 For Windows 
 ^^^^^^^^^^^
