@@ -5,5 +5,6 @@ Realtek RTL8195A
    :maxdepth: 2
    
    intro
+   tutorial
    hardware
 
