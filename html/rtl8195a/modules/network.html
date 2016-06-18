@@ -1,0 +1,283 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>network.ip – module to handle low level ip &mdash; mpiot latest documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="mpiot latest documentation" href="../../index.html"/>
+        <link rel="up" title="API Referances" href="../hardware.html"/>
+        <link rel="next" title="wireless.WLAN – module to access wireless WLAN" href="wireless_wlan.html"/>
+        <link rel="prev" title="lwip – module to handle RTC and delay" href="lwip.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> mpiot
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../start.html">Getting started</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../hardware.html">Hardware guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../start.html">Realtek RTL8195A</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../hardware.html">API Referances</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="time.html"><code class="docutils literal"><span class="pre">time</span></code> &#8211; module to handle RTC and delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lwip.html"><code class="docutils literal"><span class="pre">lwip</span></code> &#8211; module to handle RTC and delay</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href=""><code class="docutils literal"><span class="pre">network.ip</span></code> &#8211; module to handle low level ip</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wireless_wlan.html"><code class="docutils literal"><span class="pre">wireless.WLAN</span></code> &#8211; module to access wireless WLAN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hardware_gpio.html"><code class="docutils literal"><span class="pre">hardware.Pin</span></code> &#8211; module to access hardware GPIO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hardware_i2c.html"><code class="docutils literal"><span class="pre">hardware.I2C</span></code> &#8211; module to access hardware I2C</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">mpiot</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../hardware.html">Hardware guides</a> &raquo;</li>
+      
+          <li><a href="../start.html">Realtek RTL8195A</a> &raquo;</li>
+      
+          <li><a href="../hardware.html">API Referances</a> &raquo;</li>
+      
+    <li><code class="docutils literal"><span class="pre">network.ip</span></code> &#8211; module to handle low level ip</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/rtl8195a/modules/network.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="network-ip-module-to-handle-low-level-ip">
+<h1><a class="reference internal" href="#network.ip" title="network.ip"><code class="xref py py-mod docutils literal"><span class="pre">network.ip</span></code></a> &#8211; module to handle low level ip<a class="headerlink" href="#network-ip-module-to-handle-low-level-ip" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="constructor">
+<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="network.ip">
+<em class="property">class </em><code class="descclassname">network.</code><code class="descname">ip</code><a class="headerlink" href="#network.ip" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor to create a <cite>ip</cite> object</p>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="ip.dhcp_request">
+<code class="descclassname">ip.</code><code class="descname">dhcp_request</code><span class="sig-paren">(</span><em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#ip.dhcp_request" title="Permalink to this definition">¶</a></dt>
+<dd><p>To request an IP from your AP, only workable when you board is connect to an AP.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;YOUR-SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;YOUR-PASSWORD&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">network</span> <span class="kn">import</span> <span class="n">ip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span> <span class="o">=</span> <span class="n">ip</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span><span class="o">.</span><span class="n">dhcp_request</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="ip.dhcp_renew">
+<code class="descclassname">ip.</code><code class="descname">dhcp_renew</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ip.dhcp_renew" title="Permalink to this definition">¶</a></dt>
+<dd><p>To renew your ip&#8217;s lease. It&#8217;s not a workable method, so don&#8217;t use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ip.dhcp_release">
+<code class="descclassname">ip.</code><code class="descname">dhcp_release</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ip.dhcp_release" title="Permalink to this definition">¶</a></dt>
+<dd><p>To release your ip&#8217;s lease. It&#8217;s not a workable method, so don&#8217;t use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="ip.dhcp_inform">
+<code class="descclassname">ip.</code><code class="descname">dhcp_inform</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#ip.dhcp_inform" title="Permalink to this definition">¶</a></dt>
+<dd><p>To inform your AP. It&#8217;s not a workable method, so don&#8217;t use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descclassname">ip.</code><code class="descname">dhcp_inform</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>To check the DHCP request state. It&#8217;s not a workable method, so don&#8217;t use.</p>
+</dd></dl>
+
+<dl class="method">
+<dt>
+<code class="descclassname">ip.</code><code class="descname">dhcp_inform</code><span class="sig-paren">(</span><span class="sig-paren">)</span></dt>
+<dd><p>To stop the DHCP request. It&#8217;s not a workable method, so don&#8217;t use.</p>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="wireless_wlan.html" class="btn btn-neutral float-right" title="wireless.WLAN – module to access wireless WLAN" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="lwip.html" class="btn btn-neutral" title="lwip – module to handle RTC and delay" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, ChesterTseng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'latest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
