@@ -1,4 +1,4 @@
-:mod:`lwip` -- module to handle RTC and delay
+:mod:`lwip` -- module to handle dns and low level socket
 """""""""
 
 This module is only workable when you connect to an AP!
