@@ -10,7 +10,7 @@ Constructor
 Methods
 *******
 
-.. method:: wifi.scan()
+.. method:: WLAN.scan()
    
    To scan all available networks
 
@@ -23,7 +23,7 @@ Methods
       ...     for ap in ap_list:
       ...           print("ssid = %s, bssid = %s, rssi = %d, channel = %d" % (ap.ssid, ap.bssid, ap.rssi, ap.channel))
 
-.. method:: wifi.connect(ssid, auth=(security_type, password))
+.. method:: WLAN.connect(ssid, auth=(security_type, password))
 
    To connect to a WiFi AP. When connection success, return `None`. If connection failed, raise an ecception: OSError
 
@@ -37,11 +37,11 @@ Methods
       ...     print("access point auth failed")
       ...     print(e)
 
-.. method:: wifi.disconnect()
+.. method:: WLAN.disconnect()
 
    To disconnect from the WiFi AP
 
-.. method:: wifi.mac()
+.. method:: WLAN.mac()
    
    To get mac adddress from WiFi SoC, return a string
 
@@ -52,7 +52,7 @@ Methods
       >>> wifi.mac()
       '28:c2:dd:dd:42:7d'
 
-.. method:: wifi.rssi()
+.. method:: WLAN.rssi()
 
    To get current RSSI value, return an int
 
@@ -70,22 +70,22 @@ Constants
 
 wifi mode
 ^^^^^^^^^
-    .. data:: WIFI.MODE_STA  
-    .. data:: WIFI.MODE_AP (not test yet)
-    .. data:: WIFI.MODE_STA_AP (not test yet)
-    .. data:: WIFI.MODE_PROMISC (not test yet)
+    .. data:: WLAN.MODE_STA  
+    .. data:: WLAN.MODE_AP (not test yet)
+    .. data:: WLAN.MODE_STA_AP (not test yet)
+    .. data:: WLAN.MODE_PROMISC (not test yet)
 
 security type
 ^^^^^^^^^^^^^
 
-    .. data:: WIFI.SECURITY_OPEN
-    .. data:: WIFI.SECURITY_WEP_PSK
-    .. data:: WIFI.SECURITY_WEP_SHARED
-    .. data:: WIFI.SECURITY_WPA_TKIP_PSK
-    .. data:: WIFI.SECURITY_WPA_AES_PSK
-    .. data:: WIFI.SECURITY_WPA2_TKIP_PSK
-    .. data:: WIFI.SECURITY_WPA2_AES_PSK
-    .. data:: WIFI.SECURITY_WPA_MIXED_PSK
-    .. data:: WIFI.SECURITY_WPA_WPA2_MIXED
-    .. data:: WIFI.SECURITY_WPS_OPEN
-    .. data:: WIFI.SECURITY_WPS_SECURE
+    .. data:: WLAN.SECURITY_OPEN
+    .. data:: WLAN.SECURITY_WEP_PSK
+    .. data:: WLAN.SECURITY_WEP_SHARED
+    .. data:: WLAN.SECURITY_WPA_TKIP_PSK
+    .. data:: WLAN.SECURITY_WPA_AES_PSK
+    .. data:: WLAN.SECURITY_WPA2_TKIP_PSK
+    .. data:: WLAN.SECURITY_WPA2_AES_PSK
+    .. data:: WLAN.SECURITY_WPA_MIXED_PSK
+    .. data:: WLAN.SECURITY_WPA_WPA2_MIXED
+    .. data:: WLAN.SECURITY_WPS_OPEN
+    .. data:: WLAN.SECURITY_WPS_SECURE
