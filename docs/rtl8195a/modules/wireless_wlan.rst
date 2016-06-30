@@ -47,6 +47,8 @@ Constructor
         ... except OSError:
         ...     print("connection failed")
         
+Methods
+#######
 
 .. method:: WLAN.scan()
    
