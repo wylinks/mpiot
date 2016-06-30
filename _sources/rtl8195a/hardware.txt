@@ -2,7 +2,7 @@ API Referances
 ==============
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    
    modules/time
    modules/lwip
