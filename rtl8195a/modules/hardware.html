@@ -320,19 +320,45 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><ul class="first simple">
-<li><strong>id</strong> (<em>int</em>) &#8211; <ul>
-<li>id = 0 =&gt; SDA (PD_4) SCL (PD_5)</li>
-<li>id = 1 =&gt; SDA (PD_7) SCL (PD_6)</li>
-<li>id = 2 =&gt; SDA (PC_4) SCL (PC_5)</li>
-<li>id = 3 =&gt; SDA (PB_3) SCL (PB_2)</li>
-</ul>
-</li>
+<li><strong>id</strong> (<em>int</em>) &#8211; </li>
 <li><strong>type</strong> (<em>int</em>) &#8211; I2C type, MASTER only.</li>
 <li><strong>baudrate</strong> (<em>int</em>) &#8211; I2C Hz</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#hardware.I2C" title="hardware.I2C"><code class="xref py py-class docutils literal"><span class="pre">hardware.I2C</span></code></a> object</p>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body"><p class="first last"><p><a class="reference internal" href="#hardware.I2C" title="hardware.I2C"><code class="xref py py-class docutils literal"><span class="pre">hardware.I2C</span></code></a> object</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="24%" />
+<col width="41%" />
+<col width="35%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">id</th>
+<th class="head">SDA</th>
+<th class="head">SCL</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>PD_4</td>
+<td>PD_5</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>PD_7</td>
+<td>PD_6</td>
+</tr>
+<tr class="row-even"><td>2</td>
+<td>PC_4</td>
+<td>PC_5</td>
+</tr>
+<tr class="row-odd"><td>3</td>
+<td>PB_3</td>
+<td>PB_2</td>
+</tr>
+</tbody>
+</table>
+</p>
 </td>
 </tr>
 </tbody>
