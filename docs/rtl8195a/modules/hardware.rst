@@ -101,15 +101,21 @@ Class `I2C`
    Constructor to create a :class:`hardware.I2C` object, MASTER mode only
 
    :param int id: 
-
-           * id = 0 => SDA (PD_4) SCL (PD_5)
-           * id = 1 => SDA (PD_7) SCL (PD_6) 
-           * id = 2 => SDA (PC_4) SCL (PC_5)
-           * id = 3 => SDA (PB_3) SCL (PB_2)
-
    :param int type: I2C type, MASTER only.
    :param int baudrate: I2C Hz
    :return: :class:`hardware.I2C` object
+
+        +----+-------+------+
+        | id | SDA   | SCL  |
+        +====+=======+======+
+        | 0  | PD_4  | PD_5 |
+        +----+-------+------+
+        | 1  | PD_7  | PD_6 |
+        +----+-------+------+
+        | 2  | PC_4  | PC_5 |
+        +----+-------+------+
+        | 3  | PB_3  | PB_2 |
+        +----+-------+------+
     
    .. code-block:: python
 
