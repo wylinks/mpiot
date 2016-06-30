@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>wireless.WLAN – module to access wireless WLAN &mdash; mpiot latest documentation</title>
+  <title>wireless – a module to access wireless functions &mdash; mpiot latest documentation</title>
   
 
   
@@ -32,7 +32,8 @@
   
     <link rel="top" title="mpiot latest documentation" href="../../index.html"/>
         <link rel="up" title="API Referances" href="../hardware.html"/>
-        <link rel="prev" title="hardware.Pin – module to access hardware GPIO" href="hardware.html"/> 
+        <link rel="next" title="hardware.Pin – module to access hardware GPIO" href="hardware_gpio.html"/>
+        <link rel="prev" title="network – a module to handle low level networking" href="network.html"/> 
 
   
   <script src="../../_static/js/modernizr.min.js"></script>
@@ -87,9 +88,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../hardware.html">Hardware guides</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../start.html">Realtek RTL8195A</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../hardware.html">API Referances</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="hardware.html"><code class="docutils literal"><span class="pre">hardware.Pin</span></code> &#8211; module to access hardware GPIO</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href=""><code class="docutils literal"><span class="pre">wireless.WLAN</span></code> &#8211; module to access wireless WLAN</a></li>
+<li class="toctree-l4"><a class="reference internal" href="time.html"><code class="docutils literal"><span class="pre">time</span></code> &#8211; a module to handle RTC and delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lwip.html"><code class="docutils literal"><span class="pre">lwip</span></code> &#8211;a module to handle DNS query and low level socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="network.html"><code class="docutils literal"><span class="pre">network</span></code> &#8211; a module to handle low level networking</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href=""><code class="docutils literal"><span class="pre">wireless</span></code> &#8211; a module to access wireless functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hardware_gpio.html"><code class="docutils literal"><span class="pre">hardware.Pin</span></code> &#8211; module to access hardware GPIO</a></li>
+<li class="toctree-l4"><a class="reference internal" href="hardware_i2c.html"><code class="docutils literal"><span class="pre">hardware.I2C</span></code> &#8211; module to access hardware I2C</a></li>
 </ul>
 </li>
 </ul>
@@ -132,7 +138,7 @@
       
           <li><a href="../hardware.html">API Referances</a> &raquo;</li>
       
-    <li><code class="docutils literal"><span class="pre">wireless.WLAN</span></code> &#8211; module to access wireless WLAN</li>
+    <li><code class="docutils literal"><span class="pre">wireless</span></code> &#8211; a module to access wireless functions</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -146,23 +152,82 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="wireless-wlan-module-to-access-wireless-wlan">
-<h1><a class="reference internal" href="#wireless.WLAN" title="wireless.WLAN"><code class="xref py py-mod docutils literal"><span class="pre">wireless.WLAN</span></code></a> &#8211; module to access wireless WLAN<a class="headerlink" href="#wireless-wlan-module-to-access-wireless-wlan" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="wireless-a-module-to-access-wireless-functions">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">wireless</span></code> &#8211; a module to access wireless functions<a class="headerlink" href="#wireless-a-module-to-access-wireless-functions" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="class-wlan">
+<h2>class <cite>WLAN</cite><a class="headerlink" href="#class-wlan" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="constructor">
-<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
+<h3>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h3>
 <dl class="class">
-<dt id="wireless.WLAN">
-<em class="property">class </em><code class="descclassname">wireless.</code><code class="descname">WLAN</code><span class="sig-paren">(</span><em>mode</em><span class="sig-paren">)</span><a class="headerlink" href="#wireless.WLAN" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor to create a <cite>WLAN</cite> object</p>
+<dt id="WLAN">
+<em class="property">class </em><code class="descname">WLAN</code><span class="sig-paren">(</span><em>mode=WLAN.AP</em>, <em>ssid=&quot;mpiot-ap&quot;</em>, <em>auth=(WLAN.WPA2_AES_PSK</em>, <em>&quot;1234567890&quot;)</em>, <em>channel=6</em><span class="sig-paren">)</span><a class="headerlink" href="#WLAN" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor to create a <cite>WLAN</cite> object, support STA (station), AP and STA_AP cocurrency mode.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><ul class="first simple">
+<li><strong>mode</strong> (<em>const</em>) &#8211; wlan mode, available modes: <a class="reference internal" href="#wlan-mode-list"><span>wifi mode</span></a></li>
+<li><strong>ssid</strong> (<em>str</em>) &#8211; your ssid in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> and <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> modes.</li>
+<li><strong>auth</strong> (<em>tuple</em>) &#8211; your security type and password in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> and <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> modes. available types: <a class="reference internal" href="#wlan-security-types"><span>security type</span></a></li>
+<li><strong>channel</strong> (<em>int</em>) &#8211; wifi channel in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> and <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> modes.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> &#8211; <ol class="arabic simple">
+<li>if channel is not at the range of 1 ~ 11.</li>
+<li>if ssid length is larger than 32 characters.</li>
+<li>if password length is larger than 32 characters.</li>
+</ol>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#WLAN" title="WLAN"><code class="xref py py-class docutils literal"><span class="pre">WLAN</span></code></a> object</p>
+</td>
+</tr>
+</tbody>
+</table>
+<p><a class="reference internal" href="#WLAN.STA" title="WLAN.STA"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA</span></code></a> mode example, you can connect to an AP</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;TARGET-SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;TARGET-PASSWORD&quot;</span><span class="p">))</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;connection failed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> mode example, you are in AP mode only.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">AP</span><span class="p">,</span> <span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;your-ap-ssid&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;your-ap-password&quot;</span><span class="p">),</span> <span class="n">channel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> mode example, you are in AP mode (use your PC to scan the WiFi) and also you can connect to a nearby AP at the same time.</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">AP</span><span class="p">,</span> <span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;your-ap-ssid&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;your-ap-password&quot;</span><span class="p">),</span> <span class="n">channel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;TARGET-SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;TARGET-PASSWORD&quot;</span><span class="p">))</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;connection failed&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
 </dd></dl>
 
 </div>
 <div class="section" id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
 <dl class="method">
-<dt id="wifi.scan">
-<code class="descclassname">wifi.</code><code class="descname">scan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.scan" title="Permalink to this definition">¶</a></dt>
-<dd><p>To scan all available networks</p>
+<dt id="WLAN.scan">
+<code class="descclassname">WLAN.</code><code class="descname">scan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.scan" title="Permalink to this definition">¶</a></dt>
+<dd><p>To scan all available networks nearby.</p>
+<p>(workable in mode <a class="reference internal" href="#WLAN.STA" title="WLAN.STA"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA</span></code></a>, <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a>, <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a>, <a class="reference internal" href="#WLAN.P2P" title="WLAN.P2P"><code class="xref py py-data docutils literal"><span class="pre">WLAN.P2P</span></code></a> and <a class="reference internal" href="#WLAN.PROMISC" title="WLAN.PROMISC"><code class="xref py py-data docutils literal"><span class="pre">WLAN.PROMISC</span></code></a>)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">lists of tuple</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
@@ -174,9 +239,31 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="wifi.connect">
-<code class="descclassname">wifi.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>ssid</em>, <em>auth=(security_type</em>, <em>password)</em><span class="sig-paren">)</span><a class="headerlink" href="#wifi.connect" title="Permalink to this definition">¶</a></dt>
-<dd><p>To connect to a WiFi AP. When connection success, return <cite>None</cite>. If connection failed, raise an ecception: OSError</p>
+<dt id="WLAN.connect">
+<code class="descclassname">WLAN.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>ssid</em>, <em>auth</em><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>To connect to a WiFi AP.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><ul class="first simple">
+<li><strong>ssid</strong> (<em>str</em>) &#8211; your target AP ssid</li>
+<li><strong>auth</strong> (<em>tuple</em>) &#8211; your target security type and password</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>OSError</strong> &#8211; <ol class="arabic simple">
+<li>wrong ssid, security type or password</li>
+<li>you are in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> mode</li>
+</ol>
+</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body"><p class="first last">None</p>
+</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
@@ -189,15 +276,45 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="wifi.disconnect">
-<code class="descclassname">wifi.</code><code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.disconnect" title="Permalink to this definition">¶</a></dt>
-<dd><p>To disconnect from the WiFi AP</p>
+<dt id="WLAN.disconnect">
+<code class="descclassname">WLAN.</code><code class="descname">disconnect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.disconnect" title="Permalink to this definition">¶</a></dt>
+<dd><p>To disconnect from the WiFi AP, but WiFi is still on.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
-<dt id="wifi.mac">
-<code class="descclassname">wifi.</code><code class="descname">mac</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.mac" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get mac adddress from WiFi SoC, return a string</p>
+<dt id="WLAN.is_connect_to_ap">
+<code class="descclassname">WLAN.</code><code class="descname">is_connect_to_ap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.is_connect_to_ap" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if connect to AP or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WLAN.mac">
+<code class="descclassname">WLAN.</code><code class="descname">mac</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.mac" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get mac adddress from WiFi module.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">mac</span><span class="p">()</span>
@@ -207,9 +324,17 @@
 </dd></dl>
 
 <dl class="method">
-<dt id="wifi.rssi">
-<code class="descclassname">wifi.</code><code class="descname">rssi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.rssi" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get current RSSI value, return an int</p>
+<dt id="WLAN.rssi">
+<code class="descclassname">WLAN.</code><code class="descname">rssi</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.rssi" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get current RSSI value.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;YOUR_SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;YOUR_PASSWORD&quot;</span><span class="p">))</span>
@@ -219,93 +344,131 @@
 </div>
 </dd></dl>
 
+<dl class="method">
+<dt id="WLAN.on">
+<code class="descclassname">WLAN.</code><code class="descname">on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.on" title="Permalink to this definition">¶</a></dt>
+<dd><p>To turn on the WiFi hardware.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>OSError</strong> &#8211; if turn on wifi hardware failed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="WLAN.off">
+<code class="descclassname">WLAN.</code><code class="descname">off</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.off" title="Permalink to this definition">¶</a></dt>
+<dd><p>To turn off the WiFi hardware</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Raises:</th><td class="field-body"><strong>OSError</strong> &#8211; if turn off wifi hardware failed</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
 </div>
 <div class="section" id="constants">
-<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<h3>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h3>
 <div class="section" id="wifi-mode">
-<h3>wifi mode<a class="headerlink" href="#wifi-mode" title="Permalink to this headline">¶</a></h3>
+<span id="wlan-mode-list"></span><h4>wifi mode<a class="headerlink" href="#wifi-mode" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div><dl class="data">
-<dt id="WIFI.MODE_STA">
-<code class="descclassname">WIFI.</code><code class="descname">MODE_STA</code><a class="headerlink" href="#WIFI.MODE_STA" title="Permalink to this definition">¶</a></dt>
+<div><dl class="attribute">
+<dt id="WLAN.STA">
+<code class="descclassname">WLAN.</code><code class="descname">STA</code><a class="headerlink" href="#WLAN.STA" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.MODE_AP">
-<code class="descclassname">WIFI.</code><code class="descname">MODE_AP</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WIFI.MODE_AP" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.AP">
+<code class="descclassname">WLAN.</code><code class="descname">AP</code><a class="headerlink" href="#WLAN.AP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.MODE_STA_AP">
-<code class="descclassname">WIFI.</code><code class="descname">MODE_STA_AP</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WIFI.MODE_STA_AP" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.STA_AP">
+<code class="descclassname">WLAN.</code><code class="descname">STA_AP</code><a class="headerlink" href="#WLAN.STA_AP" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.MODE_PROMISC">
-<code class="descclassname">WIFI.</code><code class="descname">MODE_PROMISC</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WIFI.MODE_PROMISC" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.P2P">
+<code class="descclassname">WLAN.</code><code class="descname">P2P</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.P2P" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="WLAN.PROMISC">
+<code class="descclassname">WLAN.</code><code class="descname">PROMISC</code><span class="sig-paren">(</span><em>not test yet</em><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.PROMISC" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div></blockquote>
 </div>
 <div class="section" id="security-type">
-<h3>security type<a class="headerlink" href="#security-type" title="Permalink to this headline">¶</a></h3>
+<span id="wlan-security-types"></span><h4>security type<a class="headerlink" href="#security-type" title="Permalink to this headline">¶</a></h4>
 <blockquote>
-<div><dl class="data">
-<dt id="WIFI.SECURITY_OPEN">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_OPEN</code><a class="headerlink" href="#WIFI.SECURITY_OPEN" title="Permalink to this definition">¶</a></dt>
+<div><dl class="attribute">
+<dt id="WLAN.OPEN">
+<code class="descclassname">WLAN.</code><code class="descname">OPEN</code><a class="headerlink" href="#WLAN.OPEN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WEP_PSK">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WEP_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WEP_PSK" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WEP_PSK">
+<code class="descclassname">WLAN.</code><code class="descname">WEP_PSK</code><a class="headerlink" href="#WLAN.WEP_PSK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WEP_SHARED">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WEP_SHARED</code><a class="headerlink" href="#WIFI.SECURITY_WEP_SHARED" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WEP_SHARED">
+<code class="descclassname">WLAN.</code><code class="descname">WEP_SHARED</code><a class="headerlink" href="#WLAN.WEP_SHARED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPA_TKIP_PSK">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_TKIP_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA_TKIP_PSK" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPA_TKIP_PSK">
+<code class="descclassname">WLAN.</code><code class="descname">WPA_TKIP_PSK</code><a class="headerlink" href="#WLAN.WPA_TKIP_PSK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPA_AES_PSK">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_AES_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA_AES_PSK" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPA_AES_PSK">
+<code class="descclassname">WLAN.</code><code class="descname">WPA_AES_PSK</code><a class="headerlink" href="#WLAN.WPA_AES_PSK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPA2_TKIP_PSK">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA2_TKIP_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA2_TKIP_PSK" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPA2_TKIP_PSK">
+<code class="descclassname">WLAN.</code><code class="descname">WPA2_TKIP_PSK</code><a class="headerlink" href="#WLAN.WPA2_TKIP_PSK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPA2_AES_PSK">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA2_AES_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA2_AES_PSK" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPA2_AES_PSK">
+<code class="descclassname">WLAN.</code><code class="descname">WPA2_AES_PSK</code><a class="headerlink" href="#WLAN.WPA2_AES_PSK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPA_MIXED_PSK">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_MIXED_PSK</code><a class="headerlink" href="#WIFI.SECURITY_WPA_MIXED_PSK" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPA_MIXED_PSK">
+<code class="descclassname">WLAN.</code><code class="descname">WPA_MIXED_PSK</code><a class="headerlink" href="#WLAN.WPA_MIXED_PSK" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPA_WPA2_MIXED">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPA_WPA2_MIXED</code><a class="headerlink" href="#WIFI.SECURITY_WPA_WPA2_MIXED" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPA_WPA2_MIXED">
+<code class="descclassname">WLAN.</code><code class="descname">WPA_WPA2_MIXED</code><a class="headerlink" href="#WLAN.WPA_WPA2_MIXED" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPS_OPEN">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPS_OPEN</code><a class="headerlink" href="#WIFI.SECURITY_WPS_OPEN" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPS_OPEN">
+<code class="descclassname">WLAN.</code><code class="descname">WPS_OPEN</code><a class="headerlink" href="#WLAN.WPS_OPEN" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
-<dl class="data">
-<dt id="WIFI.SECURITY_WPS_SECURE">
-<code class="descclassname">WIFI.</code><code class="descname">SECURITY_WPS_SECURE</code><a class="headerlink" href="#WIFI.SECURITY_WPS_SECURE" title="Permalink to this definition">¶</a></dt>
+<dl class="attribute">
+<dt id="WLAN.WPS_SECURE">
+<code class="descclassname">WLAN.</code><code class="descname">WPS_SECURE</code><a class="headerlink" href="#WLAN.WPS_SECURE" title="Permalink to this definition">¶</a></dt>
 <dd></dd></dl>
 
 </div></blockquote>
+</div>
 </div>
 </div>
 </div>
@@ -317,8 +480,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
+        <a href="hardware_gpio.html" class="btn btn-neutral float-right" title="hardware.Pin – module to access hardware GPIO" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
-        <a href="hardware.html" class="btn btn-neutral" title="hardware.Pin – module to access hardware GPIO" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+        <a href="network.html" class="btn btn-neutral" title="network – a module to handle low level networking" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

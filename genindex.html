@@ -139,7 +139,6 @@
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
  | <a href="#M"><strong>M</strong></a>
- | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
  | <a href="#R"><strong>R</strong></a>
@@ -159,7 +158,7 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.AP">AP (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.AP">AP (WLAN 屬性)</a>
   </dt>
 
   </dl></td>
@@ -182,18 +181,22 @@
   <dt><a href="rtl8195a/modules/lwip.html#lwip.callback">callback() (lwip 方法)</a>
   </dt>
 
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
       
   <dt><a href="rtl8195a/modules/lwip.html#socket.connect">connect() (socket 方法)</a>
   </dt>
 
       <dd><dl>
         
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.connect">(WLAN 方法)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.connect">(WLAN 方法)</a>
   </dt>
 
       </dl></dd>
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="rtl8195a/modules/time.html#time.ctime">ctime() (time class method)</a>
+  </dt>
+
   </dl></td>
 </tr></table>
 
@@ -201,29 +204,37 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/network.html#ip.dhcp_inform">dhcp_inform() (ip 方法)</a>, <a href="rtl8195a/modules/network.html#ip.dhcp_inform">[1]</a>, <a href="rtl8195a/modules/network.html#ip.dhcp_inform">[2]</a>
+  <dt><a href="rtl8195a/modules/network.html#network.dhcp_inform">dhcp_inform() (network 方法)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/network.html#ip.dhcp_release">dhcp_release() (ip 方法)</a>
+  <dt><a href="rtl8195a/modules/network.html#network.dhcp_release">dhcp_release() (network 方法)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/network.html#ip.dhcp_renew">dhcp_renew() (ip 方法)</a>
+  <dt><a href="rtl8195a/modules/network.html#network.dhcp_renew">dhcp_renew() (network 方法)</a>
+  </dt>
+
+      
+  <dt><a href="rtl8195a/modules/network.html#network.dhcp_request">dhcp_request() (network class method)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/network.html#ip.dhcp_request">dhcp_request() (ip 方法)</a>
+  <dt><a href="rtl8195a/modules/network.html#network.dhcp_state">dhcp_state() (network 方法)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#pin.dir">dir() (pin 方法)</a>
+  <dt><a href="rtl8195a/modules/network.html#network.dhcp_stop">dhcp_stop() (network 方法)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.disconnect">disconnect() (WLAN 方法)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#pin.dir">dir() (pin 方法)</a>
+  </dt>
+
+      
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.disconnect">disconnect() (WLAN 方法)</a>
   </dt>
 
   </dl></td>
@@ -243,13 +254,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/hardware_i2c.html#hardware.I2C">hardware.I2C (內建類別)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#hardware.I2C">hardware.I2C (內建類別)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#hardware.Pin">hardware.Pin (內建類別)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#hardware.Pin">hardware.Pin (內建類別)</a>
   </dt>
 
   </dl></td>
@@ -259,13 +270,17 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/hardware_i2c.html#I2C.MASTER">I2C.MASTER (內建變數)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#pin.id">id() (pin 方法)</a>
+  </dt>
+
+      
+  <dt><a href="rtl8195a/modules/hardware.html#Pin.IN">IN (Pin 屬性)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#pin.id">id() (pin 方法)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.is_connect_to_ap">is_connect_to_ap() (WLAN 方法)</a>
   </dt>
 
   </dl></td>
@@ -279,7 +294,7 @@
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/time.html#time.localtime">localtime() (time 方法)</a>
+  <dt><a href="rtl8195a/modules/time.html#time.localtime">localtime() (time class method)</a>
   </dt>
 
   </dl></td>
@@ -295,17 +310,13 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.mac">mac() (WLAN 方法)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.mac">mac() (WLAN 方法)</a>
   </dt>
 
   </dl></td>
-</tr></table>
-
-<h2 id="N">N</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/network.html#network.ip">network.ip (內建類別)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#I2C.MASTER">MASTER (I2C 屬性)</a>
   </dt>
 
   </dl></td>
@@ -315,17 +326,21 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.off">off() (WLAN 方法)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.off">off() (WLAN 方法)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.on">on() (WLAN 方法)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.on">on() (WLAN 方法)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.OPEN">OPEN (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.OPEN">OPEN (WLAN 屬性)</a>
+  </dt>
+
+      
+  <dt><a href="rtl8195a/modules/hardware.html#Pin.OUT">OUT (Pin 屬性)</a>
   </dt>
 
   </dl></td>
@@ -335,33 +350,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.P2P">P2P (WLAN 屬性)</a>
-  </dt>
-
-      
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#Pin.IN">Pin.IN (內建變數)</a>
-  </dt>
-
-      
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#Pin.OUT">Pin.OUT (內建變數)</a>
-  </dt>
-
-      
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#Pin.PULL_DOWN">Pin.PULL_DOWN (內建變數)</a>
-  </dt>
-
-      
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#Pin.PULL_DRAIN">Pin.PULL_DRAIN (內建變數)</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#Pin.PULL_NONE">Pin.PULL_NONE (內建變數)</a>
-  </dt>
-
-      
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#Pin.PULL_UP">Pin.PULL_UP (內建變數)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.P2P">P2P (WLAN 屬性)</a>
   </dt>
 
       
@@ -369,7 +358,25 @@
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.PROMISC">PROMISC (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.PROMISC">PROMISC (WLAN 屬性)</a>
+  </dt>
+
+      
+  <dt><a href="rtl8195a/modules/hardware.html#Pin.PULL_DOWN">PULL_DOWN (Pin 屬性)</a>
+  </dt>
+
+  </dl></td>
+  <td style="width: 33%" valign="top"><dl>
+      
+  <dt><a href="rtl8195a/modules/hardware.html#Pin.PULL_DRAIN">PULL_DRAIN (Pin 屬性)</a>
+  </dt>
+
+      
+  <dt><a href="rtl8195a/modules/hardware.html#Pin.PULL_NONE">PULL_NONE (Pin 屬性)</a>
+  </dt>
+
+      
+  <dt><a href="rtl8195a/modules/hardware.html#Pin.PULL_UP">PULL_UP (Pin 屬性)</a>
   </dt>
 
   </dl></td>
@@ -379,7 +386,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/hardware_i2c.html#i2c.readfrom">readfrom() (i2c 方法)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#I2C.readfrom">readfrom() (I2C 方法)</a>
   </dt>
 
       
@@ -389,7 +396,7 @@
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/hardware_i2c.html#i2c.reset">reset() (i2c 方法)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#I2C.reset">reset() (I2C 方法)</a>
   </dt>
 
       <dd><dl>
@@ -399,7 +406,7 @@
 
       </dl></dd>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.rssi">rssi() (WLAN 方法)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.rssi">rssi() (WLAN 方法)</a>
   </dt>
 
   </dl></td>
@@ -409,7 +416,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.scan">scan() (WLAN 方法)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.scan">scan() (WLAN 方法)</a>
   </dt>
 
       
@@ -425,25 +432,25 @@
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/time.html#time.sleep">sleep() (time 方法)</a>
+  <dt><a href="rtl8195a/modules/time.html#time.sleep">sleep() (time class method)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/time.html#time.sleep_ms">sleep_ms() (time 方法)</a>
+  <dt><a href="rtl8195a/modules/time.html#time.sleep_ms">sleep_ms() (time class method)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/time.html#wifi.sleep_us">sleep_us() (wifi 方法)</a>
+  <dt><a href="rtl8195a/modules/time.html#wifi.sleep_us">sleep_us() (wifi class method)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.STA">STA (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.STA">STA (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.STA_AP">STA_AP (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.STA_AP">STA_AP (WLAN 屬性)</a>
   </dt>
 
   </dl></td>
@@ -453,13 +460,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/time.html#time">time (內建類別)</a>
-  </dt>
-
-  </dl></td>
-  <td style="width: 33%" valign="top"><dl>
-      
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#pin.toggle">toggle() (pin 方法)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#pin.toggle">toggle() (pin 方法)</a>
   </dt>
 
   </dl></td>
@@ -469,7 +470,7 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/hardware_gpio.html#pin.value">value() (pin 方法)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#pin.value">value() (pin 方法)</a>
   </dt>
 
   </dl></td>
@@ -479,53 +480,53 @@
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WEP_PSK">WEP_PSK (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WEP_PSK">WEP_PSK (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WEP_SHARED">WEP_SHARED (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WEP_SHARED">WEP_SHARED (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN">WLAN (內建類別)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN">WLAN (內建類別)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPA2_AES_PSK">WPA2_AES_PSK (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPA2_AES_PSK">WPA2_AES_PSK (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPA2_TKIP_PSK">WPA2_TKIP_PSK (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPA2_TKIP_PSK">WPA2_TKIP_PSK (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPA_AES_PSK">WPA_AES_PSK (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPA_AES_PSK">WPA_AES_PSK (WLAN 屬性)</a>
   </dt>
 
   </dl></td>
   <td style="width: 33%" valign="top"><dl>
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPA_MIXED_PSK">WPA_MIXED_PSK (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPA_MIXED_PSK">WPA_MIXED_PSK (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPA_TKIP_PSK">WPA_TKIP_PSK (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPA_TKIP_PSK">WPA_TKIP_PSK (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPA_WPA2_MIXED">WPA_WPA2_MIXED (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPA_WPA2_MIXED">WPA_WPA2_MIXED (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPS_OPEN">WPS_OPEN (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPS_OPEN">WPS_OPEN (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/wireless_wlan.html#WLAN.WPS_SECURE">WPS_SECURE (WLAN 屬性)</a>
+  <dt><a href="rtl8195a/modules/wireless.html#WLAN.WPS_SECURE">WPS_SECURE (WLAN 屬性)</a>
   </dt>
 
       
-  <dt><a href="rtl8195a/modules/hardware_i2c.html#pin.writeto">writeto() (pin 方法)</a>
+  <dt><a href="rtl8195a/modules/hardware.html#I2C.writeto">writeto() (I2C 方法)</a>
   </dt>
 
   </dl></td>

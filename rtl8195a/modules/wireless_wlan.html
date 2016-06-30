@@ -167,17 +167,22 @@
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><ul class="first simple">
-<li><strong>mode</strong> (<em>const</em>) &#8211; wlan mode, available modes please see <a class="reference internal" href="#wlan-mode-list"><span>wifi mode</span></a></li>
+<li><strong>mode</strong> (<em>const</em>) &#8211; wlan mode, available modes: <a class="reference internal" href="#wlan-mode-list"><span>wifi mode</span></a></li>
 <li><strong>ssid</strong> (<em>str</em>) &#8211; your ssid in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> and <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> modes.</li>
-<li><strong>auth</strong> (<em>tuple</em>) &#8211; your security type and password in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> and <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> modes. available security types please see <a class="reference internal" href="#wlan-security-types"><span>security type</span></a></li>
+<li><strong>auth</strong> (<em>tuple</em>) &#8211; your security type and password in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> and <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> modes. available types: <a class="reference internal" href="#wlan-security-types"><span>security type</span></a></li>
 <li><strong>channel</strong> (<em>int</em>) &#8211; wifi channel in <a class="reference internal" href="#WLAN.AP" title="WLAN.AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.AP</span></code></a> and <a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> modes.</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> &#8211; if channel is not at the range of 1 ~ 11.</p>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><p class="first"><strong>ValueError</strong> &#8211; <ol class="arabic simple">
+<li>if channel is not at the range of 1 ~ 11.</li>
+<li>if ssid length is larger than 32 characters.</li>
+<li>if password length is larger than 32 characters.</li>
+</ol>
+</p>
 </td>
 </tr>
-<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body"><p class="first last">wlan object</p>
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#WLAN" title="WLAN"><code class="xref py py-class docutils literal"><span class="pre">WLAN</span></code></a> object</p>
 </td>
 </tr>
 </tbody>
@@ -196,7 +201,7 @@
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">AP</span><span class="p">,</span> <span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;your-ap-ssid&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;your-ap-password&quot;</span><span class="p">),</span> <span class="n">channel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
-<p><a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> mode example, you are in AP mode (use your PC to scan the WiFi) and also you can connect a nearby AP at the same time.</p>
+<p><a class="reference internal" href="#WLAN.STA_AP" title="WLAN.STA_AP"><code class="xref py py-data docutils literal"><span class="pre">WLAN.STA_AP</span></code></a> mode example, you are in AP mode (use your PC to scan the WiFi) and also you can connect to a nearby AP at the same time.</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">AP</span><span class="p">,</span> <span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;your-ap-ssid&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;your-ap-password&quot;</span><span class="p">),</span> <span class="n">channel</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
@@ -285,9 +290,23 @@
 </dd></dl>
 
 <dl class="method">
+<dt id="WLAN.is_connect_to_ap">
+<code class="descclassname">WLAN.</code><code class="descname">is_connect_to_ap</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.is_connect_to_ap" title="Permalink to this definition">¶</a></dt>
+<dd><p>To check if connect to AP or not.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
 <dt id="WLAN.mac">
 <code class="descclassname">WLAN.</code><code class="descname">mac</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.mac" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get mac adddress from WiFi SoC.</p>
+<dd><p>To get mac adddress from WiFi module.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -328,7 +347,7 @@
 <dl class="method">
 <dt id="WLAN.on">
 <code class="descclassname">WLAN.</code><code class="descname">on</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#WLAN.on" title="Permalink to this definition">¶</a></dt>
-<dd><p>To turn the WiFi hardware.</p>
+<dd><p>To turn on the WiFi hardware.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />

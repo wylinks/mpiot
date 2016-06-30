@@ -1,19 +1,10 @@
-:mod:`lwip` -- module to handle dns and low level socket
+:mod:`lwip` --a module to handle DNS query and low level socket
 """""""""
-
-This module is only workable when you connect to an AP!
-
-Methods
-*******
-
 .. method:: lwip.reset()
 
-   To reset the lwip stack. However, it might hang, so dont use it.
+   To reset the lwip stack. However, it might hang, so don't use it.
 
-   .. code-block:: python
-
-      >>> import lwip
-      >>> lwip.reset()
+   :return: None
 
 .. method:: lwip.callback()
 
@@ -25,21 +16,28 @@ Methods
 
 .. method:: lwip.getaddrinfo(hostname, port)
 
-   .. code-block:: python
+    To discovery the service with hostname and port.
 
-    To discovery the service with hostname and port number, you will get an IP and port
+   :param str hostname: hostname, ex: www.google.com, www.facebook.com
+   :param int port: service port
+   :return: list of tuple
+
+   .. code-block:: python
 
     >>> import lwip
     >>> lwip.getaddrinfo("www.google.com", 80)
     [(2, 1, 0, '', ('74.125.203.147', 80))]
-    >>> lwip.getaddrinfo("www.google.com", 80)
+    >>> lwip.getaddrinfo("www.facebook.com", 80)
     [(2, 1, 0, '', ('176.58.119.26', 80))]
 
-Constructor
-***********
-.. class:: lwip.socket(lwip.AF_INET, lwip.SOCK_STREAM)
+Class `socket`
+^^^^^^^^^^^^^
+
+.. class:: lwip.socket(domain=lwip.AF_INET, type=lwip.SOCK_STREAM, proto=lwip.IPPRORO_TCP)
     
-   Constructor to create a `socket` object, default domain is AF_INET and type is SOCK_STREAM
+   Constructor to create a :class:`lwip.socket` object.
+
+   :param const domain: sfdsfd
 
    .. code-block:: python
    
@@ -51,7 +49,7 @@ Constructor
 Methods
 *******
 
-.. method:: socket.connect((ipaddr, port))
+.. method:: socket.connect(tuple)
    
    To connect to a host with assign tuple = (ipaddr, port), for example: ("192.168.14.133", 80).
    tuple can be fetch by the lwip.getaddrinfo(hostname, port)
@@ -64,7 +62,7 @@ Methods
       >>> s.connect(target)
 
 
-.. method:: socket.bind((ipaddr, port))
+.. method:: socket.bind(tuple)
 
    To bind on the assign ipaddr and port, in most case, ipaddr can be assign "0.0.0.0".
 

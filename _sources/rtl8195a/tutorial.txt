@@ -2,14 +2,14 @@
 Tutorial
 ********
 
-要使用micropython之前，你需要先將micropython for RTL8195A 的韌體燒錄至開發板內。
+要使用micropython之前，你需要先將micropython@Ameba 的韌體燒錄至開發板內。
 
-燒錄方式可參考 Introduction
+燒錄方式可參考 :ref:`how_to_install_micropython`
 
 Basic Usage 
 ###########
 
-首先將USB Cable 接上開發板，並透過終端機程式, ex: minicom, putty 或 TeraTerm 連進開發板。
+首先將USB Cable 接上開發板，並透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
 多按幾次Enter，你會在畫面看到
 
 .. code-block:: python
@@ -49,14 +49,14 @@ Basic Usage
 
 .. note:: 
 
-   按Ctrl+D，可以reset開發板。
+   Ctrl+D 可以reset開發板。
 
-   按Ctrl+B，可以重啟REPL (不做HW reset)
+   Ctrl+B 可以重啟REPL (不做HW reset)
 
-   按Ctrl+E，可進入paste mode。在此模式貼上大量的程式碼，完成後輸入Ctrl+D，mp會執行你所貼上的程式碼。
+   Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，micropython會執行你所貼上的程式碼。
 
 
-Numerical Operation
+Numerical operation
 ###################
 
 目前支援整數及浮點數運算
@@ -78,7 +78,7 @@ Numerical Operation
    >>> 1.3e3
    1300.0
 
-也有math 模組可供使用，幫助你做基本數學運算。
+另也有math 模組可供使用，幫助你做基本數學運算。
 
 .. code-block:: python
    
@@ -147,9 +147,9 @@ GPIO 可控制Pin 及名稱可以參考下圖綠方格。ex: PA_1, PA_2, PD_5 ..
 Filesystem
 ##########
 
-RTL8195A 實體上有1MB的Flash空間，micropython 直譯器約略500KB，剩下的500KB 都會被格式化為FATFS，可供使用者存放小量資料及.py檔。（可透過ftp 存取)
+RTL8195A 實體上有1MB的Flash空間，micropython 直譯器約略500KB，剩下的500KB 都會被格式化為FATFS，可供使用者存放小量資料及.py檔。
 
-使用者可以使用os 模組及Standard I/O 存取Flash上的filesystem (硬碟名稱為 /flash)
+使用者可以使用os 模組及Standard I/O 存取filesystem (硬碟名稱為 /flash)
 
 .. code-block:: python
 
@@ -192,9 +192,10 @@ RTL8195A 實體上有1MB的Flash空間，micropython 直譯器約略500KB，剩�
    ['main.py', 'text.txt']
    >>> os.remove("/flash/text.txt")
 
-filesystem 內有個main.py檔很重要，開發板每次重新開機都會執行main.py，所以使用者可以將主要程式碼放在main.py內，讓開發板上電後自行動作。
+Start up script
+###############
 
-另外在filesystem 內部的檔案名稱是.py結尾，或是資料夾內部含有__init__.py，皆可以透過import 導入至程式碼
+filesystem 內有個main.py檔很重要，開發板每次重新開機都會執行main.py，所以使用者可以將主要程式碼放在main.py內，讓開發板上電後自動執行script。
 
 .. code-block:: python
 
@@ -208,9 +209,13 @@ filesystem 內有個main.py檔很重要，開發板每次重新開機都會執�
 
    main.py 誤刪的話，可以透過ftp補回來。
 
+Third-party libraries support
+#############################
 
-Time/RTC handling
-#################
+任何在filesystem 內檔案名稱為.py結尾或含有__init__.py資料夾，皆可以透過import 導入至micropython。
+
+RTC and delay
+#############
 
 內建time 模組可讀取開發板上RTC時間，以及使用second, millisecond 及microsecond 等級的delay
 
@@ -238,7 +243,7 @@ Time/RTC handling
 Wireless
 ########
 
-RTL8195A 的無線功能有WiFi 跟NFC，目前僅支援WiFi，NFC之後會新增。
+RTL8195A 的無線功能有WLAN(WiFi) 跟NFC，目前僅支援WLAN，NFC之後會新增。
 
 .. code-block:: python
 
@@ -266,11 +271,9 @@ RTL8195A 的無線功能有WiFi 跟NFC，目前僅支援WiFi，NFC之後會新�
 Networking
 ##########
 
-網路功能是透過RTL8195A 內建的WiFi及 Lwip stack 所達到，而NFC 功能之後會新增。
+網路功能是透過Lwip stack 所達到，使用網路功能必須要先經過3個步驟。
 
-使用網路功能必須要先經過3個步驟
-
-* 設定WiFi Soc為Station or AP mode (目前mp@RTL8195A 還沒實作AP mode)
+* 設定WLAN為Station mode, AP mode 或 STA_AP mode (hybrid mode)。
 
 .. code-block:: python
 

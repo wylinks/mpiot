@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>time – module to handle RTC and delay &mdash; mpiot latest documentation</title>
+  <title>time – a module to handle RTC and delay &mdash; mpiot latest documentation</title>
   
 
   
@@ -32,7 +32,7 @@
   
     <link rel="top" title="mpiot latest documentation" href="../../index.html"/>
         <link rel="up" title="API Referances" href="../hardware.html"/>
-        <link rel="next" title="hardware.Pin – module to access hardware GPIO" href="hardware_gpio.html"/>
+        <link rel="next" title="lwip –a module to handle DNS query and low level socket" href="lwip.html"/>
         <link rel="prev" title="API Referances" href="../hardware.html"/> 
 
   
@@ -88,11 +88,14 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../hardware.html">Hardware guides</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../start.html">Realtek RTL8195A</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="../hardware.html">API Referances</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href=""><code class="docutils literal"><span class="pre">time</span></code> &#8211; module to handle RTC and delay</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href=""><code class="docutils literal"><span class="pre">time</span></code> &#8211; a module to handle RTC and delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="lwip.html"><code class="docutils literal"><span class="pre">lwip</span></code> &#8211;a module to handle DNS query and low level socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="network.html"><code class="docutils literal"><span class="pre">network</span></code> &#8211; a module to handle low level networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wireless.html"><code class="docutils literal"><span class="pre">wireless</span></code> &#8211; a module to access wireless functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hardware_gpio.html"><code class="docutils literal"><span class="pre">hardware.Pin</span></code> &#8211; module to access hardware GPIO</a></li>
 <li class="toctree-l4"><a class="reference internal" href="hardware_i2c.html"><code class="docutils literal"><span class="pre">hardware.I2C</span></code> &#8211; module to access hardware I2C</a></li>
-<li class="toctree-l4"><a class="reference internal" href="wireless_wlan.html"><code class="docutils literal"><span class="pre">wireless.WLAN</span></code> &#8211; module to access wireless WLAN</a></li>
 </ul>
 </li>
 </ul>
@@ -135,7 +138,7 @@
       
           <li><a href="../hardware.html">API Referances</a> &raquo;</li>
       
-    <li><code class="docutils literal"><span class="pre">time</span></code> &#8211; module to handle RTC and delay</li>
+    <li><code class="docutils literal"><span class="pre">time</span></code> &#8211; a module to handle RTC and delay</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -149,23 +152,22 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="time-module-to-handle-rtc-and-delay">
-<h1><a class="reference internal" href="#time" title="time"><code class="xref py py-mod docutils literal"><span class="pre">time</span></code></a> &#8211; module to handle RTC and delay<a class="headerlink" href="#time-module-to-handle-rtc-and-delay" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="constructor">
-<h2>Constructor<a class="headerlink" href="#constructor" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="time">
-<em class="property">class </em><code class="descname">time</code><a class="headerlink" href="#time" title="Permalink to this definition">¶</a></dt>
-<dd><p>Constructor to create a <cite>time</cite> object</p>
-</dd></dl>
-
-</div>
-<div class="section" id="methods">
-<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
-<dl class="method">
+  <div class="section" id="time-a-module-to-handle-rtc-and-delay">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">time</span></code> &#8211; a module to handle RTC and delay<a class="headerlink" href="#time-a-module-to-handle-rtc-and-delay" title="Permalink to this headline">¶</a></h1>
+<dl class="classmethod">
 <dt id="time.localtime">
-<code class="descclassname">time.</code><code class="descname">localtime</code><span class="sig-paren">(</span><em>(year</em>, <em>month</em>, <em>day</em>, <em>hour</em>, <em>minute</em>, <em>second</em>, <em>dayof week dats after new year)</em><span class="sig-paren">)</span><a class="headerlink" href="#time.localtime" title="Permalink to this definition">¶</a></dt>
-<dd><p>To get or set current RTC time , format is tuple: (year, month, day, hour, minute, second, day of week, days after new year)</p>
+<em class="property">classmethod </em><code class="descclassname">time.</code><code class="descname">localtime</code><span class="sig-paren">(</span><em>now</em><span class="sig-paren">)</span><a class="headerlink" href="#time.localtime" title="Permalink to this definition">¶</a></dt>
+<dd><p>To <strong>get</strong> or <strong>set</strong> current RTC time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>now</strong> (<em>tuple</em>) &#8211; To set the current time format is <strong>(year, month, dom, hour, minute, second, dow, days after new year)</strong></td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">tuple or None</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
 <span class="go">(2136, 1, 6, 7, 0, 31, 3, 6)</span>
@@ -177,10 +179,20 @@
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="classmethod">
 <dt id="time.sleep">
-<code class="descclassname">time.</code><code class="descname">sleep</code><span class="sig-paren">(</span><em>sec</em><span class="sig-paren">)</span><a class="headerlink" href="#time.sleep" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descclassname">time.</code><code class="descname">sleep</code><span class="sig-paren">(</span><em>seconds</em><span class="sig-paren">)</span><a class="headerlink" href="#time.sleep" title="Permalink to this definition">¶</a></dt>
 <dd><p>To delay for n seconds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>seconds</strong> (<em>int</em>) &#8211; seconds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -189,10 +201,34 @@
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="classmethod">
+<dt id="time.ctime">
+<em class="property">classmethod </em><code class="descclassname">time.</code><code class="descname">ctime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#time.ctime" title="Permalink to this definition">¶</a></dt>
+<dd><p>To get current time in string format</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
 <dt id="time.sleep_ms">
-<code class="descclassname">time.</code><code class="descname">sleep_ms</code><span class="sig-paren">(</span><em>msec</em><span class="sig-paren">)</span><a class="headerlink" href="#time.sleep_ms" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descclassname">time.</code><code class="descname">sleep_ms</code><span class="sig-paren">(</span><em>milliseconds</em><span class="sig-paren">)</span><a class="headerlink" href="#time.sleep_ms" title="Permalink to this definition">¶</a></dt>
 <dd><p>To delay for n milliseconds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>milliseconds</strong> (<em>int</em>) &#8211; milliseconds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -201,10 +237,20 @@
 </div>
 </dd></dl>
 
-<dl class="method">
+<dl class="classmethod">
 <dt id="wifi.sleep_us">
-<code class="descclassname">wifi.</code><code class="descname">sleep_us</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#wifi.sleep_us" title="Permalink to this definition">¶</a></dt>
+<em class="property">classmethod </em><code class="descclassname">wifi.</code><code class="descname">sleep_us</code><span class="sig-paren">(</span><em>microseconds</em><span class="sig-paren">)</span><a class="headerlink" href="#wifi.sleep_us" title="Permalink to this definition">¶</a></dt>
 <dd><p>To delay for n microseconds</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>microseconds</strong> (<em>int</em>) &#8211; microseconds</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100000</span><span class="p">):</span>
 <span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep_us</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
@@ -214,7 +260,6 @@
 </dd></dl>
 
 </div>
-</div>
 
 
            </div>
@@ -223,7 +268,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="hardware_gpio.html" class="btn btn-neutral float-right" title="hardware.Pin – module to access hardware GPIO" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="lwip.html" class="btn btn-neutral float-right" title="lwip –a module to handle DNS query and low level socket" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../hardware.html" class="btn btn-neutral" title="API Referances" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

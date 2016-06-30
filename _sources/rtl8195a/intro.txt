@@ -1,3 +1,5 @@
+.. _rtl8195a_intro:
+
 ************
 Introduction
 ************
@@ -14,6 +16,7 @@ Pin definitions
 
 .. image:: images/Ameba_pin_Def.png
 
+.. _how_to_install_micropython:
 
 How to install MicroPython
 **************************
