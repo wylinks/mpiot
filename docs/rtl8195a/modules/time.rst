@@ -1,18 +1,13 @@
-:mod:`time` -- module to handle RTC and delay
+:mod:`time` -- a module to handle RTC and delay
 """""""""
 
-Constructor
-***********
-.. class:: time()
-    
-   Constructor to create a `time` object
-
-Methods
-*******
-
-.. method:: time.localtime((year, month, day, hour, minute, second, dayof week dats after new year))
+.. classmethod:: time.localtime(now)
    
-   To get or set current RTC time , format is tuple: (year, month, day, hour, minute, second, day of week, days after new year)
+   To **get** or **set** current RTC time.
+
+   :param tuple now: To set the current time format is **(year, month, dom, hour, minute, second, dow, days after new year)**
+
+   :return: tuple or None
 
    .. code-block:: python
 
@@ -24,9 +19,12 @@ Methods
       >>> time.localtime()
       (2015, 1, 13, 23, 33, 35, 5, 50)
 
-.. method:: time.sleep(sec)
+.. classmethod:: time.sleep(seconds)
 
    To delay for n seconds
+
+   :param int seconds: seconds
+   :return: None
 
    .. code-block:: python
 
@@ -35,9 +33,19 @@ Methods
       ...     time.sleep(1)
       ...     print("delay counter is %d" % i)
 
-.. method:: time.sleep_ms(msec)
+.. classmethod:: time.ctime()
+
+   To get current time in string format
+
+   :return: str
+
+
+.. classmethod:: time.sleep_ms(milliseconds)
 
    To delay for n milliseconds
+
+   :param int milliseconds: milliseconds
+   :return: None
 
    .. code-block:: python
 
@@ -46,9 +54,12 @@ Methods
      ...     time.sleep_ms(100)
      ...     print("delay counter is %d" % i)
 
-.. method:: wifi.sleep_us()
+.. classmethod:: wifi.sleep_us(microseconds)
    
    To delay for n microseconds
+
+   :param int microseconds: microseconds
+   :return: None
 
    .. code-block:: python
 

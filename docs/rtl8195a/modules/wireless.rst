@@ -11,12 +11,15 @@ Constructor
     
    Constructor to create a `WLAN` object, support STA (station), AP and STA_AP cocurrency mode.
 
-   :param const mode: wlan mode, available modes please see :ref:`wlan-mode-list`
+   :param const mode: wlan mode, available modes: :ref:`wlan-mode-list`
    :param str ssid: your ssid in :data:`WLAN.AP` and :data:`WLAN.STA_AP` modes.
-   :param tuple auth: your security type and password in :data:`WLAN.AP` and :data:`WLAN.STA_AP` modes. available security types please see :ref:`wlan-security-types`
+   :param tuple auth: your security type and password in :data:`WLAN.AP` and :data:`WLAN.STA_AP` modes. available types: :ref:`wlan-security-types`
    :param int channel: wifi channel in :data:`WLAN.AP` and :data:`WLAN.STA_AP` modes.
-   :raises ValueError: if channel is not at the range of 1 ~ 11.
-   :return: wlan object
+   :raises ValueError:
+                1. if channel is not at the range of 1 ~ 11.
+                2. if ssid length is larger than 32 characters.
+                3. if password length is larger than 32 characters.
+   :return: :class:`WLAN` object
 
    :data:`WLAN.STA` mode example, you can connect to an AP
 
@@ -36,7 +39,7 @@ Constructor
         >>> from wireless import WLAN
         >>> wifi = WLAN(mode=WLAN.AP, ssid="your-ap-ssid", auth=(WLAN.WPA_AES_PSK, "your-ap-password"), channel=3) 
 
-   :data:`WLAN.STA_AP` mode example, you are in AP mode (use your PC to scan the WiFi) and also you can connect a nearby AP at the same time.
+   :data:`WLAN.STA_AP` mode example, you are in AP mode (use your PC to scan the WiFi) and also you can connect to a nearby AP at the same time.
 
    .. code-block:: python
 
@@ -94,9 +97,15 @@ Methods
 
    :return: None
 
+.. method:: WLAN.is_connect_to_ap()
+
+   To check if connect to AP or not.
+
+   :return: bool
+
 .. method:: WLAN.mac()
    
-   To get mac adddress from WiFi SoC.
+   To get mac adddress from WiFi module.
 
    :return: str
 
@@ -123,7 +132,7 @@ Methods
 
 .. method:: WLAN.on()
 
-   To turn the WiFi hardware.
+   To turn on the WiFi hardware.
 
    :raise OSError: if turn on wifi hardware failed
    :return: None
