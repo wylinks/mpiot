@@ -2,15 +2,15 @@
 Tutorial
 ********
 
-要使用micropython之前，你需要先將micropython@Ameba 的韌體燒錄至開發板內。
+要使用MicroPython之前，你需要先將MicroPython@RTL8195A 的韌體燒錄至開發板內。
 
 燒錄方式可參考 :ref:`how_to_install_micropython`
 
 Basic Usage 
 ###########
 
-首先將USB Cable 接上開發板，並透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
-多按幾次Enter，你會在畫面看到
+首先將MicroUSB Cable 接上開發板，透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
+試著按幾次Enter，你會在畫面看到:
 
 .. code-block:: python
 
@@ -53,10 +53,10 @@ Basic Usage
 
    Ctrl+B 可以重啟REPL (不做HW reset)
 
-   Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，micropython會執行你所貼上的程式碼。
+   Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，MicroPython會執行你所貼上的程式碼。
 
 
-Numerical operation
+Numerical Operation
 ###################
 
 目前支援整數及浮點數運算
@@ -100,21 +100,17 @@ Numerical operation
    8.0
 
 
-Hardware control
+Hardware Control
 ################
 
-硬體控制也很簡單。目前有GPIO 及 I2C 可使用，未來會新增SPI, UART, ADC, 及PWM。
-
-可使用GPIO控制Pin I/O 輸入及輸出, 可自行接LED 或勾示波器做測試
-
-GPIO 可控制Pin 及名稱可以參考下圖綠方格。ex: PA_1, PA_2, PD_5 ...
+硬體控制可以參考下圖方格所定義的名稱。ex: PA_1, PA_2, PD_5 ...
 
 .. image:: images/Ameba_pin_Def.png
 
 .. code-block:: python
 
    # To control I/O output
-   >>> from hardware import Pin
+   >>> from machine import Pin
    >>> pin1 = Pin("PA_1", dir=Pin.OUT)
    >>> pin1.toggle()
    >>> pin1.value(1)
@@ -123,26 +119,6 @@ GPIO 可控制Pin 及名稱可以參考下圖綠方格。ex: PA_1, PA_2, PD_5 ..
    >>> pin2 = Pin("PC_0", dir=Pin.IN, pull=Pin.OPEN_DRAIN)
    >>> pin2.value()
    1
-
-可使用I2C 控制I2C device，目前僅有MASTER端可使用。可透過id = x，選擇要使用哪一組I2C Pin。當然，你的程式不受限於一次只能控制一組。
-
-.. note:: 
-
-   id = 0 -> (SDA, SCL) = (PD_4, PD_5)
-   
-   id = 1 -> (SDA, SCL) = (PD_7, PD_6)
-   
-   id = 2 -> (SDA, SCL) = (PC_4, PC_5)
-   
-   id = 3 -> (SDA, SCL) = (PB_3, PB_2)
-
-.. code-block:: python
-
-   >>> from hardware import I2C
-   >>> i2c1 = I2C(id=0, mode=I2C.MASTER)
-   >>> i2c1 = I2C(id=1, mode=I2C.MASTER)
-   >>> i2c1.readfrom(0x50, 4)
-   >>> i2c2.writeto(0x50, b'111')
 
 Filesystem
 ##########

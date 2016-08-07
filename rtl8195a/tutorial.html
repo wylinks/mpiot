@@ -32,7 +32,7 @@
   
     <link rel="top" title="mpiot latest documentation" href="../index.html"/>
         <link rel="up" title="Realtek RTL8195A" href="start.html"/>
-        <link rel="next" title="API Referances" href="hardware.html"/>
+        <link rel="next" title="API Referances" href="api.html"/>
         <link rel="prev" title="Introduction" href="intro.html"/> 
 
   
@@ -83,15 +83,14 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting started</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../hardware.html">Hardware guides</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../platform.html">Platform Guides</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="start.html">Realtek RTL8195A</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="intro.html">Introduction</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="">Tutorial</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#numerical-operation">Numerical operation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#hardware-control">Hardware control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numerical-operation">Numerical Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hardware-control">Hardware Control</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#filesystem">Filesystem</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#start-up-script">Start up script</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#third-party-libraries-support">Third-party libraries support</a></li>
@@ -101,7 +100,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#internal-ftp-server">Internal FTP server</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="hardware.html">API Referances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html">API Referances</a></li>
 </ul>
 </li>
 </ul>
@@ -136,7 +135,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../hardware.html">Hardware guides</a> &raquo;</li>
+          <li><a href="../platform.html">Platform Guides</a> &raquo;</li>
       
           <li><a href="start.html">Realtek RTL8195A</a> &raquo;</li>
       
@@ -156,12 +155,12 @@
             
   <div class="section" id="tutorial">
 <h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
-<p>要使用micropython之前，你需要先將micropython&#64;Ameba 的韌體燒錄至開發板內。</p>
+<p>要使用MicroPython之前，你需要先將MicroPython&#64;RTL8195A 的韌體燒錄至開發板內。</p>
 <p>燒錄方式可參考 <a class="reference internal" href="intro.html#how-to-install-micropython"><span>How to install MicroPython</span></a></p>
 <div class="section" id="basic-usage">
 <h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
-<p>首先將USB Cable 接上開發板，並透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
-多按幾次Enter，你會在畫面看到</p>
+<p>首先將MicroUSB Cable 接上開發板，透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
+試著按幾次Enter，你會在畫面看到:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
 <span class="go">&gt;&gt;&gt;</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -198,11 +197,11 @@ Type &quot;help()&quot; for more information.
 <p class="first admonition-title">註解</p>
 <p>Ctrl+D 可以reset開發板。</p>
 <p>Ctrl+B 可以重啟REPL (不做HW reset)</p>
-<p class="last">Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，micropython會執行你所貼上的程式碼。</p>
+<p class="last">Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，MicroPython會執行你所貼上的程式碼。</p>
 </div>
 </div>
 <div class="section" id="numerical-operation">
-<h2>Numerical operation<a class="headerlink" href="#numerical-operation" title="Permalink to this headline">¶</a></h2>
+<h2>Numerical Operation<a class="headerlink" href="#numerical-operation" title="Permalink to this headline">¶</a></h2>
 <p>目前支援整數及浮點數運算</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
 <span class="go">2</span>
@@ -241,13 +240,11 @@ Type &quot;help()&quot; for more information.
 </div>
 </div>
 <div class="section" id="hardware-control">
-<h2>Hardware control<a class="headerlink" href="#hardware-control" title="Permalink to this headline">¶</a></h2>
-<p>硬體控制也很簡單。目前有GPIO 及 I2C 可使用，未來會新增SPI, UART, ADC, 及PWM。</p>
-<p>可使用GPIO控制Pin I/O 輸入及輸出, 可自行接LED 或勾示波器做測試</p>
-<p>GPIO 可控制Pin 及名稱可以參考下圖綠方格。ex: PA_1, PA_2, PD_5 ...</p>
+<h2>Hardware Control<a class="headerlink" href="#hardware-control" title="Permalink to this headline">¶</a></h2>
+<p>硬體控制可以參考下圖方格所定義的名稱。ex: PA_1, PA_2, PD_5 ...</p>
 <img alt="../_images/Ameba_pin_Def.png" src="../_images/Ameba_pin_Def.png" />
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># To control I/O output</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">hardware</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PA_1&quot;</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
@@ -256,21 +253,6 @@ Type &quot;help()&quot; for more information.
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PC_0&quot;</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OPEN_DRAIN</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin2</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
 <span class="mi">1</span>
-</pre></div>
-</div>
-<p>可使用I2C 控制I2C device，目前僅有MASTER端可使用。可透過id = x，選擇要使用哪一組I2C Pin。當然，你的程式不受限於一次只能控制一組。</p>
-<div class="admonition note">
-<p class="first admonition-title">註解</p>
-<p>id = 0 -&gt; (SDA, SCL) = (PD_4, PD_5)</p>
-<p>id = 1 -&gt; (SDA, SCL) = (PD_7, PD_6)</p>
-<p>id = 2 -&gt; (SDA, SCL) = (PC_4, PC_5)</p>
-<p class="last">id = 3 -&gt; (SDA, SCL) = (PB_3, PB_2)</p>
-</div>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">hardware</span> <span class="kn">import</span> <span class="n">I2C</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">i2c1</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">I2C</span><span class="o">.</span><span class="n">MASTER</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">i2c1</span> <span class="o">=</span> <span class="n">I2C</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">I2C</span><span class="o">.</span><span class="n">MASTER</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">i2c1</span><span class="o">.</span><span class="n">readfrom</span><span class="p">(</span><span class="mh">0x50</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">i2c2</span><span class="o">.</span><span class="n">writeto</span><span class="p">(</span><span class="mh">0x50</span><span class="p">,</span> <span class="n">b</span><span class="s1">&#39;111&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -519,7 +501,7 @@ Type &quot;help()&quot; for more information.
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="hardware.html" class="btn btn-neutral float-right" title="API Referances" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="api.html" class="btn btn-neutral float-right" title="API Referances" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

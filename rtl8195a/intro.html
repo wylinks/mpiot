@@ -83,16 +83,15 @@
             
             
                 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../introduction.html">Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../start.html">Getting started</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="../hardware.html">Hardware guides</a><ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../platform.html">Platform Guides</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="start.html">Realtek RTL8195A</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="">Introduction</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#realtek-ameba-board">Realtek Ameba board</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
-<li class="toctree-l3"><a class="reference internal" href="hardware.html">API Referances</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html">API Referances</a></li>
 </ul>
 </li>
 </ul>
@@ -127,7 +126,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../index.html">Docs</a> &raquo;</li>
       
-          <li><a href="../hardware.html">Hardware guides</a> &raquo;</li>
+          <li><a href="../platform.html">Platform Guides</a> &raquo;</li>
       
           <li><a href="start.html">Realtek RTL8195A</a> &raquo;</li>
       
@@ -149,17 +148,17 @@
 <span id="rtl8195a-intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="realtek-ameba-board">
 <h2>Realtek Ameba board<a class="headerlink" href="#realtek-ameba-board" title="Permalink to this headline">¶</a></h2>
-<p>Realtek Ameba board 是瑞昱科技所推出的開發板，支援Arduino IDE (需下載Ameba SDK)，其官方網站在 <a class="reference external" href="http://www.amebaiot.com/en/">這裡</a></p>
+<p>Realtek Ameba board 是瑞昱科技所推出的開發板，其支援Arduino IDE (需下載Ameba SDK)，其官方網站在 <a class="reference external" href="http://www.amebaiot.com/en/">這裡</a></p>
 <div class="section" id="pin-definitions">
 <h3>Pin definitions<a class="headerlink" href="#pin-definitions" title="Permalink to this headline">¶</a></h3>
 <img alt="../_images/Ameba_pin_Def.png" src="../_images/Ameba_pin_Def.png" />
 </div>
 <div class="section" id="how-to-install-micropython">
 <span id="id2"></span><h3>How to install MicroPython<a class="headerlink" href="#how-to-install-micropython" title="Permalink to this headline">¶</a></h3>
-<p>第一次要在Ameba board 使用MicroPython，必須將包裝好直譯器的韌體燒錄至開發板內。Ameba board 為Mbed enable 的開發板，其韌體燒錄方式非常簡單，可使用Drag and Drop的方式。</p>
+<p>第一次要在Ameba board 使用MicroPython，必須將包裝好直譯器的韌體燒錄至開發板內。Ameba board 為Mbed Enabled 的開發板，其韌體燒錄方式非常簡單，可使用Drag and Drop的方式。</p>
 <p>而包裝直譯器的韌體檔案位在我的repository內，可直接點選以下連結下載。</p>
 <p><a class="reference external" href="https://github.com/cwyark/micropython/releases/download/v1.8alpha/ram_all.bin">https://github.com/cwyark/micropython/releases/download/v1.8alpha/ram_all.bin</a></p>
-<p>下載的檔案名稱為ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython for RTL8195A。各作業系統燒錄方式可參考如下。</p>
+<p>下載的檔案名稱為ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython&#64;RTL8195A。各作業系統燒錄方式可參考如下。</p>
 <div class="section" id="for-windows">
 <h4>For Windows<a class="headerlink" href="#for-windows" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">

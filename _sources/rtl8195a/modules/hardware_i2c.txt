@@ -1,3 +1,0 @@
-:mod:`hardware.I2C` -- module to access hardware I2C
-"""""""""
-

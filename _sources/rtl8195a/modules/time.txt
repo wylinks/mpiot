@@ -1,23 +1,53 @@
-:mod:`time` -- a module to handle RTC and delay
+:mod:`time` -- a module to handle time and delay
 """""""""
+.. classmethod:: time.time()
 
-.. classmethod:: time.localtime(now)
+   Get current time since 2000/01/01 00:00:00 (unit: seconds)
+
+   :return: int
+
+.. classmethod:: time.localtime([sec])
    
-   To **get** or **set** current RTC time.
+   Get current time or convert [sec] to tuple format.
 
-   :param tuple now: To set the current time format is **(year, month, dom, hour, minute, second, dow, days after new year)**
+   format is (year, month, day of month, hour, minute, day of week, days after years)
 
-   :return: tuple or None
+   :param int sec: seconds to be converted
+
+   :return: tuple 
+
+   .. code-block:: python
+
+      >>> import time
+      >>> now = time.localtime()
+      (2036, 2, 6, 6, 42, 40, 2, 37)
+      >>> time.mktime(now)
+      1139208160
+
+.. note::
+
+   You can use ``machine.RTC`` to set the RTC time.
+
+.. classmethod:: time.ctime()
+
+   Get current time in string format
+
+   :return: str
+
+.. classmethod:: time.mktime(tuple)
+
+   Convert tuple time into seconds.
+
+   :return: int
 
    .. code-block:: python
 
       >>> import time
       >>> time.localtime()
-      (2136, 1, 6, 7, 0, 31, 3, 6)
-      >>> now = (2015, 1, 13, 23, 33, 35, 5, 50)
-      >>> time.localtime(now)
-      >>> time.localtime()
-      (2015, 1, 13, 23, 33, 35, 5, 50)
+      (2036, 2, 6, 6, 42, 40, 2, 37)
+      >>> secs = 60
+      >>> time.localtime(secs)
+      (2000, 1, 1, 0, 4, 3, 5, 1)
 
 .. classmethod:: time.sleep(seconds)
 
@@ -26,20 +56,6 @@
    :param int seconds: seconds
    :return: None
 
-   .. code-block:: python
-
-      >>> import time
-      >>> for i in range(100):
-      ...     time.sleep(1)
-      ...     print("delay counter is %d" % i)
-
-.. classmethod:: time.ctime()
-
-   To get current time in string format
-
-   :return: str
-
-
 .. classmethod:: time.sleep_ms(milliseconds)
 
    To delay for n milliseconds
@@ -47,14 +63,7 @@
    :param int milliseconds: milliseconds
    :return: None
 
-   .. code-block:: python
-
-     >>> import time
-     >>> for i in range(100):
-     ...     time.sleep_ms(100)
-     ...     print("delay counter is %d" % i)
-
-.. classmethod:: wifi.sleep_us(microseconds)
+.. classmethod:: time.sleep_us(microseconds)
    
    To delay for n microseconds
 
