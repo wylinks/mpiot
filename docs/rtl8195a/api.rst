@@ -5,8 +5,8 @@ API Referances
    :maxdepth: 2
    
    modules/time
-   modules/lwip
+   modules/socket
    modules/network
    modules/wireless
-   modules/hardware
+   modules/machine
 

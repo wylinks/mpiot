@@ -7,7 +7,7 @@ Introduction
 Realtek Ameba board
 ###################
 
-Realtek Ameba board 是瑞昱科技所推出的開發板，支援Arduino IDE (需下載Ameba SDK)，其官方網站在 這裡_
+Realtek Ameba board 是瑞昱科技所推出的開發板，其支援Arduino IDE (需下載Ameba SDK)，其官方網站在 這裡_
 
 .. _這裡: http://www.amebaiot.com/en/
 
@@ -21,13 +21,13 @@ Pin definitions
 How to install MicroPython
 **************************
 
-第一次要在Ameba board 使用MicroPython，必須將包裝好直譯器的韌體燒錄至開發板內。Ameba board 為Mbed enable 的開發板，其韌體燒錄方式非常簡單，可使用Drag and Drop的方式。
+第一次要在Ameba board 使用MicroPython，必須將包裝好直譯器的韌體燒錄至開發板內。Ameba board 為Mbed Enabled 的開發板，其韌體燒錄方式非常簡單，可使用Drag and Drop的方式。
 
 而包裝直譯器的韌體檔案位在我的repository內，可直接點選以下連結下載。
 
 https://github.com/cwyark/micropython/releases/download/v1.8alpha/ram_all.bin
 
-下載的檔案名稱為ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython for RTL8195A。各作業系統燒錄方式可參考如下。
+下載的檔案名稱為ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython@RTL8195A。各作業系統燒錄方式可參考如下。
 
 For Windows 
 ^^^^^^^^^^^

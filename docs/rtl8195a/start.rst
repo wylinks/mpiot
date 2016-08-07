@@ -6,5 +6,5 @@ Realtek RTL8195A
    
    intro
    tutorial
-   hardware
+   api
 

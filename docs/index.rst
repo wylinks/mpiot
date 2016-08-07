@@ -10,9 +10,8 @@ Style guide for MicroPython with IoT
    :maxdepth: 3
    :glob:
    
-   introduction
-   start
-   hardware
+   intro
+   platform
 
    
 Indices and tables
