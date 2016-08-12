@@ -2,7 +2,7 @@ API Referances
 ==============
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 3
    
    modules/time
    modules/socket
