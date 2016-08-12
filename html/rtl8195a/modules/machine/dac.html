@@ -154,6 +154,59 @@
             
   <div class="section" id="class-dac">
 <h1>Class <cite>DAC</cite><a class="headerlink" href="#class-dac" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="DAC">
+<em class="property">class </em><code class="descname">DAC</code><span class="sig-paren">(</span><em>unit=0</em>, <em>resolution=10</em><span class="sig-paren">)</span><a class="headerlink" href="#DAC" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor to create <code class="xref py py-class docutils literal"><span class="pre">machine.DAC</span></code> object. Only unit 0 is available.</p>
+<blockquote>
+<div><table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">unit</th>
+<th class="head">DAC</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>DAC</td>
+</tr>
+</tbody>
+</table>
+</div></blockquote>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">DAC</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">dac</span> <span class="o">=</span> <span class="n">DAC</span><span class="p">(</span><span class="n">resolution</span><span class="o">=</span><span class="mi">12</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">12</span><span class="p">)):</span>
+<span class="gp">... </span>    <span class="n">dac</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="method">
+<dt id="DAC.write">
+<code class="descclassname">DAC.</code><code class="descname">write</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#DAC.write" title="Permalink to this definition">¶</a></dt>
+<dd><p>Write value to DAC.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>value</strong> (<em>int</em>) &#8211; value, range depends on your resolution.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="admonition note">
+<p class="first admonition-title">註解</p>
+<p class="last">DAC voltage range is 0 ~ 3.3V.</p>
+</div>
+</div>
 </div>
 
 
