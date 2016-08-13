@@ -24,7 +24,7 @@
 
    :return: None
 
-.. classmethod:: uvc.format(uvc,FMT_MJPEG, width=240, height=320)
+.. classmethod:: uvc.format(uvc.FMT_MJPEG, width=240, height=320)
    
    Set the format of frame.
 
