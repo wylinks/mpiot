@@ -241,6 +241,9 @@ MicorPython\@RTL8195A 更支援混合模式(STA + AP)。
 
 現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到
 
+.. note::
+
+    Lwip 若收到ICMP request，會回ICMP echo。換句話說，你可以ping的到開發版。
 
 Internal FTP server
 ###################
