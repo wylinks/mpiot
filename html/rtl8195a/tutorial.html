@@ -1,0 +1,566 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Tutorial &mdash; mpiot latest documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="mpiot latest documentation" href="../index.html"/>
+        <link rel="up" title="Realtek RTL8195A" href="start.html"/>
+        <link rel="next" title="API Referances" href="api.html"/>
+        <link rel="prev" title="Introduction" href="intro.html"/> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> mpiot
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../platform.html">Platform Guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="start.html">Realtek RTL8195A</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="">Tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#numerical-operation">Numerical Operation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#hardware-control">Hardware Control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem">Filesystem</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#start-up-script">Start up script</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-libraries-support">Third-party libraries support</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rtc-and-delay">RTC and delay</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#wireless">Wireless</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#networking">Networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-ftp-server">Internal FTP server</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="api.html">API Referances</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">mpiot</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../platform.html">Platform Guides</a> &raquo;</li>
+      
+          <li><a href="start.html">Realtek RTL8195A</a> &raquo;</li>
+      
+    <li>Tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../_sources/rtl8195a/tutorial.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>要使用MicroPython之前，你需要先將MicroPython&#64;RTL8195A 的韌體燒錄至開發板內。</p>
+<p>燒錄方式可參考 <a class="reference internal" href="intro.html#how-to-install-micropython"><span>How to install MicroPython</span></a></p>
+<div class="section" id="basic-usage">
+<h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
+<p>首先將MicroUSB Cable 接上開發板，透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
+試著按幾次Enter，你會在畫面看到:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+<span class="go">&gt;&gt;&gt;</span>
+</pre></div>
+</div>
+<p>按開發板上的reset鍵，你也可以看到開機畫面。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span>=========================================================
+
+ROM Version: 0.2
+
+Build ToolChain Version: gcc version 4.8.3 (Realtek ASDK-4.8.3p1 Build 2003)
+
+=========================================================
+Check boot type form eFuse
+SPI Initial
+Image1 length: 0x36e4, Image Addr: 0x10000bc8
+Image1 Validate OK, Going jump to Image1
+===== Enter Image 1 ====
+SDR Controller Init
+
+load NEW fw 0
+Flash Image2:Addr 0xb000, Len 351472, Load to SRAM 0x10006000
+Image3 length: 0x1beb0, Image3 Addr: 0x30000000
+Img2 Sign: RTKWin, InfaStart @ 0x10006019
+===== Enter Image 2 ====
+Starting main task
+Starting executing main.py
+MicroPython v1.8.1-42-g5a23590-dirty on 2016-06-18; Ameba Board with RT8195A
+Type &quot;help()&quot; for more information.
+&gt;&gt;&gt;
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">註解</p>
+<p>Ctrl+D 可以reset開發板。</p>
+<p>Ctrl+B 可以重啟REPL (不做HW reset)</p>
+<p class="last">Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，MicroPython會執行你所貼上的程式碼。</p>
+</div>
+</div>
+<div class="section" id="numerical-operation">
+<h2>Numerical Operation<a class="headerlink" href="#numerical-operation" title="Permalink to this headline">¶</a></h2>
+<p>目前支援整數及浮點數運算</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">+</span> <span class="mi">1</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">1</span> <span class="o">*</span> <span class="mi">2</span>
+<span class="go">2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">4e2</span>
+<span class="go">400.0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">3</span> <span class="o">%</span> <span class="mi">2</span>
+<span class="go">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">2</span> <span class="o">/</span> <span class="mi">3</span>
+<span class="go">0.6666667</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mi">123456</span><span class="o">/</span><span class="mi">999999</span>
+<span class="go">0.1234561</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="mf">1.3e3</span>
+<span class="go">1300.0</span>
+</pre></div>
+</div>
+<p>另也有math 模組可供使用，幫助你做基本數學運算。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">math</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span>
+<span class="go">__name__        e               pi              sqrt</span>
+<span class="go">pow             exp             log             cos</span>
+<span class="go">sin             tan             acos            asin</span>
+<span class="go">atan            atan2           ceil            copysign</span>
+<span class="go">fabs            floor           fmod            frexp</span>
+<span class="go">ldexp           modf            isfinite        isinf</span>
+<span class="go">isnan           trunc           radians         degrees</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">pi</span>
+<span class="go">3.141593</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">math</span><span class="o">.</span><span class="n">degrees</span><span class="p">(</span><span class="mi">90</span><span class="p">))</span>
+<span class="go">-0.9540797</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">math</span><span class="o">.</span><span class="n">pow</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="go">8.0</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hardware-control">
+<h2>Hardware Control<a class="headerlink" href="#hardware-control" title="Permalink to this headline">¶</a></h2>
+<p>硬體控制可以參考下圖方格所定義的名稱。ex: PA_1, PA_2, PD_5 ...</p>
+<img alt="../_images/Ameba_pin_Def.png" src="../_images/Ameba_pin_Def.png" />
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># To control I/O output</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PA_1&quot;</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="c1"># To read I/O&#39;s value</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PC_0&quot;</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OPEN_DRAIN</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin2</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
+<span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="filesystem">
+<h2>Filesystem<a class="headerlink" href="#filesystem" title="Permalink to this headline">¶</a></h2>
+<p>RTL8195A 實體上有1MB的Flash空間，micropython 直譯器約略500KB，剩下的500KB 都會被格式化為FATFS，可供使用者存放小量資料及.py檔。</p>
+<p>使用者可以使用os 模組及Standard I/O 存取filesystem (硬碟名稱為 /flash)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">os</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">)</span>
+<span class="go">[&#39;flash&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/flash&quot;</span><span class="p">)</span>
+<span class="go">[&#39;main.py&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span><span class="s2">&quot;test_dir&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/flash&quot;</span><span class="p">)</span>
+<span class="go">[&#39;main.py&#39;, &#39;test_dir&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;test_dir&quot;</span><span class="p">)</span>         <span class="c1"># to change current directory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">()</span>                  <span class="c1"># to get current directory</span>
+<span class="go">&#39;/flash/test_dir&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="s2">&quot;/flash&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="s2">&quot;test_dir&quot;</span><span class="p">,</span> <span class="s2">&quot;test_dir2&quot;</span><span class="p">)</span>       <span class="c1"># rename file or directory</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/flash&quot;</span><span class="p">)</span>
+<span class="go">[&#39;main.py&#39;, &#39;test_dir2&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span><span class="s2">&quot;test_dir2&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/flash&quot;</span><span class="p">)</span>
+<span class="go">[&#39;main.py&#39;]</span>
+
+<span class="go">Now doing the file open/close/seek/read/write</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;main.py&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_file</span><span class="o">.</span><span class="n">readall</span><span class="p">()</span>
+<span class="go">&#39;# main.py -- put your code here! The script in main.py will be executed when boot up !\r\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_file</span><span class="o">.</span><span class="n">readall</span><span class="p">()</span>
+<span class="go">&#39;&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_file</span><span class="o">.</span><span class="n">seek</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="go">0</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_file</span><span class="o">.</span><span class="n">readall</span><span class="p">()</span>
+<span class="go">&#39;# main.py -- put your code here! The script in main.py will be executed when boot up !\r\n&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">my_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;text.txt&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;hello!!!! this is a test file&#39;</span><span class="p">)</span>
+<span class="go">29</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">new_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span><span class="s2">&quot;/flash&quot;</span><span class="p">)</span>
+<span class="go">[&#39;main.py&#39;, &#39;text.txt&#39;]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s2">&quot;/flash/text.txt&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="start-up-script">
+<h2>Start up script<a class="headerlink" href="#start-up-script" title="Permalink to this headline">¶</a></h2>
+<p>filesystem 內有個main.py檔很重要，開發板每次重新開機都會執行main.py，所以使用者可以將主要程式碼放在main.py內，讓開發板上電後自動執行script。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;test.py&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;print(&#39;hello, this is a test script&#39;)&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">test</span>     <span class="c1"># this is the test.py module</span>
+<span class="go">hello, this is a test script</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">註解</p>
+<p class="last">main.py 誤刪的話，可以透過ftp補回來。</p>
+</div>
+</div>
+<div class="section" id="third-party-libraries-support">
+<h2>Third-party libraries support<a class="headerlink" href="#third-party-libraries-support" title="Permalink to this headline">¶</a></h2>
+<p>任何在filesystem 內檔案名稱為.py結尾或含有__init__.py資料夾，皆可以透過import 導入至micropython。</p>
+</div>
+<div class="section" id="rtc-and-delay">
+<h2>RTC and delay<a class="headerlink" href="#rtc-and-delay" title="Permalink to this headline">¶</a></h2>
+<p>內建time 模組可讀取開發板上RTC時間，以及使用second, millisecond 及microsecond 等級的delay</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>         <span class="c1"># to read current RTC time</span>
+<span class="go">(2036, 1, 6, 8, 10, 51, 3, 6)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">now</span> <span class="o">=</span> <span class="p">(</span><span class="mi">2016</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">(</span><span class="n">now</span><span class="p">)</span>      <span class="c1"># to set the current RTC time</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1000</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">now</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">localtime</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="n">hour</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">minute</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">4</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="n">second</span> <span class="o">=</span> <span class="n">now</span><span class="p">[</span><span class="mi">5</span><span class="p">]</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;now is </span><span class="si">%d</span><span class="s2">:</span><span class="si">%d</span><span class="s2">:</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">hour</span><span class="p">,</span> <span class="n">minute</span><span class="p">,</span> <span class="n">second</span><span class="p">))</span>
+
+<span class="go">Now it will show your RTC time ...</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">time</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">500</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;delay counter = </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wireless">
+<h2>Wireless<a class="headerlink" href="#wireless" title="Permalink to this headline">¶</a></h2>
+<p>RTL8195A 的無線功能有WLAN(WiFi) 跟NFC，目前僅支援WLAN，NFC之後會新增。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">mac</span><span class="p">()</span>
+<span class="go">&#39;28:c2:dd:dd:42:7d&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+<span class="go">[]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">scan_your_wifi_around_you</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="n">wifi_list</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
+<span class="gp">... </span>    <span class="k">if</span> <span class="n">wifi_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">wifi_list</span><span class="p">:</span>
+<span class="gp">... </span>            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;SSID is </span><span class="si">%s</span><span class="s2">, BSSID is </span><span class="si">%s</span><span class="s2">, channel is </span><span class="si">%d</span><span class="s2"> and security type is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">ssid</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">bssid</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">security</span><span class="p">))</span>
+<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
+<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;scan nothing&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">scan_your_wifi_around_you</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">scan_your_wifi_around_you</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">註解</p>
+<p class="last">縮排很重要，1格縮排為4個空格。</p>
+</div>
+</div>
+<div class="section" id="networking">
+<h2>Networking<a class="headerlink" href="#networking" title="Permalink to this headline">¶</a></h2>
+<p>網路功能是透過Lwip stack 所達到，使用網路功能必須要先經過3個步驟。</p>
+<ul class="simple">
+<li>設定WLAN為Station mode, AP mode 或 STA_AP mode (hybrid mode)。</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>   <span class="c1"># station mode</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>WiFi 連線與安全性認證</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">WLAN</span><span class="o">.</span>   <span class="c1"># press TAB to auto complete</span>
+<span class="go">scan            rssi            mac             connect</span>
+<span class="go">disconnect      STA             AP              STA_AP</span>
+<span class="go">PROMISC         P2P             OPEN            WEP_PSK</span>
+<span class="go">WEP_SHARED      WPA_TKIP_PSK    WPA_AES_PSK     WPA2_TKIP_PSK</span>
+<span class="go">WPA2_AES_PSK    WPA2_MIXED_PSK  WPA_WPA2_MIXED  WPS_OPEN</span>
+<span class="go">WPS_SECURE</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">WLAN</span><span class="o">.</span>      <span class="c1"># Choose your AP&#39;s security type</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;YOUR-SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;YOUR-PASSWORD&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>透過DHCP 索取IP或是固定IP</li>
+</ul>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">network</span> <span class="kn">import</span> <span class="n">ip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span> <span class="o">=</span> <span class="n">ip</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span>
+<span class="go">ip(ip=192.168.3.2 ,netmask=255.255.255.0 ,gateway=192.168.3.1 ,dhcp)</span>
+</pre></div>
+</div>
+<p>整合以上步驟可以參考以下範例程式。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">network</span> <span class="kn">import</span> <span class="n">ip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">lwip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>    <span class="c1"># declare a wifi object</span>
+
+<span class="go">Initializing WIFI ...</span>
+<span class="go">WIFI initialized</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="s2">&quot;YOUR_SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;22238392abcd&quot;</span><span class="p">))</span>   <span class="c1"># connect to an AP with security</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;wifi connect failed!&quot;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+
+<span class="go">RTL8195A[Driver]: set ssid [YOUR_SSID]</span>
+
+<span class="go">RTL8195A[Driver]: start auth to xx:xx:xx:xx:xx:xx</span>
+
+<span class="go">RTL8195A[Driver]: auth success, start assoc</span>
+
+<span class="go">RTL8195A[Driver]: association success(res=3)</span>
+
+<span class="go">RTL8195A[Driver]: set pairwise key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4)</span>
+
+<span class="go">RTL8195A[Driver]: set group key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4) keyid:1</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span> <span class="o">=</span> <span class="n">ip</span><span class="p">()</span>   <span class="c1"># create an ip object to handle a low level ip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span>
+<span class="go">ip(ip=192.168.3.2 ,netmask=255.255.255.0 ,gateway=192.168.3.1 ,dhcp)</span>
+<span class="go"># default static is 192.168.3.2/24, gw is 192.168.3.1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span><span class="o">.</span><span class="n">dhcp_request</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>    <span class="c1"># 100 is the dhcp timeout(msec)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">local_ip</span>
+<span class="go">ip(ip=192.168.14.100 ,netmask=255.255.255.0 ,gateway=192.168.14.1 ,dhcp)</span>
+<span class="go"># ip information has changed</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">lwip</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;www.google.com&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>  <span class="c1"># query ip through your DNS</span>
+<span class="go">[(2, 1, 0, &#39;&#39;, (&#39;74.125.203.104&#39;, 80))]</span>
+</pre></div>
+</div>
+<div class="section" id="tcp-udp-client-example">
+<h3>TCP/UDP Client Example<a class="headerlink" href="#tcp-udp-client-example" title="Permalink to this headline">¶</a></h3>
+<p>使用網路功能前，先確認你開發板有連上AP。</p>
+<p>假設192.168.14.101 有個tcp server 或udp server</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">lwip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">lwip</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>                                <span class="c1"># if you are a tcp client</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">lwip</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">lwip</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">lwip</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>   <span class="c1"># if you are a udp client</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;192.168.14.100&quot;</span><span class="p">,</span> <span class="mi">9090</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;hello !!!!&#39;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="go">b&#39;hallo back !!!&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tcp-udp-server-example">
+<h3>TCP/UDP Server Example<a class="headerlink" href="#tcp-udp-server-example" title="Permalink to this headline">¶</a></h3>
+<p>使用網路功能前，先確認你開發板有連上AP。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">lwip</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">lwip</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>                                <span class="c1"># if you are a tcp server</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">lwip</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">lwip</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">lwip</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>   <span class="c1"># if you are a udp server</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">target</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">9090</span><span class="p">)</span>    <span class="c1"># ip = 0.0.0.0 means any ip will be accept</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">target</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>              <span class="c1"># backlog is the maxium client number</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">client_socket</span><span class="p">,</span> <span class="n">client_ipaddr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>      <span class="c1"># socket.accept() is a blocking method, so use it careful</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">client_socket</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="n">client_ipaddr</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">client_socket</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39; hello!!!! client, closing&#39;</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">data</span> <span class="o">=</span> <span class="n">client_socket</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;You received </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="n">data</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">client_socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">註解</p>
+<p class="last">開發板只要連上網路後，可透過外部PC去ping 開發板。若你DHCP後不知道開發板的IP，可使用一些掃描工具例如：nmap -sP 192.168.xx.xx/24 去掃描看開發板的IP是多少。</p>
+</div>
+</div>
+</div>
+<div class="section" id="internal-ftp-server">
+<h2>Internal FTP server<a class="headerlink" href="#internal-ftp-server" title="Permalink to this headline">¶</a></h2>
+<p>BJ4，只要你的開發板連上網路後，且你知道開發版的IP為何。就可以透過ftp client ex:FileZilla 連到開發板內部的filesystem 做檔案存取。</p>
+<p>可方便開發者更新main.py，放入自己寫的module。亦可以不用一直做DAP燒錄，節省開發時間，甚至可以realtime的透過網路更新你的程式碼。</p>
+<div class="admonition note">
+<p class="first admonition-title">註解</p>
+<p class="last">目前測試FileZilla可用，以及MACOS/Linux 的ftp command 可用，但不保證其他FTP client 可用。</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="api.html" class="btn btn-neutral float-right" title="API Referances" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="intro.html" class="btn btn-neutral" title="Introduction" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, ChesterTseng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'latest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

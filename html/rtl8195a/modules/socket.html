@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>socket –a module to handle DNS query and low level socket &mdash; mpiot latest documentation</title>
+  
+
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+    <link rel="top" title="mpiot latest documentation" href="../../index.html"/>
+        <link rel="up" title="API Referances" href="../api.html"/>
+        <link rel="next" title="network – a module to handle low level networking" href="network.html"/>
+        <link rel="prev" title="time – a module to handle time and delay" href="time.html"/> 
+
+  
+  <script src="../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> mpiot
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                latest
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../intro.html">Introduction</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../platform.html">Platform Guides</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../start.html">Realtek RTL8195A</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../api.html">API Referances</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="time.html"><code class="docutils literal"><span class="pre">time</span></code> &#8211; a module to handle time and delay</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href=""><code class="docutils literal"><span class="pre">socket</span></code> &#8211;a module to handle DNS query and low level socket</a></li>
+<li class="toctree-l4"><a class="reference internal" href="network.html"><code class="docutils literal"><span class="pre">network</span></code> &#8211; a module to handle low level networking</a></li>
+<li class="toctree-l4"><a class="reference internal" href="wireless.html"><code class="docutils literal"><span class="pre">wireless</span></code> &#8211; a module to access wireless functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="machine.html"><code class="docutils literal"><span class="pre">machine</span></code> &#8211; a module to access hardware</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../index.html">mpiot</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../platform.html">Platform Guides</a> &raquo;</li>
+      
+          <li><a href="../start.html">Realtek RTL8195A</a> &raquo;</li>
+      
+          <li><a href="../api.html">API Referances</a> &raquo;</li>
+      
+    <li><code class="docutils literal"><span class="pre">socket</span></code> &#8211;a module to handle DNS query and low level socket</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/rtl8195a/modules/socket.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="socket-a-module-to-handle-dns-query-and-low-level-socket">
+<h1><code class="xref py py-mod docutils literal"><span class="pre">socket</span></code> &#8211;a module to handle DNS query and low level socket<a class="headerlink" href="#socket-a-module-to-handle-dns-query-and-low-level-socket" title="Permalink to this headline">¶</a></h1>
+<dl class="classmethod">
+<dt id="socket.reset">
+<em class="property">classmethod </em><code class="descclassname">socket.</code><code class="descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#socket.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>To reset the lwip stack. However, it might hang, so don&#8217;t use it.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">返回:</th><td class="field-body">None</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="socket.callback">
+<em class="property">classmethod </em><code class="descclassname">socket.</code><code class="descname">callback</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#socket.callback" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="classmethod">
+<dt id="socket.print_pcbs">
+<em class="property">classmethod </em><code class="descclassname">socket.</code><code class="descname">print_pcbs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#socket.print_pcbs" title="Permalink to this definition">¶</a></dt>
+<dd><p>TBD</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.getaddrinfo">
+<code class="descclassname">socket.</code><code class="descname">getaddrinfo</code><span class="sig-paren">(</span><em>hostname</em>, <em>port</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.getaddrinfo" title="Permalink to this definition">¶</a></dt>
+<dd><blockquote>
+<div>Discovery the service with hostname and port.</div></blockquote>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><ul class="first simple">
+<li><strong>hostname</strong> (<em>str</em>) &#8211; hostname, ex: www.google.com, www.facebook.com</li>
+<li><strong>port</strong> (<em>int</em>) &#8211; service port</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">返回:</th><td class="field-body"><p class="first last">lists of tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;www.google.com&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="go">[(2, 1, 0, &#39;&#39;, (&#39;74.125.203.147&#39;, 80))]</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;www.facebook.com&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="go">[(2, 1, 0, &#39;&#39;, (&#39;176.58.119.26&#39;, 80))]</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="class-socket">
+<h2>Class <cite>socket</cite><a class="headerlink" href="#class-socket" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="socket.socket">
+<em class="property">class </em><code class="descclassname">socket.</code><code class="descname">socket</code><span class="sig-paren">(</span><em>domain=socket.AF_INET</em>, <em>type=socket.SOCK_STREAM</em>, <em>proto=socket.IPPRORO_TCP</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.socket" title="Permalink to this definition">¶</a></dt>
+<dd><p>Constructor to create a <a class="reference internal" href="#socket.socket" title="socket.socket"><code class="xref py py-class docutils literal"><span class="pre">socket.socket</span></code></a> object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><ul class="first last simple">
+<li><strong>domain</strong> (<em>const</em>) &#8211; domain</li>
+<li><strong>type</strong> (<em>const</em>) &#8211; type</li>
+<li><strong>proto</strong> (<em>const</em>) &#8211; proto</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># create a tcp socket</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+<span class="c1"># create a udp socket</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">(</span><span class="n">socket</span><span class="o">.</span><span class="n">AF_INET</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">SOCK_DGRAM</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<div class="section" id="methods">
+<h3>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h3>
+<dl class="method">
+<dt id="socket.connect">
+<code class="descclassname">socket.</code><code class="descname">connect</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.connect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Connect to a host with an assign tuple: (ipaddr, port).</p>
+<p>Tuple can be acquired by the <a class="reference internal" href="#socket.getaddrinfo" title="socket.getaddrinfo"><code class="xref py py-class docutils literal"><span class="pre">socket.getaddrinfo</span></code></a></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>server</strong> (<em>tuple</em>) &#8211; server ip and service port. ex: (&#8220;192.168.13.101&#8221;, 8080)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.bind">
+<code class="descclassname">socket.</code><code class="descname">bind</code><span class="sig-paren">(</span><em>server</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.bind" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bind on the specific ipaddr and port, in most case, ipaddr is &#8220;0.0.0.0&#8221;.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>server</strong> (<em>tuple</em>) &#8211; server ip and service port. ex: (&#8220;0.0.0.0&#8221;, 8080)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.listen">
+<code class="descclassname">socket.</code><code class="descname">listen</code><span class="sig-paren">(</span><em>backlog</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.listen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Listen on a socket, backlog is the maxium client connection number.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>backlog</strong> (<em>int</em>) &#8211; maxium client connections</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.close">
+<code class="descclassname">socket.</code><code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#socket.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>To close a socket</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.accept">
+<code class="descclassname">socket.</code><code class="descname">accept</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#socket.accept" title="Permalink to this definition">¶</a></dt>
+<dd><p>Wait for a incomming client, it&#8217;s a blocking method</p>
+<p>Once a client is incomming, it will return a tuple (socket, addr_info)</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">socket</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">server_ip</span> <span class="o">=</span> <span class="p">(</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">,</span> <span class="mi">8080</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span> <span class="o">=</span> <span class="n">socket</span><span class="o">.</span><span class="n">socket</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">bind</span><span class="p">(</span><span class="n">server_ip</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">listen</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">cliend_sock</span><span class="p">,</span> <span class="n">client_addr</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">accept</span><span class="p">()</span>
+
+<span class="go"># program will be blocked until a connection incomming.</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client_sock</span>
+<span class="go">&lt;socket state=2 timeout=-1 incoming=0 remaining=0&gt;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client_addr</span>
+<span class="go">(&#39;192.168.14.101&#39;, 51360)</span>
+
+<span class="go"># Now you can send/recv the client socket</span>
+
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client_sock</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="s2">&quot;hello! client&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client_sock</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">client_sock</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.send">
+<code class="descclassname">socket.</code><code class="descname">send</code><span class="sig-paren">(</span><em>data</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.send" title="Permalink to this definition">¶</a></dt>
+<dd><p>Send bytes of stream</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>data</strong> (<em>bytearray</em>) &#8211; Bytearray to be sent</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">b</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.recv">
+<code class="descclassname">socket.</code><code class="descname">recv</code><span class="sig-paren">(</span><em>num</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.recv" title="Permalink to this definition">¶</a></dt>
+<dd><p>To recieve bytes of stream, in default, it&#8217;s a blocking method, you can use socket.settimeout or socket.setblocking to be a non blocking recv</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>num</strong> (<em>int</em>) &#8211; Numbers of bytes to be received.</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">data</span> <span class="o">=</span> <span class="n">s</span><span class="o">.</span><span class="n">recv</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<span class="go">b&#39;hello&#39;</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.settimeout">
+<code class="descclassname">socket.</code><code class="descname">settimeout</code><span class="sig-paren">(</span><em>timeout</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.settimeout" title="Permalink to this definition">¶</a></dt>
+<dd><p>To set the socket timeout (unit: msec)</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>timeout</strong> (<em>int</em>) &#8211; timeout value</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<span class="go">timeout is 1000 msecs</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.setblocking">
+<code class="descclassname">socket.</code><code class="descname">setblocking</code><span class="sig-paren">(</span><em>enable</em><span class="sig-paren">)</span><a class="headerlink" href="#socket.setblocking" title="Permalink to this definition">¶</a></dt>
+<dd><p>To set the socket blocking mode, 0 is non-blocking and 1 is blocking</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>enable</strong> (<em>bool</em>) &#8211; mode</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">s</span><span class="o">.</span><span class="n">setblocking</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd></dl>
+
+<dl class="method">
+<dt id="socket.setsockopt">
+<code class="descclassname">socket.</code><code class="descname">setsockopt</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#socket.setsockopt" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the socket option.</p>
+<p>TBD</p>
+</dd></dl>
+
+<div class="section" id="constants">
+<h4>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h4>
+<blockquote>
+<div><dl class="attribute">
+<dt id="socket.AF_INET">
+<code class="descclassname">socket.</code><code class="descname">AF_INET</code><a class="headerlink" href="#socket.AF_INET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="socket.AF_INET6">
+<code class="descclassname">socket.</code><code class="descname">AF_INET6</code><a class="headerlink" href="#socket.AF_INET6" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="socket.SOCK_STREAM">
+<code class="descclassname">socket.</code><code class="descname">SOCK_STREAM</code><a class="headerlink" href="#socket.SOCK_STREAM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="socket.SOCK_DGRAM">
+<code class="descclassname">socket.</code><code class="descname">SOCK_DGRAM</code><a class="headerlink" href="#socket.SOCK_DGRAM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="socket.SOCK_RAW">
+<code class="descclassname">socket.</code><code class="descname">SOCK_RAW</code><a class="headerlink" href="#socket.SOCK_RAW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="socket.SOL_SOCKET">
+<code class="descclassname">socket.</code><code class="descname">SOL_SOCKET</code><a class="headerlink" href="#socket.SOL_SOCKET" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="socket.SO_REUSEADDR">
+<code class="descclassname">socket.</code><code class="descname">SO_REUSEADDR</code><a class="headerlink" href="#socket.SO_REUSEADDR" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div></blockquote>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="network.html" class="btn btn-neutral float-right" title="network – a module to handle low level networking" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="time.html" class="btn btn-neutral" title="time – a module to handle time and delay" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2016, ChesterTseng.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../',
+            VERSION:'latest',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
