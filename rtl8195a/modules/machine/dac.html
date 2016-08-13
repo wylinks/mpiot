@@ -32,7 +32,7 @@
   
     <link rel="top" title="mpiot latest documentation" href="../../../index.html"/>
         <link rel="up" title="machine – a module to access hardware" href="../machine.html"/>
-        <link rel="next" title="Class Pin" href="pin.html"/>
+        <link rel="next" title="Class UART" href="uart.html"/>
         <link rel="prev" title="Class ADC" href="adc.html"/> 
 
   
@@ -171,7 +171,7 @@
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>0</td>
-<td>DAC</td>
+<td>DA_0</td>
 </tr>
 </tbody>
 </table>
@@ -189,12 +189,12 @@
 <dl class="method">
 <dt id="DAC.write">
 <code class="descclassname">DAC.</code><code class="descname">write</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#DAC.write" title="Permalink to this definition">¶</a></dt>
-<dd><p>Write value to DAC.</p>
+<dd><p>Write digital value to DAC.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>value</strong> (<em>int</em>) &#8211; value, range depends on your resolution.</td>
+<tr class="field-odd field"><th class="field-name">參數:</th><td class="field-body"><strong>value</strong> (<em>int</em>) &#8211; digital value depends on your resolution.</td>
 </tr>
 <tr class="field-even field"><th class="field-name">返回:</th><td class="field-body">None</td>
 </tr>
@@ -216,7 +216,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="pin.html" class="btn btn-neutral float-right" title="Class Pin" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="uart.html" class="btn btn-neutral float-right" title="Class UART" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="adc.html" class="btn btn-neutral" title="Class ADC" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
