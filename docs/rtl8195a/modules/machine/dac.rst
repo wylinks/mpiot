@@ -8,7 +8,7 @@ Class `DAC`
         +------+------+
         | unit | DAC  |
         +======+======+
-        |  0   | DAC  |
+        |  0   | DA_0 |
         +------+------+
 
    .. code-block:: python
@@ -23,9 +23,9 @@ Methods
 
 .. method:: DAC.write(value)
 
-   Write value to DAC. 
+   Write digital value to DAC. 
 
-   :param int value: value, range depends on your resolution.
+   :param int value: digital value depends on your resolution.
    :return: None
 
 .. note:: 
