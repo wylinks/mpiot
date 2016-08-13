@@ -16,7 +16,7 @@ Pin definitions
 
 .. image:: images/Ameba_pin_Def.png
 
-.. _how_to_install_micropython:
+.. _how_to_install_micropython_rtl8195a:
 
 How to install MicroPython
 **************************
