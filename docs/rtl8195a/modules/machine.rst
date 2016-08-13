@@ -13,9 +13,11 @@ classes
 .. toctree::
    :maxdepth: 1
 
+   machine/pin.rst
    machine/adc.rst
    machine/dac.rst
-   machine/pin.rst
    machine/uart.rst
    machine/i2c.rst
    machine/spi.rst
+   machine/rtc.rst
+   machine/wdt.rst
