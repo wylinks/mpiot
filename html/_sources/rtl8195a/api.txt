@@ -5,6 +5,7 @@ API Referances
    :maxdepth: 3
    
    modules/time
+   modules/uvc
    modules/socket
    modules/network
    modules/wireless
