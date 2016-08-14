@@ -201,7 +201,9 @@ AP mode 範例
    >>> wifi = WLAN(mode=WLAN.AP)
    >>> wifi.start_ap()
 
-現在使用你的電腦去掃描周圍的WiFi訊號，應該可以看到
+現在使用你的電腦去掃描周圍的WiFi訊號，應該可以看到mpiot-ap的ssid。
+
+.. image:: images/mpiot-ssid.png
 
 STA_AP mode 範例
 ================
@@ -237,9 +239,9 @@ MicorPython\@RTL8195A 更支援混合模式(STA + AP)。
    >>> sta_netif = sta.getnetif()
    >>> print(sta_netif)
    NETIF(ip=192.168.14.100 ,netmask=255.255.255.0 ,gateway=192.168.14.1)
-   >>> ap.start_ap()
+   >>> ap.start_ap(ssid="thisisatest", auth=(WLAN.WPA_AES_PSK, "1234567890"))
 
-現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到
+現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到thisisatest這個ssid，且使用密碼1234567890即可登入。
 
 .. note::
 

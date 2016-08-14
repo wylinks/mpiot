@@ -337,7 +337,8 @@ Type &quot;help()&quot; for more information.
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">start_ap</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>現在使用你的電腦去掃描周圍的WiFi訊號，應該可以看到</p>
+<p>現在使用你的電腦去掃描周圍的WiFi訊號，應該可以看到mpiot-ap的ssid。</p>
+<img alt="../_images/mpiot-ssid.png" src="../_images/mpiot-ssid.png" />
 </div>
 <div class="section" id="sta-ap-mode">
 <h4>STA_AP mode 範例<a class="headerlink" href="#sta-ap-mode" title="Permalink to this headline">¶</a></h4>
@@ -368,10 +369,10 @@ Type &quot;help()&quot; for more information.
 <span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">getnetif</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sta_netif</span><span class="p">)</span>
 <span class="go">NETIF(ip=192.168.14.100 ,netmask=255.255.255.0 ,gateway=192.168.14.1)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ap</span><span class="o">.</span><span class="n">start_ap</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ap</span><span class="o">.</span><span class="n">start_ap</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;thisisatest&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
-<p>現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到</p>
+<p>現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到thisisatest這個ssid，且使用密碼1234567890即可登入。</p>
 <div class="admonition note">
 <p class="first admonition-title">註解</p>
 <p class="last">Lwip 若收到ICMP request，會回ICMP echo。換句話說，你可以ping的到開發版。</p>
