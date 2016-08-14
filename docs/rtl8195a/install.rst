@@ -1,8 +1,8 @@
 .. _rtl8195a_intro:
 
-************
-Introduction
-************
+*************
+Installation
+*************
 
 Realtek Ameba board
 ###################
