@@ -25,7 +25,7 @@ How to install MicroPython
 
 而包裝直譯器的韌體檔案位在我的repository內，可直接點選以下連結下載。
 
-https://github.com/cwyark/micropython/releases/download/v1.8.3alpha/ram_all.bin
+https://github.com/cwyark/micropython/releases/download/v1.8.3/ram_all.tar`
 
 下載的檔案名稱為ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython@RTL8195A。各作業系統燒錄方式可參考如下。
 
@@ -36,7 +36,7 @@ For Windows
 * 安裝驅動程式MBED CMSIS DAP Driver for Windows。
   https://developer.mbed.org/media/downloads/drivers/mbedWinSerial_16466.exe
 * 安裝完成後，會在"我的電腦"看到一個名稱為MBED的可卸除式磁碟機。
-* 點擊此可卸除式磁碟機後進入，並將ram_all.bin複製至此，此時會看到Ameba board上中間的綠燈快速閃爍，此時為燒錄韌體中，請勿拔除電源。
+* 點擊此可卸除式磁碟機後進入，將ram_all.tar解壓縮後，可以得到一個ram_all.bin檔案。將ram_all.bin複製至此，此時會看到Ameba board上中間的綠燈快速閃爍，此時為燒錄韌體中，請勿拔除電源。
 * 待綠燈不再閃爍時，將Ameba board 重新上電，即完成燒錄。
 
 For OSX
@@ -47,12 +47,9 @@ For OSX
 
 .. code-block:: bash
 
-   cp {folder}/ram_all.bin /Volumes/MBED/;sync
+   wget https://github.com/cwyark/micropython/releases/download/v1.8.3/ram_all.tar;tar xvf ram_all.tar;cp ram_all.bin /Volumes/MBED/;sync
 
 * 等到Ameba上的綠燈完全停止閃爍後，重新上電，即完成燒錄。
-
-.. note::  
-   {folder}請替換成您ram_all.bin存放的路徑。
 
 For Linux
 ^^^^^^^^^
@@ -62,6 +59,8 @@ For Linux
 
 .. code-block:: bash
 
+   wget https://github.com/cwyark/micropython/releases/download/v1.8.3/ram_all.tar
+   tar xvf ram_all.tar
    cp {folder}/ram_all.bin /media/{user}/MBED/;sync
 
 * 等到Ameba上的綠燈完全停止閃爍後，重新上電，即完成燒錄。
