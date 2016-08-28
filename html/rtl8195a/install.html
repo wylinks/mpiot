@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Introduction &mdash; mpiot latest documentation</title>
+  <title>Installation &mdash; mpiot latest documentation</title>
   
 
   
@@ -86,7 +86,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../platform.html">Platform Guides</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="start.html">Realtek RTL8195A</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="">Introduction</a><ul>
+<li class="toctree-l3 current"><a class="current reference internal" href="">Installation</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#realtek-ameba-board">Realtek Ameba board</a></li>
 </ul>
 </li>
@@ -130,11 +130,11 @@
       
           <li><a href="start.html">Realtek RTL8195A</a> &raquo;</li>
       
-    <li>Introduction</li>
+    <li>Installation</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/rtl8195a/intro.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/rtl8195a/install.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -144,8 +144,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="introduction">
-<span id="rtl8195a-intro"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="installation">
+<span id="rtl8195a-intro"></span><h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="realtek-ameba-board">
 <h2>Realtek Ameba board<a class="headerlink" href="#realtek-ameba-board" title="Permalink to this headline">¶</a></h2>
 <p>Realtek Ameba board 是瑞昱科技所推出的開發板，其支援Arduino IDE (需下載Ameba SDK)，其官方網站在 <a class="reference external" href="http://www.amebaiot.com/en/">這裡</a></p>
@@ -157,7 +157,7 @@
 <span id="how-to-install-micropython-rtl8195a"></span><h3>How to install MicroPython<a class="headerlink" href="#how-to-install-micropython" title="Permalink to this headline">¶</a></h3>
 <p>第一次要在Ameba board 使用MicroPython，必須將包裝好直譯器的韌體燒錄至開發板內。Ameba board 為Mbed Enabled 的開發板，其韌體燒錄方式非常簡單，可使用Drag and Drop的方式。</p>
 <p>而包裝直譯器的韌體檔案位在我的repository內，可直接點選以下連結下載。</p>
-<p><a class="reference external" href="https://github.com/cwyark/micropython/releases/download/v1.8alpha/ram_all.bin">https://github.com/cwyark/micropython/releases/download/v1.8alpha/ram_all.bin</a></p>
+<p><a class="reference external" href="https://github.com/cwyark/micropython/releases/download/v1.8.3/ram_all.tar">https://github.com/cwyark/micropython/releases/download/v1.8.3/ram_all.tar</a></p>
 <p>下載的檔案名稱為ram_all.bin，將此檔案燒錄至開發板即可使用MicroPython&#64;RTL8195A。各作業系統燒錄方式可參考如下。</p>
 <div class="section" id="for-windows">
 <h4>For Windows<a class="headerlink" href="#for-windows" title="Permalink to this headline">¶</a></h4>
@@ -166,7 +166,7 @@
 <li>安裝驅動程式MBED CMSIS DAP Driver for Windows。
 <a class="reference external" href="https://developer.mbed.org/media/downloads/drivers/mbedWinSerial_16466.exe">https://developer.mbed.org/media/downloads/drivers/mbedWinSerial_16466.exe</a></li>
 <li>安裝完成後，會在&#8221;我的電腦&#8221;看到一個名稱為MBED的可卸除式磁碟機。</li>
-<li>點擊此可卸除式磁碟機後進入，並將ram_all.bin複製至此，此時會看到Ameba board上中間的綠燈快速閃爍，此時為燒錄韌體中，請勿拔除電源。</li>
+<li>點擊此可卸除式磁碟機後進入，將ram_all.tar解壓縮後，可以得到一個ram_all.bin檔案。將ram_all.bin複製至此，此時會看到Ameba board上中間的綠燈快速閃爍，此時為燒錄韌體中，請勿拔除電源。</li>
 <li>待綠燈不再閃爍時，將Ameba board 重新上電，即完成燒錄。</li>
 </ul>
 </div>
@@ -176,16 +176,12 @@
 <li>將Ameba board 透過micro usb cable 連接至MAC。</li>
 <li>開啟終端機並輸入以下指令</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>cp <span class="o">{</span>folder<span class="o">}</span>/ram_all.bin /Volumes/MBED/<span class="p">;</span>sync
+<div class="highlight-bash"><div class="highlight"><pre><span></span>wget https://github.com/cwyark/micropython/releases/download/v1.8.3/ram_all.tar<span class="p">;</span>tar xvf ram_all.tar<span class="p">;</span>cp ram_all.bin /Volumes/MBED/<span class="p">;</span>sync
 </pre></div>
 </div>
 <ul class="simple">
 <li>等到Ameba上的綠燈完全停止閃爍後，重新上電，即完成燒錄。</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">註解</p>
-<p class="last">{folder}請替換成您ram_all.bin存放的路徑。</p>
-</div>
 </div>
 <div class="section" id="for-linux">
 <h4>For Linux<a class="headerlink" href="#for-linux" title="Permalink to this headline">¶</a></h4>
@@ -193,7 +189,9 @@
 <li>將Ameba board 透過micro usb cable 連接至PC。</li>
 <li>開啟終端機並輸入以下指令</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>cp <span class="o">{</span>folder<span class="o">}</span>/ram_all.bin /media/<span class="o">{</span>user<span class="o">}</span>/MBED/<span class="p">;</span>sync
+<div class="highlight-bash"><div class="highlight"><pre><span></span>wget https://github.com/cwyark/micropython/releases/download/v1.8.3/ram_all.tar
+tar xvf ram_all.tar
+cp <span class="o">{</span>folder<span class="o">}</span>/ram_all.bin /media/<span class="o">{</span>user<span class="o">}</span>/MBED/<span class="p">;</span>sync
 </pre></div>
 </div>
 <ul class="simple">
