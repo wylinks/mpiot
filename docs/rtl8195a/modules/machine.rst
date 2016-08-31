@@ -17,6 +17,7 @@ classes
    machine/adc.rst
    machine/dac.rst
    machine/uart.rst
+   machine/sdio.rst
    machine/i2c.rst
    machine/spi.rst
    machine/rtc.rst
