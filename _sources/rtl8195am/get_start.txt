@@ -22,36 +22,16 @@ Basic Usage
 
 .. code-block:: python
 
-    =========================================================
-
-    ROM Version: 0.2
-
-    Build ToolChain Version: gcc version 4.8.3 (Realtek ASDK-4.8.3p1 Build 2003) 
-
-    =========================================================
-    Check boot type form eFuse
-    SPI Initial
-    Image1 length: 0x36e4, Image Addr: 0x10000bc8
-    Image1 Validate OK, Going jump to Image1
-    ===== Enter Image 1 ====
-    SDR Controller Init
-
-    load NEW fw 0
-    Flash Image2:Addr 0xb000, Len 351472, Load to SRAM 0x10006000
-    Image3 length: 0x1beb0, Image3 Addr: 0x30000000
-    Img2 Sign: RTKWin, InfaStart @ 0x10006019 
-    ===== Enter Image 2 ====
-    Starting main task
-    Starting executing main.py
-    MicroPython v1.8.1-42-g5a23590-dirty on 2016-06-18; Ameba Board with RT8195A
-    Type "help()" for more information.
+    Mounting Ramfs, ramfs size = 102400
+    Mounting Flashfs
+    Mount flash to vfs done
+    main.py not found
+    MicroPython v1.8.7-979-g9fb2a76 on 2017-05-09; AmebaBoard with RTL8195A
     >>> 
 
 .. note:: 
 
-   Ctrl+D 可以reset開發板。
-
-   Ctrl+B 可以重啟REPL (不做HW reset)
+   Ctrl+B 可以重啟REPL (不做硬體重置)
 
    Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，MicroPython會執行你所貼上的程式碼。
 
@@ -60,25 +40,37 @@ Hardware Control
 
 目前支援功能：
 
-+------------+---------------------+
-|  function  |        module       |
-+============+=====================+
-|     GPIO   | :mod:`machine.Pin`  |
-+------------+---------------------+
-|     I2C    | :mod:`machine.I2C`  |
-+------------+---------------------+
-|     UART   | :mod:`machine.UART` |
-+------------+---------------------+
-|     SPI    | :mod:`machine.SPI`  |
-+------------+---------------------+
-|     RTC    | :mod:`machine.RTC`  |
-+------------+---------------------+
-|  Watchdog  | :mod:`machine.WDT`  |
-+------------+---------------------+
-|     ADC    | :mod:`machine.ADC`  |
-+------------+---------------------+
-|     DAC    | :mod:`machine.DAC`  |
-+------------+---------------------+
++------------+--------------------------+
+|  function  |        module            |
++============+==========================+
+|     GPIO   | :mod:`umachine.Pin`      |
++------------+--------------------------+
+|     I2C    | :mod:`umachine.I2C`      |
++------------+--------------------------+
+|   LOGUART  | :mod:`umachine.LOGUART`  |
++------------+--------------------------+
+|  SDIO_HOST | :mod:`umachine.SDIO_HOST`|
++------------+--------------------------+
+|     UART   | :mod:`umachine.UART`     |
++------------+--------------------------+
+|     SPI    | :mod:`umachine.SPI`      |
++------------+--------------------------+
+|     RTC    | :mod:`umachine.RTC`      |
++------------+--------------------------+
+|  Watchdog  | :mod:`umachine.WDT`      |
++------------+--------------------------+
+|     ADC    | :mod:`umachine.ADC`      |
++------------+--------------------------+
+|     DAC    | :mod:`umachine.DAC`      |
++------------+--------------------------+
+|     RTC    | :mod:`umachine.RTC`      |
++------------+--------------------------+
+|   CRYPTO   | :mod:`umachine.CRYPTO`   |
++------------+--------------------------+
+|   TIMER    | :mod:`umachine.TIMER`    |
++------------+--------------------------+
+|   PWM      | :mod:`umachine.PWM`      |
++------------+--------------------------+
 
 硬體控制可以參考下圖方格所定義的名稱。ex: PA_1, PA_2, PD_5 ...
 
@@ -89,13 +81,13 @@ Hardware Control
 .. code-block:: python
 
    # To control I/O output
-   >>> from machine import Pin
-   >>> pin1 = Pin("PA_1", dir=Pin.OUT)
+   >>> from umachine import Pin
+   >>> pin1 = Pin("PA_1", mode=Pin.OUT)
    >>> pin1.toggle()
    >>> pin1.value(1)
    >>> pin1.value(0)
    # To read I/O's value
-   >>> pin2 = Pin("PC_0", dir=Pin.IN, pull=Pin.OPEN_DRAIN)
+   >>> pin2 = Pin("PC_0", mode=Pin.IN, pull=Pin.OPEN_DRAIN)
    >>> pin2.value()
    1
 
@@ -117,13 +109,15 @@ WLAN 支援STA, AP 以及STA_AP模式。
 WLAN 基本功能
 ============
 
-WLAN 可以讀取mac address, 掃描周圍的WiFi訊號，亦可以讀取目前RSSi數值。
+WLAN 可以讀取mac address, 掃描周圍的WiFi SSID，亦可以讀取目前RSSi數值。
 
 .. code-block:: python
 
-   >>> from wireless import WLAN
-   >>> wifi = WLAN(mode=WLAN.STA)
-   >>> wifi.mac()
+   >>> import WiFiTool
+   >>> wlan_drv = WiFiTool.wlan_drv()
+   >>> wlan_drv.off()
+   >>> wlan_drv.on(wlan_drv.STA)
+   >>> wlan_drv.mac()
    '28:c2:dd:dd:42:7d'
    >>> def scan_your_wifi_around_you():
    ...     wifi_list = wifi.scan()
@@ -245,15 +239,4 @@ MicorPython\@RTL8195AM 更支援混合模式(STA + AP)。
 
 .. note::
 
-    Lwip 若收到ICMP request，會回ICMP echo。換句話說，你可以ping的到開發版。
-
-Internal FTP server
-###################
-
-MicroPython\@RTL8195AM 內建輕量級FTP server，且你知道開發版的IP為何。就可以透過ftp client ex:FileZilla 連到開發板內部的filesystem 做檔案存取。
-
-可方便開發者更新main.py，放入自己寫的module。亦可以不用一直做DAP燒錄，節省開發時間。當然，也可以透過程式碼實現你的OTA功能。
-
-.. note::
-
-   目前測試FileZilla可用，以及MACOS/Linux 的ftp command 可用，但不保證其他FTP client 可用。
+    Lwip 若收到ICMP request，會回ICMP echo。換句話說，你可以ping到開發版。

@@ -91,7 +91,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#hardware-control">Hardware Control</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#networking">Networking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#internal-ftp-server">Internal FTP server</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="api.html">API Referances</a></li>
@@ -161,36 +160,17 @@
 </pre></div>
 </div>
 <p>按開發板上的reset鍵，你也可以看到開機畫面。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span>=========================================================
-
-ROM Version: 0.2
-
-Build ToolChain Version: gcc version 4.8.3 (Realtek ASDK-4.8.3p1 Build 2003)
-
-=========================================================
-Check boot type form eFuse
-SPI Initial
-Image1 length: 0x36e4, Image Addr: 0x10000bc8
-Image1 Validate OK, Going jump to Image1
-===== Enter Image 1 ====
-SDR Controller Init
-
-load NEW fw 0
-Flash Image2:Addr 0xb000, Len 351472, Load to SRAM 0x10006000
-Image3 length: 0x1beb0, Image3 Addr: 0x30000000
-Img2 Sign: RTKWin, InfaStart @ 0x10006019
-===== Enter Image 2 ====
-Starting main task
-Starting executing main.py
-MicroPython v1.8.1-42-g5a23590-dirty on 2016-06-18; Ameba Board with RT8195A
-Type &quot;help()&quot; for more information.
-&gt;&gt;&gt;
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="n">Mounting</span> <span class="n">Ramfs</span><span class="p">,</span> <span class="n">ramfs</span> <span class="n">size</span> <span class="o">=</span> <span class="mi">102400</span>
+<span class="n">Mounting</span> <span class="n">Flashfs</span>
+<span class="n">Mount</span> <span class="n">flash</span> <span class="n">to</span> <span class="n">vfs</span> <span class="n">done</span>
+<span class="n">main</span><span class="o">.</span><span class="n">py</span> <span class="ow">not</span> <span class="n">found</span>
+<span class="n">MicroPython</span> <span class="n">v1</span><span class="o">.</span><span class="mf">8.7</span><span class="o">-</span><span class="mi">979</span><span class="o">-</span><span class="n">g9fb2a76</span> <span class="n">on</span> <span class="mi">2017</span><span class="o">-</span><span class="mo">05</span><span class="o">-</span><span class="mi">09</span><span class="p">;</span> <span class="n">AmebaBoard</span> <span class="k">with</span> <span class="n">RTL8195A</span>
+<span class="o">&gt;&gt;&gt;</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="first admonition-title">註解</p>
-<p>Ctrl+D 可以reset開發板。</p>
-<p>Ctrl+B 可以重啟REPL (不做HW reset)</p>
+<p>Ctrl+B 可以重啟REPL (不做硬體重置)</p>
 <p class="last">Ctrl+E 可進入paste mode。在此模式貼上程式碼後輸入Ctrl+D，MicroPython會執行你所貼上的程式碼。</p>
 </div>
 </div>
@@ -199,8 +179,8 @@ Type &quot;help()&quot; for more information.
 <p>目前支援功能：</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="36%" />
-<col width="64%" />
+<col width="32%" />
+<col width="68%" />
 </colgroup>
 <thead valign="bottom">
 <tr class="row-odd"><th class="head">function</th>
@@ -209,28 +189,46 @@ Type &quot;help()&quot; for more information.
 </thead>
 <tbody valign="top">
 <tr class="row-even"><td>GPIO</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.Pin</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.Pin</span></code></td>
 </tr>
 <tr class="row-odd"><td>I2C</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.I2C</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.I2C</span></code></td>
+</tr>
+<tr class="row-even"><td>LOGUART</td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.LOGUART</span></code></td>
+</tr>
+<tr class="row-odd"><td>SDIO_HOST</td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.SDIO_HOST</span></code></td>
 </tr>
 <tr class="row-even"><td>UART</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.UART</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.UART</span></code></td>
 </tr>
 <tr class="row-odd"><td>SPI</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.SPI</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.SPI</span></code></td>
 </tr>
 <tr class="row-even"><td>RTC</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.RTC</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.RTC</span></code></td>
 </tr>
 <tr class="row-odd"><td>Watchdog</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.WDT</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.WDT</span></code></td>
 </tr>
 <tr class="row-even"><td>ADC</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.ADC</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.ADC</span></code></td>
 </tr>
 <tr class="row-odd"><td>DAC</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">machine.DAC</span></code></td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.DAC</span></code></td>
+</tr>
+<tr class="row-even"><td>RTC</td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.RTC</span></code></td>
+</tr>
+<tr class="row-odd"><td>CRYPTO</td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.CRYPTO</span></code></td>
+</tr>
+<tr class="row-even"><td>TIMER</td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.TIMER</span></code></td>
+</tr>
+<tr class="row-odd"><td>PWM</td>
+<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.PWM</span></code></td>
 </tr>
 </tbody>
 </table>
@@ -238,13 +236,13 @@ Type &quot;help()&quot; for more information.
 <img alt="../_images/Ameba_pin_Def.png" src="../_images/Ameba_pin_Def.png" />
 <p>控制GPIO僅需要幾行程式碼。</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="c1"># To control I/O output</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PA_1&quot;</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">umachine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PA_1&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OUT</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">toggle</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin1</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="c1"># To read I/O&#39;s value</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">pin2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PC_0&quot;</span><span class="p">,</span> <span class="nb">dir</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OPEN_DRAIN</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pin2</span> <span class="o">=</span> <span class="n">Pin</span><span class="p">(</span><span class="s2">&quot;PC_0&quot;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">IN</span><span class="p">,</span> <span class="n">pull</span><span class="o">=</span><span class="n">Pin</span><span class="o">.</span><span class="n">OPEN_DRAIN</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">pin2</span><span class="o">.</span><span class="n">value</span><span class="p">()</span>
 <span class="mi">1</span>
 </pre></div>
@@ -263,10 +261,12 @@ Type &quot;help()&quot; for more information.
 <p>但目前還無法實現真正的Access Point功能( WAN to local network )，主要原因是內建的Lwip 不支援network interface間路由功能。</p>
 <div class="section" id="id1">
 <h4>WLAN 基本功能<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>WLAN 可以讀取mac address, 掃描周圍的WiFi訊號，亦可以讀取目前RSSi數值。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">mac</span><span class="p">()</span>
+<p>WLAN 可以讀取mac address, 掃描周圍的WiFi SSID，亦可以讀取目前RSSi數值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">WiFiTool</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span> <span class="o">=</span> <span class="n">WiFiTool</span><span class="o">.</span><span class="n">wlan_drv</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">mac</span><span class="p">()</span>
 <span class="go">&#39;28:c2:dd:dd:42:7d&#39;</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">scan_your_wifi_around_you</span><span class="p">():</span>
 <span class="gp">... </span>    <span class="n">wifi_list</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
@@ -375,18 +375,9 @@ Type &quot;help()&quot; for more information.
 <p>現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到thisisatest這個ssid，且使用密碼1234567890即可登入。</p>
 <div class="admonition note">
 <p class="first admonition-title">註解</p>
-<p class="last">Lwip 若收到ICMP request，會回ICMP echo。換句話說，你可以ping的到開發版。</p>
+<p class="last">Lwip 若收到ICMP request，會回ICMP echo。換句話說，你可以ping到開發版。</p>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="internal-ftp-server">
-<h2>Internal FTP server<a class="headerlink" href="#internal-ftp-server" title="Permalink to this headline">¶</a></h2>
-<p>MicroPython&#64;RTL8195AM 內建輕量級FTP server，且你知道開發版的IP為何。就可以透過ftp client ex:FileZilla 連到開發板內部的filesystem 做檔案存取。</p>
-<p>可方便開發者更新main.py，放入自己寫的module。亦可以不用一直做DAP燒錄，節省開發時間。當然，也可以透過程式碼實現你的OTA功能。</p>
-<div class="admonition note">
-<p class="first admonition-title">註解</p>
-<p class="last">目前測試FileZilla可用，以及MACOS/Linux 的ftp command 可用，但不保證其他FTP client 可用。</p>
 </div>
 </div>
 </div>
