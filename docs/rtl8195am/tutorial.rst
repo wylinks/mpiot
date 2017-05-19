@@ -123,7 +123,7 @@ Hardware Control
 Filesystem
 ##########
 
-RTL8195A 實體上有1MB的Flash空間，micropython 直譯器約略500KB，剩下的500KB 都會被格式化為FATFS，可供使用者存放小量資料及.py檔。
+RTL8195AM 實體上有2MB的Flash空間，micropython 直譯器約略500KB，剩下的500KB 都會被格式化為FATFS，可供使用者存放小量資料及.py檔。
 
 使用者可以使用os 模組及Standard I/O 存取filesystem (硬碟名稱為 /flash)
 

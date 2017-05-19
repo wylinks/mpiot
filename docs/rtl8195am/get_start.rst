@@ -2,9 +2,9 @@
 Getting started
 ***************
 
-要使用MicroPython@RTL8195A 之前，需要先將韌體燒錄至開發板內。
+要使用MicroPython@RTL8195AM 之前，需要先將韌體燒錄至開發板內。
 
-燒錄方式可參考 :ref:`how_to_install_micropython_rtl8195a`
+燒錄方式可參考 :ref:`how_to_install_micropython_rtl8195am`
 
 Basic Usage 
 ###########
@@ -102,7 +102,7 @@ Hardware Control
 Networking
 ##########
 
-MicroPython\@RTL8195A 支援的無線功能有：
+MicroPython\@RTL8195AM 支援的無線功能有：
 
 * WLAN (WiFi)
 * NFC (comming soon)
@@ -193,7 +193,7 @@ Station mode 範例
 AP mode 範例
 ============
 
-或者，你也可以將Micropython\@RTL8195A 設定成AP mode
+或者，你也可以將Micropython\@RTL8195AM 設定成AP mode
 
 .. code-block:: python
 
@@ -208,7 +208,7 @@ AP mode 範例
 STA_AP mode 範例
 ================
 
-MicorPython\@RTL8195A 更支援混合模式(STA + AP)。
+MicorPython\@RTL8195AM 更支援混合模式(STA + AP)。
 
 但比較特殊的是，當參數使用WLAN.STA_AP時，會回傳一個tuple數據組：(sta, ap)，會這樣設計是因為他們有各自不同的network interface。
 
@@ -250,7 +250,7 @@ MicorPython\@RTL8195A 更支援混合模式(STA + AP)。
 Internal FTP server
 ###################
 
-MicroPython\@RTL8195A 內建輕量級FTP server，且你知道開發版的IP為何。就可以透過ftp client ex:FileZilla 連到開發板內部的filesystem 做檔案存取。
+MicroPython\@RTL8195AM 內建輕量級FTP server，且你知道開發版的IP為何。就可以透過ftp client ex:FileZilla 連到開發板內部的filesystem 做檔案存取。
 
 可方便開發者更新main.py，放入自己寫的module。亦可以不用一直做DAP燒錄，節省開發時間。當然，也可以透過程式碼實現你的OTA功能。
 

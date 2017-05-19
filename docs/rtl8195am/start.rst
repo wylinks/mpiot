@@ -1,5 +1,5 @@
-Realtek RTL8195A 
-================
+Realtek RTL8195AM
+=================
 
 .. toctree::
    :maxdepth: 2
