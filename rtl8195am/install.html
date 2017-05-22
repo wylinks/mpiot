@@ -156,27 +156,34 @@
 <div class="section" id="how-to-install-micropython">
 <span id="how-to-install-micropython-rtl8195am"></span><h3>How to install MicroPython<a class="headerlink" href="#how-to-install-micropython" title="Permalink to this headline">¶</a></h3>
 <p>第一次要在Ameba board 使用MicroPython，必須將包裝好直譯器的韌體燒錄至開發板內。Ameba board 為Mbed Enabled 的開發板，其韌體燒錄方式非常簡單，可使用Drag and Drop的方式。</p>
-<p>直譯器的韌體最新版本為v1.0.0，可直接點選以下連結下載。</p>
-<p><a class="reference external" href="http://gdurl.com/9flQ">http://gdurl.com/9flQ</a></p>
-<p>下載的檔案名稱為upy_ameba_ram_all_vx_x_x.bin，將此檔案燒錄至開發板即可使用MicroPython&#64;RTL8195AM。各作業系統燒錄方式可參考如下。</p>
+<p>直譯器的韌體最新版本為v1.0.1，可直接點選以下連結下載。</p>
+<p><a class="reference external" href="https://goo.gl/gwqZIZ">https://goo.gl/gwqZIZ</a></p>
+<p>但經過實驗發現，使用滑鼠Drag and Drop的方式，很容易燒錄錯誤，似乎是檔案搬移過程中，檔案內部有些資訊被更動到，導致MBED容易燒錄失敗。</p>
+<p>所以建議各作業系統以輸入指令作為更新方式。</p>
 <div class="section" id="for-windows">
 <h4>For Windows<a class="headerlink" href="#for-windows" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
 <li>將Ameba board 透過micro usb cable 連接至PC。</li>
 <li>安裝驅動程式MBED CMSIS DAP Driver for Windows。
 <a class="reference external" href="https://developer.mbed.org/media/downloads/drivers/mbedWinSerial_16466.exe">https://developer.mbed.org/media/downloads/drivers/mbedWinSerial_16466.exe</a></li>
-<li>安裝完成後，會在&#8221;我的電腦&#8221;看到一個名稱為MBED的可卸除式磁碟機。</li>
-<li>點擊此可卸除式磁碟機後進入，將ram_all.bin複製至此，此時會看到Ameba board上中間的綠燈快速閃爍，此時為燒錄韌體中，請勿拔除電源。</li>
+<li>安裝完成後，會在&#8221;我的電腦&#8221;看到一個名稱為MBED的可卸除式磁碟機，請記住這個硬碟名稱，等下輸入指令會用到。</li>
+<li>開啟PowerShell後，並輸入以下指令（<strong>請注意，以下指令行末{H}需要改成你電腦上MBED所出現的硬碟名稱</strong>）。</li>
+</ul>
+<div class="highlight-powershell"><div class="highlight"><pre><span></span>Invoke-WebRequest https://goo.gl/gwqZIZ -outFile $env:temp\ram_all.bin;cp $env:temp\ram_all.bin {H}:\
+</pre></div>
+</div>
+<ul class="simple">
+<li>此時會看到Ameba board上中間的綠燈快速閃爍，此時為燒錄韌體中，請勿拔除電源。</li>
 <li>待綠燈不再閃爍時，將Ameba board 重新上電，即完成燒錄。</li>
 </ul>
 </div>
 <div class="section" id="for-osx">
 <h4>For OSX<a class="headerlink" href="#for-osx" title="Permalink to this headline">¶</a></h4>
 <ul class="simple">
-<li>將Ameba board 透過micro usb cable 連接至MAC。</li>
+<li>將Ameba board 透過micro usb cable 連接至Mac。</li>
 <li>開啟終端機並輸入以下指令</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>wget http://gdurl.com/9flQ -O ram_all.bin<span class="p">;</span>cp ram_all.bin /Volumes/MBED/<span class="p">;</span>sync
+<div class="highlight-bash"><div class="highlight"><pre><span></span>wget https://goo.gl/gwqZIZ -O ram_all.bin<span class="p">;</span>cp ram_all.bin /Volumes/MBED/<span class="p">;</span>sync
 </pre></div>
 </div>
 <ul class="simple">
@@ -189,17 +196,12 @@
 <li>將Ameba board 透過micro usb cable 連接至PC。</li>
 <li>開啟終端機並輸入以下指令</li>
 </ul>
-<div class="highlight-bash"><div class="highlight"><pre><span></span>wget http://gdurl.com/9flQ -O ram_all.bin
-cp <span class="o">{</span>folder<span class="o">}</span>/ram_all.bin /media/<span class="o">{</span>user<span class="o">}</span>/MBED/<span class="p">;</span>sync
+<div class="highlight-bash"><div class="highlight"><pre><span></span>wget https://goo.gl/gwqZIZ -O ram_all.bin<span class="p">;</span>cp ram_all.bin /media/<span class="k">$(</span>whoami<span class="k">)</span>/MBED/<span class="p">;</span>sync
 </pre></div>
 </div>
 <ul class="simple">
 <li>等到Ameba上的綠燈完全停止閃爍後，重新上電，即完成燒錄。</li>
 </ul>
-<div class="admonition note">
-<p class="first admonition-title">註解</p>
-<p class="last">{folder}請替換成您ram_all.bin存放的路徑。其中{user}會因不同電腦而異。</p>
-</div>
 </div>
 </div>
 <div class="section" id="how-to-use-micropython">
@@ -207,7 +209,7 @@ cp <span class="o">{</span>folder<span class="o">}</span>/ram_all.bin /media/<sp
 <p>MicroPython in Ameba 可透過serial port 進入REPL環境，建議使用Putty，TeraTerm或Minicom等序列埠終端機進行com port 連線。</p>
 <div class="admonition note">
 <p class="first admonition-title">註解</p>
-<p class="last">預設序列埠設定為 115200 8N1</p>
+<p class="last">預設序列埠設定為 38400 8N1</p>
 </div>
 </div>
 <div class="section" id="first-example">
