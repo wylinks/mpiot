@@ -1,5 +1,5 @@
 Realtek Ameba board (RTL8195AM)
-###################
+###############################
 
 Realtek Ameba board (RTL8195AM) 是瑞昱科技所推出的開發板，官方支援Arduino IDE開發，其官方網站在 這裡_
 
@@ -9,6 +9,8 @@ Pin definitions
 ***************
 
 .. image:: ../images/Ameba_pin_Def.png
+
+.. _realtek-ameba-board-rtl8195am:
 
 How to install MicroPython
 **************************

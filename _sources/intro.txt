@@ -80,7 +80,7 @@ MicorPython 本身並不是專門為IoT 所設計的程式語言，它本質上�
 
 .. rubric:: 安全地遠端更新程式與大規模佈建
 
-相較於編譯式語言的特性，在IoT 物聯網應用上搭載直譯器會相當適合大規模佈建，也就是俗稱的OTA功能。傳統的OTA功能，仍是屬於相當危險的更新方式，Bootloader 負責從網路接收binary stream，並將數十Kb至數百Kb的Binary儲存於RAM中並進行CRC校驗。以上過程，以一些大廠所提供的solution皆相當穩定。但是大廠不一定會考慮靠使用者本身可能會犯的錯誤：更新到可能產生死機的程式碼，一當進入while loop內部，除了手動重置外，就很難讓機器進入bootloader mode 去等待更新。
+相較於編譯式語言的特性，在IoT 物聯網應用上搭載直譯器會相當適合大規模佈建，也就是俗稱的OTA功能。傳統的OTA功能，仍是屬於相當危險的更新方式，Bootloader 負責從網路接收binary stream，並將數十Kb至數百Kb的Binary儲存於RAM中並進行CRC校驗。以上過程，若是更新到能產生死機的程式碼，ex:進入while loop內部。除了手動重置外，就很難讓機器進入bootloader mode 去等待更新。
 
 而MicroPython 的好處在於，若您使用的開發板支援網路功能，便可透過網路將開發者撰寫好的草稿檔(可能也才10幾K)下載下來並執行，期間MicroPython 直譯器仍是處於活動狀態，開發者可以透過程式避免下載到會產生死機的程式碼。舉個例子來說，
 
@@ -114,11 +114,11 @@ MicorPython 本身並不是專門為IoT 所設計的程式語言，它本質上�
 如何開始？
 """""""""
 
-目前Upstream的MicroPython支援相當多款開發板，若有興趣可至 `MicroPython Github`_ 查看
+目前官方的MicroPython支援相當多款開發板，若有興趣可至 `MicroPython Github`_ 查看
 
 .. _MicroPython Github: https://github.com/micropython/micropython
 
-而以下的Github 是我從MicroPython fork出來的，未來會是專攻具有聯網功能的開發板，例如Realtek Ameba Dev Board，MediaTek MT76x7等。
+而以下的Github 是我從MicroPython fork出來的，未來會是專攻具有聯網功能的開發板，例如Realtek Ameba，MediaTek MT76x7等。
 
 `Cwyark MicroPython-ameba Github`_
 

@@ -31,7 +31,7 @@
 
   
     <link rel="top" title="MPIOT User Guide alpha documentation" href="../index.html"/>
-        <link rel="up" title="Realtek Ameba (RTL8195AM / RTL8710BN)" href="start.html"/>
+        <link rel="up" title="Realtek Ameba (RTL8195AM / RTL8711BN)" href="start.html"/>
         <link rel="next" title="API Referances" href="api.html"/>
         <link rel="prev" title="Realtek Ameba board (RTL8195AM)" href="platforms/ameba_dev_board.html"/> 
 
@@ -85,7 +85,7 @@
                 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../intro.html">Introduction</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../platform.html">Platform Guides</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="start.html">Realtek Ameba (RTL8195AM / RTL8710BN)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="start.html">Realtek Ameba (RTL8195AM / RTL8711BN)</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="install.html">Installation</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="">Getting started</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#basic-usage">Basic Usage</a></li>
@@ -130,13 +130,13 @@
       
           <li><a href="../platform.html">Platform Guides</a> &raquo;</li>
       
-          <li><a href="start.html">Realtek Ameba (RTL8195AM / RTL8710BN)</a> &raquo;</li>
+          <li><a href="start.html">Realtek Ameba (RTL8195AM / RTL8711BN)</a> &raquo;</li>
       
     <li>Getting started</li>
       <li class="wy-breadcrumbs-aside">
         
           
-            <a href="../_sources/ameba/get_start.txt" rel="nofollow"> View page source</a>
+            <a href="../_sources/ameba/getting_start.txt" rel="nofollow"> View page source</a>
           
         
       </li>
@@ -149,10 +149,10 @@
   <div class="section" id="getting-started">
 <h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
 <p>要使用MicroPython&#64;Ameba 之前，需要先將韌體燒錄至開發板內。</p>
-<p>燒錄方式可參考 <span class="xref std std-ref">how_to_install_micropython_rtl8195am</span></p>
+<p>燒錄方式可參考 <a class="reference internal" href="platforms/ameba_dev_board.html#id2"><span>How to install MicroPython</span></a></p>
 <div class="section" id="basic-usage">
 <h2>Basic Usage<a class="headerlink" href="#basic-usage" title="Permalink to this headline">¶</a></h2>
-<p>首先將MicroUSB Cable 接上開發板，透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
+<p>首先將MicroUSB Cable 接上開發板，透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 38400，並連進開發板。
 試著按幾次Enter，你會在畫面看到:</p>
 <div class="highlight-python"><div class="highlight"><pre><span></span><span class="go">&gt;&gt;&gt;</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -197,29 +197,23 @@
 <tr class="row-even"><td>LOGUART</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.LOGUART</span></code></td>
 </tr>
-<tr class="row-odd"><td>SDIO_HOST</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.SDIO_HOST</span></code></td>
-</tr>
-<tr class="row-even"><td>UART</td>
+<tr class="row-odd"><td>UART</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.UART</span></code></td>
 </tr>
-<tr class="row-odd"><td>SPI</td>
+<tr class="row-even"><td>SPI</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.SPI</span></code></td>
 </tr>
-<tr class="row-even"><td>RTC</td>
+<tr class="row-odd"><td>RTC</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.RTC</span></code></td>
 </tr>
-<tr class="row-odd"><td>Watchdog</td>
+<tr class="row-even"><td>Watchdog</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.WDT</span></code></td>
 </tr>
-<tr class="row-even"><td>ADC</td>
+<tr class="row-odd"><td>ADC</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.ADC</span></code></td>
 </tr>
-<tr class="row-odd"><td>DAC</td>
+<tr class="row-even"><td>DAC</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.DAC</span></code></td>
-</tr>
-<tr class="row-even"><td>RTC</td>
-<td><code class="xref py py-mod docutils literal"><span class="pre">umachine.RTC</span></code></td>
 </tr>
 <tr class="row-odd"><td>CRYPTO</td>
 <td><code class="xref py py-mod docutils literal"><span class="pre">umachine.CRYPTO</span></code></td>
@@ -258,26 +252,32 @@
 <div class="section" id="wlan">
 <h3>WLAN<a class="headerlink" href="#wlan" title="Permalink to this headline">¶</a></h3>
 <p>WLAN 支援STA, AP 以及STA_AP模式。</p>
-<p>但目前還無法實現真正的Access Point功能( WAN to local network )，主要原因是內建的Lwip 不支援network interface間路由功能。</p>
+<p>但目前還無法實現真正的Access Point功能(wan to local network)，主要原因是內建的Lwip 不支援network interface間路由功能。</p>
 <div class="section" id="id1">
 <h4>WLAN 基本功能<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
-<p>WLAN 可以讀取mac address, 掃描周圍的WiFi SSID，亦可以讀取目前RSSi數值。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">WiFiTool</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span> <span class="o">=</span> <span class="n">WiFiTool</span><span class="o">.</span><span class="n">wlan_drv</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan_drv</span><span class="o">.</span><span class="n">mac</span><span class="p">()</span>
+<p>WLAN 可以讀取mac address，亦可以讀取目前RSSi數值。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uwireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">off</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">mac</span><span class="p">()</span>
 <span class="go">&#39;28:c2:dd:dd:42:7d&#39;</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">scan_your_wifi_around_you</span><span class="p">():</span>
-<span class="gp">... </span>    <span class="n">wifi_list</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="n">scan</span><span class="p">()</span>
-<span class="gp">... </span>    <span class="k">if</span> <span class="n">wifi_list</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">wifi_list</span><span class="p">:</span>
-<span class="gp">... </span>            <span class="k">print</span><span class="p">(</span><span class="s2">&quot;SSID is </span><span class="si">%s</span><span class="s2">, BSSID is </span><span class="si">%s</span><span class="s2">, channel is </span><span class="si">%d</span><span class="s2"> and security type is </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="o">.</span><span class="n">ssid</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">bssid</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">channel</span><span class="p">,</span> <span class="n">i</span><span class="o">.</span><span class="n">security</span><span class="p">))</span>
-<span class="gp">... </span>    <span class="k">else</span><span class="p">:</span>
-<span class="gp">... </span>        <span class="k">print</span><span class="p">(</span><span class="s2">&quot;scan nothing&quot;</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">scan_your_wifi_around_you</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-<span class="gp">... </span>    <span class="n">scan_your_wifi_around_you</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">rssi</span><span class="p">()</span>
+<span class="go">0</span>
+</pre></div>
+</div>
+<p>一個掃描周圍WiFi SSID的例子。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">ap_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_wlan_scan_ap_report</span><span class="p">(</span><span class="n">ap_info</span><span class="p">):</span>
+<span class="gp">... </span>    <span class="n">ap_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ap_info</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">my_wlan_scan_ap_done</span><span class="p">():</span>
+<span class="gp">... </span>    <span class="k">print</span><span class="p">(</span><span class="s2">&quot;WLAN scan done&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">event_handler</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">EVENT_SCAN_RESULT_REPORT</span><span class="p">,</span> <span class="n">my_wlan_scan_ap_report</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">event_handler</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">EVENT_SCAN_DONE</span><span class="p">,</span> <span class="n">my_wlan_scan_ap_done</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">scan</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">SCAN_TYPE_ACTIVE</span><span class="p">,</span> <span class="n">WLAN</span><span class="o">.</span><span class="n">BSS_TYPE_ANY</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">ap_list</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">event_handler</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">EVENT_SCAN_RESULT_REPORT</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">event_handler</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">EVENT_SCAN_DONE</span><span class="p">,</span> <span class="bp">None</span><span class="p">)</span>
 </pre></div>
 </div>
 <div class="admonition note">
@@ -285,29 +285,49 @@
 <p class="last">縮排很重要，1格縮排為4個空格。</p>
 </div>
 <p>TCP/IP功能是透過Lwip stack 所完成的，使用網路功能必須要先經過3個步驟。</p>
-<p>1 設定WLAN為STA mode, AP mode 或 STA_AP mode (hybrid mode)。</p>
+<p>1 設定WLAN為STA mode, AP mode 或 STA_AP mode。</p>
 <p>2 WiFi 連線與安全性認證</p>
 <p>3 選擇使用DHCP 索取IP或是設定固定IP</p>
 </div>
 <div class="section" id="station-mode">
 <h4>Station mode 範例<a class="headerlink" href="#station-mode" title="Permalink to this headline">¶</a></h4>
 <p>以下是一個使用Station mode 去連另外一台AP的範例，並透過socket 模組去進行DNS query。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">socket</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uwireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA</span><span class="p">)</span>   <span class="c1"># station mode</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">WLAN</span><span class="o">.</span>   <span class="c1"># press TAB to auto complete</span>
-<span class="go">scan            rssi            mac             connect</span>
-<span class="go">disconnect      STA             AP              STA_AP</span>
-<span class="go">PROMISC         P2P             OPEN            WEP_PSK</span>
-<span class="go">WEP_SHARED      WPA_TKIP_PSK    WPA_AES_PSK     WPA2_TKIP_PSK</span>
-<span class="go">WPA2_AES_PSK    WPA2_MIXED_PSK  WPA_WPA2_MIXED  WPS_OPEN</span>
-<span class="go">WPS_SECURE</span>
+<span class="go">scan            start_ap        rssi            mac</span>
+<span class="go">rf              channel         promisc_level   connect</span>
+<span class="go">disconnect      on              off             wifi_is_running</span>
+<span class="go">interface       is_connect_to_ap                event_handler</span>
+<span class="go">read            readinto        readline        STA</span>
+<span class="go">AP              STA_AP          PROMISC         OPEN</span>
+<span class="go">WEP_PSK         WEP_SHARED      WPA_TKIP_PSK    WPA_AES_PSK</span>
+<span class="go">WPA2_TKIP_PSK   WPA2_AES_PSK    WPA2_MIXED_PSK  WPA_WPA2_MIXED</span>
+<span class="go">EVENT_CONNECT   EVENT_DISCONNECT</span>
+<span class="go">EVENT_FOURWAY_HANDSHAKE_DONE    EVENT_SCAN_RESULT_REPORT</span>
+<span class="go">EVENT_SCAN_DONE                 EVENT_RECONNECTION_FAIL</span>
+<span class="go">EVENT_SEND_ACTION_DONE          EVENT_RX_MGNT   EVENT_STA_ASSOC</span>
+<span class="go">EVENT_STA_DISASSOC              EVENT_WPS_FINISH</span>
+<span class="go">EVENT_EAPOL_RECVD               EVENT_NO_NETWORK</span>
+<span class="go">EVENT_BEACON_AFTER_DHCP         SCAN_TYPE_ACTIVE</span>
+<span class="go">SCAN_TYPE_PASSIVE               SCAN_TYPE_PROHIBITED_CHANNELS</span>
+<span class="go">BSS_TYPE_INFRASTRUCTURE         BSS_TYPE_ADHOC  BSS_TYPE_ANY</span>
+<span class="go">PROMISC_DISABLE                 PROMISC_ENABLE  PROMISC_ENABLE_1</span>
+<span class="go">PROMISC_ENABLE_2                PROMISC_ENABLE_3</span>
+<span class="go">PROMISC_FILTER_MATCHING         PROMISC_FILTER_NOT_MATCHING</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">_wlan_default_connect_callback</span><span class="p">():</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;wlan connected&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">def</span> <span class="nf">_wlan_default_disconnect_callback</span><span class="p">():</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;wlan disconnected&quot;</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">event_handler</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">EVENT_CONNECT</span><span class="p">,</span> <span class="n">_wlan_default_connect_callback</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">event_handler</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">EVENT_DISCONNECT</span><span class="p">,</span> <span class="n">_wlan_default_disconnect_callback</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
 <span class="gp">... </span>   <span class="n">ssid</span> <span class="o">=</span> <span class="s2">&quot;YOUR-SSID&quot;</span>
 <span class="gp">... </span>   <span class="n">password</span> <span class="o">=</span> <span class="s2">&quot;YOUR-PASSWORD&quot;</span>
-<span class="gp">... </span>   <span class="n">wifi</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="n">ssid</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="n">password</span><span class="p">),</span> <span class="n">dhcp</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="gp">... </span><span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
-<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;connect to </span><span class="si">%s</span><span class="s2"> failed&quot;</span> <span class="o">%</span> <span class="n">ssid</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="n">security</span> <span class="o">=</span> <span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span>
+<span class="gp">... </span>   <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="n">ssid</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">security</span><span class="p">,</span> <span class="n">password</span><span class="p">))</span>
+<span class="gp">... </span><span class="k">except</span> <span class="ne">OSError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;connect to </span><span class="si">%s</span><span class="s2"> failed, cause </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">ssid</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
 
 <span class="go">RTL8195A[Driver]: set ssid [YOUR_SSID]</span>
 
@@ -320,21 +340,42 @@
 <span class="go">RTL8195A[Driver]: set pairwise key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4)</span>
 
 <span class="go">RTL8195A[Driver]: set group key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4) keyid:1</span>
-
-<span class="gp">&gt;&gt;&gt; </span><span class="n">netif</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="n">getnetif</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">netif</span><span class="p">)</span>
+<span class="go">wlan connected</span>
+</pre></div>
+</div>
+<p>目前為止你已經連至AP了，現在你要選擇使用DHCP索取IP，或者是使用固定IP。</p>
+<p>若是要使用DHCP索取IP:</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="c1"># first check if connect to AP</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">timeout</span> <span class="o">=</span> <span class="mi">1000</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">while</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="n">utime</span><span class="o">.</span><span class="n">sleep_ms</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="k">if</span> <span class="n">wlan</span><span class="o">.</span><span class="n">is_connect_to_ap</span><span class="p">()</span> <span class="ow">is</span> <span class="bp">True</span><span class="p">:</span>
+<span class="gp">... </span>       <span class="k">return</span>
+<span class="gp">... </span>   <span class="n">timeout</span> <span class="o">-=</span> <span class="mi">1</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span><span class="o">.</span><span class="n">dhcp_request</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># timeout = 10 secs</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sta_netif</span><span class="p">)</span>
 <span class="go">NETIF(ip=192.168.14.100 ,netmask=255.255.255.0 ,gateway=192.168.14.1)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">usocket</span> <span class="kn">as</span> <span class="nn">socket</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="n">socket</span><span class="o">.</span><span class="n">getaddrinfo</span><span class="p">(</span><span class="s2">&quot;www.google.com&quot;</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
 <span class="go">[(2, 1, 0, &#39;&#39;, (&#39;74.125.203.104&#39;, 80))]</span>
+</pre></div>
+</div>
+<p>或是你要使用固定IP：</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span> <span class="o">=</span> <span class="n">wifi</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span><span class="o">.</span><span class="n">ip</span><span class="p">((</span><span class="s2">&quot;192.168.14.100&quot;</span><span class="p">,</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span> <span class="s2">&quot;192.168.14.1&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sta_netif</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ap-mode">
 <h4>AP mode 範例<a class="headerlink" href="#ap-mode" title="Permalink to this headline">¶</a></h4>
 <p>或者，你也可以將Micropython&#64;RTL8195AM 設定成AP mode</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">AP</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">wifi</span><span class="o">.</span><span class="n">start_ap</span><span class="p">()</span>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uwireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">=</span><span class="n">WLAN</span><span class="o">.</span><span class="n">AP</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ap_netif</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ap_netif</span><span class="o">.</span><span class="n">ip</span><span class="p">((</span><span class="s2">&quot;192.168.4.1&quot;</span><span class="p">,</span> <span class="s2">&quot;255.255.255.0&quot;</span><span class="p">,</span> <span class="s2">&quot;192.168.4.1&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">start_ap</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;mpiot-ap&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA2_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>現在使用你的電腦去掃描周圍的WiFi訊號，應該可以看到mpiot-ap的ssid。</p>
@@ -342,14 +383,13 @@
 </div>
 <div class="section" id="sta-ap-mode">
 <h4>STA_AP mode 範例<a class="headerlink" href="#sta-ap-mode" title="Permalink to this headline">¶</a></h4>
-<p>MicorPython&#64;RTL8195AM 更支援混合模式(STA + AP)。</p>
-<p>但比較特殊的是，當參數使用WLAN.STA_AP時，會回傳一個tuple數據組：(sta, ap)，會這樣設計是因為他們有各自不同的network interface。</p>
-<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sta</span><span class="p">,</span> <span class="n">ap</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA_AP</span><span class="p">)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">getnetif</span><span class="p">()</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ap_netif</span> <span class="o">=</span> <span class="n">ap</span><span class="o">.</span><span class="n">getnetif</span><span class="p">()</span>
+<p>MicorPython&#64;Ameba 支援混合模式(STA + AP)。</p>
+<div class="highlight-python"><div class="highlight"><pre><span></span><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">uwireless</span> <span class="kn">import</span> <span class="n">WLAN</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span> <span class="o">=</span> <span class="n">WLAN</span><span class="p">(</span><span class="n">mode</span><span class="o">.</span><span class="n">WLAN</span><span class="o">.</span><span class="n">STA_AP</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">ap_netif</span> <span class="o">=</span> <span class="n">wlan</span><span class="o">.</span><span class="n">interface</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">try</span><span class="p">:</span>
-<span class="gp">... </span>   <span class="n">sta</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;TARGET-SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;TARGET-PASSWORD&quot;</span><span class="p">),</span> <span class="n">dhcp</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="gp">... </span>   <span class="n">wlan</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;TARGET-SSID&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;TARGET-PASSWORD&quot;</span><span class="p">))</span>
 <span class="gp">... </span><span class="k">except</span> <span class="ne">OSError</span><span class="p">:</span>
 <span class="gp">... </span>   <span class="k">print</span><span class="p">(</span><span class="s2">&quot;station mode connect failed&quot;</span><span class="p">)</span>
 <span class="go">&gt;&gt;&gt;</span>
@@ -366,10 +406,11 @@
 
 <span class="go">RTL8195A[Driver]: set group key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4) keyid:1</span>
 
-<span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span> <span class="o">=</span> <span class="n">sta</span><span class="o">.</span><span class="n">getnetif</span><span class="p">()</span>
 <span class="gp">&gt;&gt;&gt; </span><span class="k">print</span><span class="p">(</span><span class="n">sta_netif</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">sta_netif</span><span class="o">.</span><span class="n">dhcp_request</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="go">NETIF(ip=192.168.14.100 ,netmask=255.255.255.0 ,gateway=192.168.14.1)</span>
-<span class="gp">&gt;&gt;&gt; </span><span class="n">ap</span><span class="o">.</span><span class="n">start_ap</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;thisisatest&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">))</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="c1"># not start your AP</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">wlan</span><span class="o">.</span><span class="n">start_ap</span><span class="p">(</span><span class="n">ssid</span><span class="o">=</span><span class="s2">&quot;thisisatest&quot;</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="p">(</span><span class="n">WLAN</span><span class="o">.</span><span class="n">WPA_AES_PSK</span><span class="p">,</span> <span class="s2">&quot;1234567890&quot;</span><span class="p">))</span>
 </pre></div>
 </div>
 <p>現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到thisisatest這個ssid，且使用密碼1234567890即可登入。</p>

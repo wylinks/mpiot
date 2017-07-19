@@ -1,10 +1,10 @@
-Realtek Ameba (RTL8195AM / RTL8710BN)
+Realtek Ameba (RTL8195AM / RTL8711BN)
 =====================================
 
 .. toctree::
    :maxdepth: 2
    
    install
-   get_start
+   getting_start
    api
 

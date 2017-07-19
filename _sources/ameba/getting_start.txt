@@ -4,12 +4,12 @@ Getting started
 
 要使用MicroPython@Ameba 之前，需要先將韌體燒錄至開發板內。
 
-燒錄方式可參考 :ref:`how_to_install_micropython_rtl8195am`
+燒錄方式可參考 :ref:`realtek-ameba-board-rtl8195am`
 
 Basic Usage 
 ###########
 
-首先將MicroUSB Cable 接上開發板，透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 115200，並連進開發板。
+首先將MicroUSB Cable 接上開發板，透過終端機程式, ex: minicom, putty 或 TeraTerm, 設定包率為8N1, 38400，並連進開發板。
 試著按幾次Enter，你會在畫面看到:
 
 .. code-block:: python
@@ -49,8 +49,6 @@ Hardware Control
 +------------+--------------------------+
 |   LOGUART  | :mod:`umachine.LOGUART`  |
 +------------+--------------------------+
-|  SDIO_HOST | :mod:`umachine.SDIO_HOST`|
-+------------+--------------------------+
 |     UART   | :mod:`umachine.UART`     |
 +------------+--------------------------+
 |     SPI    | :mod:`umachine.SPI`      |
@@ -62,8 +60,6 @@ Hardware Control
 |     ADC    | :mod:`umachine.ADC`      |
 +------------+--------------------------+
 |     DAC    | :mod:`umachine.DAC`      |
-+------------+--------------------------+
-|     RTC    | :mod:`umachine.RTC`      |
 +------------+--------------------------+
 |   CRYPTO   | :mod:`umachine.CRYPTO`   |
 +------------+--------------------------+
@@ -104,31 +100,39 @@ WLAN
 
 WLAN 支援STA, AP 以及STA_AP模式。
 
-但目前還無法實現真正的Access Point功能( WAN to local network )，主要原因是內建的Lwip 不支援network interface間路由功能。
+但目前還無法實現真正的Access Point功能(wan to local network)，主要原因是內建的Lwip 不支援network interface間路由功能。
 
 WLAN 基本功能
 ============
 
-WLAN 可以讀取mac address, 掃描周圍的WiFi SSID，亦可以讀取目前RSSi數值。
+WLAN 可以讀取mac address，亦可以讀取目前RSSi數值。
 
 .. code-block:: python
 
-   >>> import WiFiTool
-   >>> wlan_drv = WiFiTool.wlan_drv()
-   >>> wlan_drv.off()
-   >>> wlan_drv.on(wlan_drv.STA)
-   >>> wlan_drv.mac()
+   >>> from uwireless import WLAN
+   >>> wlan = WLAN(mode=WLAN.STA)
+   >>> wlan.off()
+   >>> wlan.on(WLAN.STA)
+   >>> wlan.mac()
    '28:c2:dd:dd:42:7d'
-   >>> def scan_your_wifi_around_you():
-   ...     wifi_list = wifi.scan()
-   ...     if wifi_list is not None:
-   ...         for i in wifi_list:
-   ...             print("SSID is %s, BSSID is %s, channel is %d and security type is %d" % (i.ssid, i.bssid, i.channel, i.security))
-   ...     else:
-   ...         print("scan nothing")
-   >>> scan_your_wifi_around_you()
-   >>> for i in range(100):
-   ...     scan_your_wifi_around_you()
+   >>> wlan.rssi()
+   0
+
+一個掃描周圍WiFi SSID的例子。
+
+.. code-block:: python
+
+   >>> ap_list = list()
+   >>> def my_wlan_scan_ap_report(ap_info):
+   ...     ap_list.append(ap_info)
+   >>> def my_wlan_scan_ap_done():
+   ...     print("WLAN scan done")
+   >>> wlan.event_handler(WLAN.EVENT_SCAN_RESULT_REPORT, my_wlan_scan_ap_report)
+   >>> wlan.event_handler(WLAN.EVENT_SCAN_DONE, my_wlan_scan_ap_done)
+   >>> wlan.scan(WLAN.SCAN_TYPE_ACTIVE, WLAN.BSS_TYPE_ANY)
+   >>> print(ap_list)
+   >>> wlan.event_handler(WLAN.EVENT_SCAN_RESULT_REPORT, None)
+   >>> wlan.event_handler(WLAN.EVENT_SCAN_DONE, None)
 
 .. note:: 
 
@@ -136,7 +140,7 @@ WLAN 可以讀取mac address, 掃描周圍的WiFi SSID，亦可以讀取目前RS
 
 TCP/IP功能是透過Lwip stack 所完成的，使用網路功能必須要先經過3個步驟。
 
-1 設定WLAN為STA mode, AP mode 或 STA_AP mode (hybrid mode)。
+1 設定WLAN為STA mode, AP mode 或 STA_AP mode。
 
 2 WiFi 連線與安全性認證
 
@@ -149,22 +153,42 @@ Station mode 範例
 
 .. code-block:: python
 
-   >>> from wireless import WLAN
-   >>> import socket
+   >>> from uwireless import WLAN
    >>> wifi = WLAN(mode=WLAN.STA)   # station mode
    >>> WLAN.   # press TAB to auto complete
-   scan            rssi            mac             connect
-   disconnect      STA             AP              STA_AP
-   PROMISC         P2P             OPEN            WEP_PSK
-   WEP_SHARED      WPA_TKIP_PSK    WPA_AES_PSK     WPA2_TKIP_PSK
-   WPA2_AES_PSK    WPA2_MIXED_PSK  WPA_WPA2_MIXED  WPS_OPEN
-   WPS_SECURE
+   scan            start_ap        rssi            mac
+   rf              channel         promisc_level   connect
+   disconnect      on              off             wifi_is_running
+   interface       is_connect_to_ap                event_handler
+   read            readinto        readline        STA
+   AP              STA_AP          PROMISC         OPEN
+   WEP_PSK         WEP_SHARED      WPA_TKIP_PSK    WPA_AES_PSK
+   WPA2_TKIP_PSK   WPA2_AES_PSK    WPA2_MIXED_PSK  WPA_WPA2_MIXED
+   EVENT_CONNECT   EVENT_DISCONNECT
+   EVENT_FOURWAY_HANDSHAKE_DONE    EVENT_SCAN_RESULT_REPORT
+   EVENT_SCAN_DONE                 EVENT_RECONNECTION_FAIL
+   EVENT_SEND_ACTION_DONE          EVENT_RX_MGNT   EVENT_STA_ASSOC
+   EVENT_STA_DISASSOC              EVENT_WPS_FINISH
+   EVENT_EAPOL_RECVD               EVENT_NO_NETWORK
+   EVENT_BEACON_AFTER_DHCP         SCAN_TYPE_ACTIVE
+   SCAN_TYPE_PASSIVE               SCAN_TYPE_PROHIBITED_CHANNELS
+   BSS_TYPE_INFRASTRUCTURE         BSS_TYPE_ADHOC  BSS_TYPE_ANY
+   PROMISC_DISABLE                 PROMISC_ENABLE  PROMISC_ENABLE_1
+   PROMISC_ENABLE_2                PROMISC_ENABLE_3
+   PROMISC_FILTER_MATCHING         PROMISC_FILTER_NOT_MATCHING
+   >>> def _wlan_default_connect_callback():
+   ...    print("wlan connected")
+   >>> def _wlan_default_disconnect_callback():
+   ...    print("wlan disconnected")
+   >>> wlan.event_handler(WLAN.EVENT_CONNECT, _wlan_default_connect_callback)
+   >>> wlan.event_handler(WLAN.EVENT_DISCONNECT, _wlan_default_disconnect_callback)
    >>> try:
    ...    ssid = "YOUR-SSID"
    ...    password = "YOUR-PASSWORD"
-   ...    wifi.connect(ssid=ssid, auth=(WLAN.WPA2_AES_PSK, password), dhcp=True)
-   ... except OSError:
-   ...    print("connect to %s failed" % ssid)
+   ...    security = WLAN.WPA2_AES_PSK
+   ...    wlan.connect(ssid=ssid, auth=(security, password))
+   ... except OSError as e:
+   ...    print("connect to %s failed, cause %s" % (ssid, e))
 
    RTL8195A[Driver]: set ssid [YOUR_SSID] 
 
@@ -177,12 +201,36 @@ Station mode 範例
    RTL8195A[Driver]: set pairwise key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4)
    
    RTL8195A[Driver]: set group key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4) keyid:1
+   wlan connected
 
-   >>> netif = wifi.getnetif()
-   >>> print(netif)
+目前為止你已經連至AP了，現在你要選擇使用DHCP索取IP，或者是使用固定IP。
+
+若是要使用DHCP索取IP:
+
+.. code-block:: python
+
+   >>> # first check if connect to AP
+   >>> timeout = 1000
+   >>> while timeout:
+   ...    utime.sleep_ms(1)
+   ...    if wlan.is_connect_to_ap() is True:
+   ...        return
+   ...    timeout -= 1
+   >>> sta_netif = wifi.interface(0)
+   >>> sta_netif.dhcp_request(10) # timeout = 10 secs
+   >>> print(sta_netif)
    NETIF(ip=192.168.14.100 ,netmask=255.255.255.0 ,gateway=192.168.14.1)
+   >>> import usocket as socket
    >>> socket.getaddrinfo("www.google.com", 80)
    [(2, 1, 0, '', ('74.125.203.104', 80))]
+
+或是你要使用固定IP：
+
+.. code-block:: python
+
+   >>> sta_netif = wifi.interface(0)
+   >>> sta_netif.ip(("192.168.14.100", "255.255.255.0", "192.168.14.1"))
+   >>> print(sta_netif)
 
 AP mode 範例
 ============
@@ -191,9 +239,11 @@ AP mode 範例
 
 .. code-block:: python
 
-   >>> from wireless import WLAN
-   >>> wifi = WLAN(mode=WLAN.AP)
-   >>> wifi.start_ap()
+   >>> from uwireless import WLAN
+   >>> wlan = WLAN(mode=WLAN.AP)
+   >>> ap_netif = wlan.interface(0)
+   >>> ap_netif.ip(("192.168.4.1", "255.255.255.0", "192.168.4.1"))
+   >>> wlan.start_ap(ssid="mpiot-ap", auth=(WLAN.WPA2_AES_PSK, "1234567890"))
 
 現在使用你的電腦去掃描周圍的WiFi訊號，應該可以看到mpiot-ap的ssid。
 
@@ -202,18 +252,16 @@ AP mode 範例
 STA_AP mode 範例
 ================
 
-MicorPython\@RTL8195AM 更支援混合模式(STA + AP)。
-
-但比較特殊的是，當參數使用WLAN.STA_AP時，會回傳一個tuple數據組：(sta, ap)，會這樣設計是因為他們有各自不同的network interface。
+MicorPython\@Ameba 支援混合模式(STA + AP)。
 
 .. code-block:: python
   
-   >>> from wireless import WLAN
-   >>> sta, ap = WLAN(mode.WLAN.STA_AP)
-   >>> sta_netif = sta.getnetif()
-   >>> ap_netif = ap.getnetif()
+   >>> from uwireless import WLAN
+   >>> wlan = WLAN(mode.WLAN.STA_AP)
+   >>> sta_netif = wlan.interface(0)
+   >>> ap_netif = wlan.interface(1)
    >>> try:
-   ...    sta.connect(ssid="TARGET-SSID", auth=(WLAN.WPA_AES_PSK, "TARGET-PASSWORD"), dhcp=True)
+   ...    wlan.connect(ssid="TARGET-SSID", auth=(WLAN.WPA_AES_PSK, "TARGET-PASSWORD"))
    ... except OSError:
    ...    print("station mode connect failed")
    >>> 
@@ -230,10 +278,11 @@ MicorPython\@RTL8195AM 更支援混合模式(STA + AP)。
    
    RTL8195A[Driver]: set group key to hw: alg:4(WEP40-1 WEP104-5 TKIP-2 AES-4) keyid:1
 
-   >>> sta_netif = sta.getnetif()
    >>> print(sta_netif)
+   >>> sta_netif.dhcp_request(100)
    NETIF(ip=192.168.14.100 ,netmask=255.255.255.0 ,gateway=192.168.14.1)
-   >>> ap.start_ap(ssid="thisisatest", auth=(WLAN.WPA_AES_PSK, "1234567890"))
+   >>> # not start your AP
+   >>> wlan.start_ap(ssid="thisisatest", auth=(WLAN.WPA_AES_PSK, "1234567890"))
 
 現在使用你的電腦去掃描周圍的WiFi訊號，應該就可以看到thisisatest這個ssid，且使用密碼1234567890即可登入。
 
