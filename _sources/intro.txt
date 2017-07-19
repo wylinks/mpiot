@@ -58,25 +58,14 @@ MicroPython 怎麼控制周邊硬體 ？
 
 .. code-block:: python
 
-   >>> from hardware import Pin
+   >>> from umachine import Pin
    >>> led = Pin("PA_1")  # PA_1 is the pin name
    >>> led.toggle()
    >>> led.value(1)
    >>> led.value(0)
 
-或是使用Ameba Dev Board的WiFi功能，亦可參考以下範例：
-
-.. code-block:: python
-
-   >>> from wireless import WIFI
-   >>> wifi = WIFI(mode=WIFI.MODE_STA)
-   >>> wifi.scan()
-   ... it will scan all the SSID ...
-   >>> wifi.connect("xxxSSIDxxx", auth=(WIFI.SECURITY_WEP_PSK, "xxxKEYxxx"))
-   >>> wifi.rssi()
-
 .. note::
-   目前所有支援MicroPython的開發板，幾乎是由不同人(團隊)所移植的，所以其模組名稱也不盡相同。例如我所移植的Ameba Dev Board控制GPIO的模組：hardware.Pin，在MicroPython 原作者的pyboard命名為pyb.Pin。所以建議使用不同開發板前，先確認好不同作者的命名方式。
+   目前所有支援MicroPython的開發板，幾乎是由不同人(團隊)所移植的，所以其模組名稱也不盡相同。例如所移植的Ameba Dev Board控制GPIO的模組：umachine.Pin，在MicroPython 原作者的pyboard命名為pyb.Pin。所以建議使用不同開發板前，先確認好不同作者的命名方式。
 
 MicroPython 跟 IoT 有什麼關係？
 """"""""""""""""""""""""""""""
@@ -85,9 +74,9 @@ MicroPython 跟 IoT 有什麼關係？
 
 MicorPython 本身並不是專門為IoT 所設計的程式語言，它本質上僅是一個讓低資源的微處理機能夠運行Python語法。
 
-但是隨著近幾年IoT 產業蓬勃發展，IoT 應用越來越偏向可大規模佈建，耗電量要求越來越低，成本也要求要越來越低，導致大部分可搭載Linux的SoC，例如ARM A7/A8 並不適合大規模佈建的IoT應用。
+但是隨著近幾年IoT 產業蓬勃發展，IoT 應用越來越偏向可大規模佈建，耗電量要求越來越低，成本也要求要越來越低，致使大部分可搭載Linux的SoC，例如ARM A7/A8 並不適合大規模佈建的IoT應用。
 
-最近市場開始推出適合推模佈建的WiFi SoC，例如TI CC3200，樂鑫ESP8266，瑞昱RTL8195AM或是聯發科的MT7688等。然而，上述除了MT7688，其他SoC皆無法支援網路功能強大的Linux，在開發方式來說，仍屬於上述的編譯式程式語言：編譯，燒錄並反覆測試，容易增加開發者的困擾。
+最近市場開始推出適合推模佈建的WiFi SoC，例如TI CC3200，樂鑫ESP8266，瑞昱Ameba或是聯發科的MT7688等。然而，上述除了MT7688，其他SoC皆無法支援網路功能強大的Linux，在開發方式來說，仍屬於上述的編譯式程式語言：編譯，燒錄並反覆測試，容易增加開發者的困擾。
 
 .. rubric:: 安全地遠端更新程式與大規模佈建
 
@@ -96,17 +85,18 @@ MicorPython 本身並不是專門為IoT 所設計的程式語言，它本質上�
 而MicroPython 的好處在於，若您使用的開發板支援網路功能，便可透過網路將開發者撰寫好的草稿檔(可能也才10幾K)下載下來並執行，期間MicroPython 直譯器仍是處於活動狀態，開發者可以透過程式避免下載到會產生死機的程式碼。舉個例子來說，
 
 .. code-block:: python
-
-   f = open("/flash/main_script.py", "w")
-   firmware = http.get("http://www.YOUR_OTA_SERVER.com/?=fw")
+   
+   import urequests
+   f = open("/flash/main.py", "w")
+   firmware = urequests.get("http://www.YOUR_OTA_SERVER.com/?=fw&device=my_ameba")
    f.write(firmware.body)
    f.close()
    
-   import main_script
+   import main
    
-   test_result = main_script.test()
+   test_result = main.test()
    
-   if test_result == TRUE:
+   if test_result == True:
        print("OTA SUCCESS")
    else:
        print("OTA FAILED")
@@ -128,10 +118,12 @@ MicorPython 本身並不是專門為IoT 所設計的程式語言，它本質上�
 
 .. _MicroPython Github: https://github.com/micropython/micropython
 
-而以下的Github 是我從MicroPython fork出來的，未來會是專攻具有聯網功能的開發板，例如Realtek Ameba Dev Board，TI CC3200 SimpleLink等。
+而以下的Github 是我從MicroPython fork出來的，未來會是專攻具有聯網功能的開發板，例如Realtek Ameba Dev Board，MediaTek MT76x7等。
 
-`Cwyark MicroPython Github`_
+`Cwyark MicroPython-ameba Github`_
 
-.. _Cwyark MicroPython Github: https://github.com/cwyark/micropython
+.. _Cwyark MicroPython-ameba Github: https://github.com/cwyark/micropython-ameba
 
-目前我的Repository 支援以下開發板，請點選以下連結開始，或是在左方菜單點選您有興趣的開發板使用方式。
+`Cwyark MicroPython-mt76x7 Github`_
+
+.. _Cwyark MicroPython-mt76x7 Github: https://github.com/cwyark/micropython-mt76x7

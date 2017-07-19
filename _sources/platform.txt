@@ -1,8 +1,8 @@
 Platform Guides
 """""""""""""""
-Supported platform are list below.
+Supported platforms are list below.
 
 .. toctree::
    :maxdepth: 1
 
-   rtl8195am/start
+   ameba/start
