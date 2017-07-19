@@ -47,7 +47,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'mpiot'
-copyright = u'2016, ChesterTseng'
+copyright = u'2017, ChesterTseng'
 author = u'ChesterTseng'
 
 # The version info for the project you're documenting, acts as replacement for

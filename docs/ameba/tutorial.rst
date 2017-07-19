@@ -2,7 +2,7 @@
 Tutorial
 ********
 
-要使用MicroPython之前，你需要先將MicroPython@RTL8195A 的韌體燒錄至開發板內。
+要使用MicroPython之前，你需要先將MicroPython@Ameba 的韌體燒錄至開發板內。
 
 燒錄方式可參考 :ref:`how_to_install_micropython`
 

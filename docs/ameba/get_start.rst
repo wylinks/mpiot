@@ -2,7 +2,7 @@
 Getting started
 ***************
 
-要使用MicroPython@RTL8195AM 之前，需要先將韌體燒錄至開發板內。
+要使用MicroPython@Ameba 之前，需要先將韌體燒錄至開發板內。
 
 燒錄方式可參考 :ref:`how_to_install_micropython_rtl8195am`
 

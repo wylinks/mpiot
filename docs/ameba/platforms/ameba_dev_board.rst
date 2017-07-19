@@ -1,31 +1,19 @@
-.. _rtl8195am_intro:
-
-*************
-Installation
-*************
-
-Realtek Ameba board
+Realtek Ameba board (RTL8195AM)
 ###################
 
-Realtek Ameba board 是瑞昱科技所推出的開發板，其支援Arduino IDE (需下載Ameba SDK)，其官方網站在 這裡_
+Realtek Ameba board (RTL8195AM) 是瑞昱科技所推出的開發板，官方支援Arduino IDE開發，其官方網站在 這裡_
 
 .. _這裡: http://www.amebaiot.com/en/
 
 Pin definitions
 ***************
 
-.. image:: images/Ameba_pin_Def.png
-
-.. _how_to_install_micropython_rtl8195am:
+.. image:: ../images/Ameba_pin_Def.png
 
 How to install MicroPython
 **************************
 
 第一次要在Ameba board 使用MicroPython，必須將包裝好直譯器的韌體燒錄至開發板內。Ameba board 為Mbed Enabled 的開發板，其韌體燒錄方式非常簡單，可使用Drag and Drop的方式。
-
-直譯器的韌體最新版本為v1.0.1，可直接點選以下連結下載。
-
-https://goo.gl/gwqZIZ
 
 但經過實驗發現，使用滑鼠Drag and Drop的方式，很容易燒錄錯誤，似乎是檔案搬移過程中，檔案內部有些資訊被更動到，導致MBED容易燒錄失敗。
 
@@ -79,39 +67,4 @@ MicroPython in Ameba 可透過serial port 進入REPL環境，建議使用Putty�
 
 .. note::
    預設序列埠設定為 38400 8N1 
-
-First example
-*************
-
-當透過終端機連進Ameba後，可試著按Enter確認REPL是否正常運作。
-
-.. code-block:: bash
-   
-   >>>
-
-您可以在REPL下進行Python 語法的輸入了！
-
-.. code-block:: python
-
-   >>> import sys
-   >>> print(sys.version)
-   3.4.0
-   >>> for i in range(5):
-   ...     print(i)
-   ...
-   1
-   2
-   3
-   4
-   5
-   >>>
-    
-.. note:: 
-
-   小技巧：第5行的...   print(i)中間空格REPL會自動幫你做縮排，若要結束編輯先將游標退至行頭後按Enter。
-
-What's next ?
-*************
-
-
 
